@@ -1,0 +1,553 @@
+
+[Boot] ******************************************************
+[Boot] Firmware build timestamp: Tue Oct 09, 2018 11:44:14AM
+
+[Boot] ASIC ID 0x00460009 :  0x000070f9(PUFF RevA .2 fab1 Marvel)
+
+ GIC supports priority levels: 0x00000020
+ GIC Init done: Interrupts supported: 0x000000c0[Boot] Entering NOS_HW_MCASIC_init
+[Boot] Nand BdID:  0x00046f10 (0x4df0)
+[Boot] Cmpld BdID: 0x00046f1f (0x4dff)
+[Boot] NVM BdID:   0x00046f0b (0x4deb)
+[Boot] Rempd BdID: 0x00046f0b (0x4deb)
+[nos_ui]reseting mcu 0x80
+[nos_ui]MCU1:
+  0x4d,0x05,0x51,0x05,0x07,0x00,0x00,0x05,0x00,0x11,0x16,0x17,0x01,0x00,0x00,0x18,0x01,
+[nos_ui]MCU2:
+  0x00,0x00,0x3b,0x03,
+  0x02,0x00,0x3b,0x03,
+[nos_ui] Power led early on
+[nos_ui] cgd_init
+[Boot] NVM powerdown state = 0x00000002
+[Boot] Load mode = 0x00000004
+[Boot] Img 0x00: copy 0x00038438 bytes fr NAND 0x00080800 to 0xc03d0080.
+[nos_ui] Splash loaded...
+[Boot] Nos_ui load_splash took 0x000553e8usec
+[Boot] Img 0x01: copy 0x004519d3 bytes fr NAND 0x000b9000 to 0x6103ff40.
+[Boot] Img 0x02: copy 0x0036e720 bytes fr NAND 0x0050b000 to 0x64008000.
+[Boot] Img 0x03: copy 0x00002bd5 bytes fr NAND 0x00879800 to 0x64000100.
+[Boot] Img 0x04: copy 0x00000000 bytes fr NAND 0x0087c800 to 0x00000000-skipped
+[Boot] load took 0x001df09a usec
+[Boot] calling (*0x61040080)()
+
+[Boot] ******************************************************
+[Boot] Firmware build timestamp: Tue Oct 09, 2018 11:52:17AM
+
+[Boot] ASIC ID 0x00460009 :  0x000070f9(PUFF RevA .2 fab1 Marvel)
+
+ GIC supports priority levels: 0x00000020
+ GIC Init done: Interrupts supported: 0x000000c0[Boot] Entering NOS_HW_MCASIC_init
+[Boot] Nand BdID:  0x00046f10 (0x4df0)
+[Boot] Cmpld BdID: 0x00046f1f (0x4dff)
+[Boot] NVM BdID:   0x00046f0b (0x4deb)
+[Boot] Rempd BdID: 0x00046f0b (0x4deb)
+[nos_ui]MCU1:
+  0x4d,0x05,0x51,0x05,0x07,0x40,0x00,0x05,0x00,0x11,0x16,0x17,0x01,0x00,0x00,0x18,0x01,
+[nos_ui]MCU2:
+  0x00,0x00,0x3b,0x03,
+  0x02,0x00,0x3b,0x03,
+[nos_ui] Power led early on
+[nos_ui] cgd_init
+[Boot] NVM powerdown state = 0x00000002
+[Boot] Load mode = 0x00000004
+[nos_ui] Splash loaded...
+[nos_ui] progress bar start(usec):0xee2afbbc
+[Boot] clear     0x00000004 bytes @ 0x4086b224                 0x00000002us
+[Boot] clear     0x00000028 bytes @ 0x4086b228                 0x00000003us
+[Boot] clear     0x000622c0 bytes @ 0x6071d3c0                 0x0000019dus
+[Boot] clear     0x0085b5d0 bytes @ 0xc07df880                 0x000022e5us
+[Boot] copy      0x0000002c bytes @ 0xe06c9d64 from 0xe1043f2c 0x00000003us
+[Boot] copy      0x00003ca0 bytes @ 0xc103ae50 from 0xe1094a0c 0x00000060us
+[Boot] copy      0x0001a628 bytes @ 0xe06cdd8c from 0xe10986ac 0x00000252us
+[Boot] copy      0x00001430 bytes @ 0xc103eaf0 from 0xe10b2cd4 0x00000021us
+[Boot] copy      0x00000004 bytes @ 0x4086b220 from 0xe10b4104 0x00000003us
+[Boot] copy      0x00034fb0 bytes @ 0xe06e83b4 from 0xe10c0000 0x0000035cus
+[Boot] copy      0x0000022c bytes @ 0x10000d60 from 0xe10b4108 0x00000005us
+[Boot] copy      0x000002a0 bytes @ 0xe05147e4 from 0xe10b4334 0x00000006us
+[Boot] decomp    0x00000aab bytes @ 0xe06c9d90 from 0xe10f4fb0 0x000004e9us
+[Boot] decomp    0x000af66b bytes @ 0xe051513c from 0xe10f5a5c 0x0003c5ecus
+[Boot] decomp    0x0001634d bytes @ 0xc077f680 from 0xe11a50c8 0x000027a8us
+[Boot] decomp    0x00000004 bytes @ 0x6071d380 from 0xe11bb418 0x00000002us
+[Boot] decomp    0x00000441 bytes @ 0xe0514a84 from 0xe1491264 0x00000076us
+[Boot] decomp    0x000000b8 bytes @ 0xe0514e88 from 0xe14916a8 0x00000020us
+[Boot] decomp    0x000001b3 bytes @ 0xe0514f64 from 0xe1491760 0x00000039us
+[Boot] decomp    0x002d5e47 bytes @ 0xe00b3500 from 0xe11bb41c 0x0008c947us
+[Boot] load took 0x000ec5d3 usec
+[Boot] calling (*0xe0443601)()
+PEME 0.000 (SiriusInit) _pe_metrics_set_printer_media_size_limits - enter
+PEME 0.000 (SiriusInit) _pe_metrics_set_printer_media_size_limits - tray = 1, minw = 3543, maxw - 8500, minh = 5000, maxh = 14000
+PEME 0.000 (SiriusInit) _pe_metrics_set_printer_media_size_limits - tray = 4, minw = 3936, maxw - 4000, minh = 5000, maxh = 6000
+PEME 0.000 (SiriusInit) _pe_metrics_set_printer_media_size_limits - min_width = 3543, max_width = 8500, min_height = 5000, max_height = 14000
+KEYS 0.000 (SiriusInit) _set_key(0): default
+RPC  0.002 (SiriusInit) Sirius running on PROC_P0 
+RPC  0.002 (SiriusInit) kpool: phys = 0x609f3a40,  size = 278528, ms_timer_addr = 0x4086bc00
+AENC 0.030 (SiriusInit) Analog_encoder #0 extrapolation set to 5 bits.
+AENC 0.030 (SiriusInit) AnalogEncoder:configure called, m_startup_int_counter:  3
+AENC 0.030 (SiriusInit) Analog_encoder #1 extrapolation set to 5 bits.
+AENC 0.030 (SiriusInit) AnalogEncoder:configure called, m_startup_int_counter:  3
+DENC 0.030 (SiriusInit) Digital_encoder #0 extrapolation set to 4 bits.
+LEEPROM 0.030 (SiriusInit) Open eeprom device->bus :0  slave device: 0xa0
+ALL  1.682 (SiriusInit) init function (0xe01e9071) took 1652084 usec !!!
+ALL  1.682 (SiriusInit) Init TimeOut cid=0x10e, module_name=lib_nvm
+ALL  1.684 (SiriusInit) Palermo_super_sox_pp Built:Tue Oct 09, 2018 11:52:17AM {PUP1A0031841A00, ASIC id 0x00460009}
+redos 1.684 (SiriusInit) Info! REDMEM pool ID = 9.
+RTCS 1.684 (SiriusInit) RPC_register_server_functions(6)
+RPC  1.684 (SiriusInit) rpc_client_init()
+SYSI 1.688 (SiriusInit) Info:  _system_info_ipc_server_init   &entries=0xc07d49ec nentries=9
+UDSX 1.688 (SiriusInit) Entering _init
+UDSX 1.688 (SiriusInit) Entering udnSoxObReg
+UDSX 1.688 (SiriusInit) Exiting udnSoxObReg
+UDSX 1.688 (SiriusInit) Exiting _init
+x> udws "nca.get_wireless_scan"
+LUDW 1.688 (tShell) Lib UDW not connected to framed.  Is the system up????
+udws() returns 0 (0x0)
+x> UXPY 1.726 (SiriusInit) [undercroft_proxy] undercroft_proxy_sys: _init() called.
+INIT 1.726 (SiriusInit) smgr_init_check_for_off_at_init() power up mode is 0x0
+RFSD 1.728 (SiriusInit) RFS registering RPC functions
+MODM 1.866 (SiriusInit) >>> Chip select used = 0
+MODM 1.866 (SiriusInit) >>> Divisor used = 5
+MODM 1.866 (SiriusInit) 00 FF
+MODM 1.866 (SiriusInit) _get_modem_type
+CFGR 1.872 (SiriusInit) Obj reg list size 96
+CFGR 1.872 (SiriusInit) Local ds list size 32
+PEAS 1.880 (SiriusInit) Autoselect policy init
+SMOD 1.884 (SiriusInit) ### CONNECTING component interfaces ##
+UDSX 1.886 (SiriusInit) Entering _serverConfigure
+UDSX 1.886 (SiriusInit) Exiting _serverConfigure
+UXPY 1.886 (SiriusInit) [undercroft_proxy] undercroft_proxy_sys: _rquired_ifc() called.
+SMOD 1.886 (SiriusInit) ### CREATING tasks ##
+MODM 1.908 (tFaxModem) ifcs: modem_base_entry
+MODM 1.908 (tFaxModem)  modem_thread starting task_id=-1054763016
+SMOD 1.912 (SiriusInit) ### STARTING EARLY COMPONENTS ##
+RPC  1.912 (SiriusInit) rpc_client_start()
+DS2  1.918 (SiriusInit) i = 0
+DS2  1.918 (SiriusInit) i = 1
+DS2  1.918 (SiriusInit) i = 2
+NVM3 1.920 (tNVM3) Total NVM Pages = 126 
+NVM3 1.920 (tNVM3) Pages in use = 60
+NVM3 1.920 (tNVM3) Pages available = 66
+NVM3 1.922 (tNVM3) DSID 67042 element size 4000 is too big for Journal size 3072
+NVM3 1.994 (tNVM3) Last object = 83980 and offset = 4039 
+NVM3 1.994 (tNVM3) Current NVM Size is 4041 for app sox  32768 part
+NVM3 1.996 (tNVM3) Total changes = 0 
+CFGR 2.006 (tCfgMgr) CM thread started
+FPAN 2.050 (SiriusInit) FP_NONE early init
+MEM  2.050 (SiriusInit) js_loc= 0xc1255f84 js_size = 47811300, malloc = 102392, bimodal_collection = 0x00000000
+JOBS 2.050 (SiriusInit) Postponing jobsched_ipc_init_resource_traits(0x1ffffff, 47811200)
+SHEL 2.074 (SiriusInit) SYS_enable_shell(): 1
+KXEC 2.074 (SiriusInit) kernel_exec::_early_start begin
+KXEC 2.074 (SiriusInit) WARNING: Tag params file Image not loaded 
+KXEC 2.074 (SiriusInit) INFO: FDT params file Image loaded
+KXEC 2.074 (SiriusInit) WARNING: Tag params file Image not loaded 
+KXEC 2.076 (SiriusInit) INFO: FDT params file Image loaded
+DTCF 2.078 (SiriusInit) fdt_setprop_u32(): country-code=3 (ERROR)
+DTCF 2.080 (SiriusInit) fdt_setprop_u32(): mfp=1 (OK)
+DTCF 2.082 (SiriusInit) fdt_setprop_string(): serial_number=TH6AQ2W072 (OK)
+DTCF 2.084 (SiriusInit) fdt_setprop_u32(): patch_rev=0 (OK)
+DTCF 2.086 (SiriusInit) fdt_setprop_u32(): netshell=1 (OK)
+DTCF 2.088 (SiriusInit) fdt_setprop_string(): udn=eb038a97-7743-5246-b7c9-2c3953f0daa2 (OK)
+DTCF 2.090 (SiriusInit) fdt_setprop_u32(): assert_seq=122 (OK)
+DTCF 2.090 (SiriusInit) Setting UDN Info: af0bec59d8a0cece4af8922836dd8f2ba1d967f10fbd7b2e18b36044bbf01654
+DTCF 2.092 (SiriusInit) fdt_setprop_string(): udn_info=af0bec59d8a0cece4af8922836dd8f2ba1d967f10fbd7b2e18b36044bbf01654 (OK)
+DTCF 2.092 (SiriusInit) Setting up DUID: 297094a4d9396587491d4c8c42ac87e5
+DTCF 2.094 (SiriusInit) fdt_setprop_string(): duid=297094a4d9396587491d4c8c42ac87e5 (OK)
+DTCF 2.096 (SiriusInit) fdt_setprop_u32(): psku=83881984 (OK)
+FWUP 2.098 (SiriusInit) 0: mtd0  Boot                              00000000:00001023  RDONLY  -  BLKS      0:     3
+FWUP 2.098 (SiriusInit) 1: mtd1  UpdatableLBI                      00001024:00046591  RDONLY  -  BLKS      4:   181
+FWUP 2.098 (SiriusInit) 2: mtd2  RootFS                            00046592:00276479  RDONLY  -  BLKS    182:  1079
+FWUP 2.098 (SiriusInit) 3: mtd3  RWFS                              00276480:00409599  RDWR    -  BLKS   1080:  1599
+FWUP 2.098 (SiriusInit) 4: mtd4  RecoveryRootFS                    00409600:00510975  RDONLY  -  BLKS   1600:  1995
+FWUP 2.098 (SiriusInit) 5: mtd5  RecoveryLBI                       00510976:00523263  RDONLY  -  BLKS   1996:  2043
+FWUP 2.100 (SiriusInit) 6: mtd6  BBT                               00523264:00524287  RDWR    -  BLKS   2044:  2047
+KXEC 2.106 (SiriusInit) WiFi SKU.
+KXEC 2.108 (SiriusInit) SOX WLAN0 MAC: 8:2e:5f:f1:50:a9
+KXEC 2.114 (SiriusInit) SoX country code: 3
+KXEC 2.118 (SiriusInit) setting wifi0 country-code to, 3
+KXEC 2.124 (SiriusInit) INFO : CPU1 should now be running
+KXEC 2.666 (tRPC1) INFO : RPC_KERNEL_STATUS (0xdec0de00) 4
+KXEC 2.666 (SiriusInit) INFO : Linux has started after 32 ticks
+KXEC 2.666 (SiriusInit) kernel_exec::_early_start Complete
+SMOD 2.666 (SiriusInit) ### IPC clients prov 54, req 22 ##
+SMDI 2.666 (SiriusInit) sox on host 0 attempting to connect to sm_module server in framed
+COORD 2.756 (tRPC2) Block Reset:(123) LibId(1) 
+COORD 2.864 (tRPC1) Block Reset:(121) LibId(1) 
+rpc_id:78264
+ptr:0x60a2fa40
+size:4
+value:37
+val(read):0
+rpc_id:78264
+ptr:0x60a2fa40
+size:4
+value:38
+val(read):0
+COORD 3.928 (tRPC1) Block Reset:(123) LibId(1) 
+COORD 4.174 (tRPC2) Block Reset:(120) LibId(1) 
+COORD 4.496 (tRPC2) Block Reset:(130) LibId(1) 
+COORD 4.542 (tRPC1) HW CLOCK LibId(3) 
+COORD 4.610 (tRPC2) HW CLOCK LibId(3) 
+COORD 4.664 (tRPC1) HW CLOCK LibId(3) 
+COORD 4.698 (tRPC2) HW CLOCK LibId(3) 
+UPCM 7.186 (tRPC1) establish upcom connection: 0 (0x20000cd)
+UPCM 7.214 (rpcthread) Root connection established to UPCOM_HOST (ver 3.00), skip_ack 1
+RFSD 7.414 (tRPC1) rfs_openlog(/rfs)
+RFSD 7.414 (tRPC1) RFS mounted : /rfs, drv : 9, avail : 1
+RFSD 7.414 (tLogger) open(/rfs/var/log/sox_p, O_WRONLY)
+RFSD 7.450 (rfsthread) RFSD chirp result: 0
+SMDI 10.658 (SiriusInit) sox connected to sm_module server in framed, port 6003, client index 4096
+CFG  10.672 (SiriusInit) > port configuration (50,5108)
+CFGR 10.672 (SiriusInit) CM start called
+CFG  10.672 (SiriusInit) > port configuration (51,5109)
+CNSP 10.672 (SiriusInit) _ipc_port_configure(ipc_type=1, ipc_enum=0, port=5110)
+CNSP 10.672 (SiriusInit) _ipc_port_configure(ipc_type=1, ipc_enum=1, port=5111)
+CNSP 10.672 (SiriusInit) _ipc_port_configure(ipc_type=1, ipc_enum=2, port=5112)
+DTCF 10.672 (SiriusInit) dt_config server started at port 5114
+JPGX 10.674 (SiriusInit) jpeg_proxy_ipc_server_start(0) = 5121
+JPGX 10.674 (tIPC0) IPC server started at port 5121 : fd 44
+JPGX 10.674 (SiriusInit) jpeg_proxy_ipc_server_start(1) = 5122
+JPGX 10.674 (tIPC0) IPC server started at port 5122 : fd 45
+KEYS 10.674 (SiriusInit) keystore server started at port 5123
+NNS  10.676 (SiriusInit) nos_nvm_sirius proxy server started at port 5127
+PEQP 10.678 (SiriusInit) pe_query_proxy_ipc_server_port: 5136
+PETP 10.680 (SiriusInit) pe_test_proxy_ipc_server_port: 5141
+PMCR 10.680 (SiriusInit) Info: phone modem control configured port 5144
+PMCR 10.680 (SiriusInit) Info: T30 IPC port number 5144
+PMCR 10.680 (tIPC0) INFO: Server connection event received 3
+SHWM 10.680 (SiriusInit) IPC server registered on port 5146
+INIT 10.680 (SiriusInit) smgr_init server_port = 5149
+spc_server 10.682 (SiriusInit) spc server start: port num 5150 ifc_enum 0 
+SYSI 10.682 (SiriusInit) Info:  port configured 5151
+SYSI 10.682 (SiriusInit) Info: _system_info_ipc_configure_port IPC port number 5151
+spc_server 10.682 (tIPC0) IPC server started at port 5150 : fd 73
+SYSI 10.682 (tIPC0) INFO: Server connection event received 3 server_port  = 5151 sock_fd=74 
+TSP IPC server started at port 5153 : fd 76
+UXPY 10.682 (SiriusInit) [undercroft_proxy] undercroft_proxy_sys: _ipc_port_configure() called. ifc_type=1, ifc_enum=0, port=5154
+UXPY 10.682 (SiriusInit) [undercroft_proxy] undercroft_proxy_sys: _ipc_port_configure() called. ifc_type=1, ifc_enum=1, port=5155
+SMDI 10.682 (SiriusInit) assign_ports(): my_port = 5101, n_ports = 54, app_index = 29, max_apps = 64
+CFGR 10.690 (tIPC0) INFO: Server connection event received 3
+RFSD 11.076 (rfsthread) RFSD ENFS_CMD_OPEN(encfs): 0
+SMDI 11.076 (tIPC1) response->n_required = 22  (22), start_complete = 0
+KEYS 11.076 (rfsthread) _setup_crypto() ... 0xc087b980
+JOBS 11.080 (tIPC1) Entering jobsched_ipc_init_resource_traits(0x1ffffff, 47811200)
+JOBS 11.084 (tIPC1) Exiting jobsched_ipc_init_resource_traits(0x1ffffff, 47811200)
+SMDI 11.088 (tIPC1) App sox is waiting to be started: #ipc connections = 10/10/22
+KEYS 11.090 (rfsthread) KEYSTORE_DB_status(/rfs/var/ks_ecbb4b55_d4af3f51.db): 1
+RFSD 11.102 (tLogger) openlog: registered debug sniffer for syslog /rfs/var/log/sox_p
+GPIO 11.398 (tRPC2) LIB GET GPIO:(15) Type (3) 
+GPIO 11.406 (tRPC1) LIB GET GPIO:(15) Type (3) 
+GPIO 11.436 (tRPC2) LIB GET GPIO:(15) Type (3) 
+GPIO 11.608 (tRPC1) LIB GET GPIO:(15) Type (3) 
+GPIO 11.618 (tRPC2) LIB GET GPIO:(15) Type (3) 
+GPIO 11.646 (tRPC1) LIB GET GPIO:(15) Type (3) 
+SMDI 19.610 (tIPC6) response->n_required = 22  (22), start_complete = 0
+SMDI 19.610 (tIPC6) App sox is waiting to be started: #ipc connections = 1/11/22
+SMDI 21.734 (tIPC1) response->n_required = 22  (22), start_complete = 0
+SMDI 21.746 (tIPC1) App sox is waiting to be started: #ipc connections = 3/14/22
+SHEL 26.852 (tRPC1) SYS_enable_shell(): 1
+SMDI 28.664 (tIPC5) response->n_required = 22  (22), start_complete = 0
+SMDI 28.664 (tIPC5) App sox is waiting to be started: #ipc connections = 1/15/22
+SMDI 29.612 (tIPC3) response->n_required = 22  (22), start_complete = 0
+SMDI 29.612 (tIPC3) App sox is waiting to be started: #ipc connections = 1/16/22
+SMDI 30.444 (tIPC1) response->n_required = 22  (22), start_complete = 1
+DERIVP 30.444 (tIPC1) SENSE_DERIV Proxy (Client): sense_deriv_proxy_ipc_client_port(): ifc_enum=0 port=6378
+DERIVP 30.444 (tIPC1) SENSE_DERIV Proxy (Client): sense_deriv_proxy_ipc_client_port(): ifc_enum=1 port=6377
+SMDI 30.444 (tIPC1) App sox is ready to be connected #ipc connections = 5/21/22   start_complete
+SMOD 30.444 (SiriusInit) ### STARTING ##
+DIPC 30.446 (SiriusInit) defer_ipc_ipc_server_ready()  server_port[0]=5113
+TSP IPC connection opened to server port 5153 : fd 106
+ALL  31.674 (SiriusInit) start function (0xe026b81b) took 1001432 usec !!!
+ALL  31.676 (SiriusInit) Start TimeOut cid=0xa94, module_name=nvm3
+SYSI 31.844 (SiriusInit) CID_SYSTEM_INFO is running
+SYSI 31.844 (SiriusInit) Info: _system_info_ipc_server_start - register server 
+SYSI 31.844 (SiriusInit) system_info_ipc_server_ready()  server_port=5151
+UDSX 31.846 (SiriusInit) Entering _start
+UDSX 31.846 (SiriusInit) Exiting _start
+Warning: FP_HWDEFS Project id has NOT been set.
+PEEVP 31.862 (SiriusInit) pe_events_proxy_subscribe_ipc_server_ready()  server_port=5130
+PEEVP 31.864 (SiriusInit) pe_events_proxy_action_ipc_server_ready()  server_port=5131
+SYSI 31.986 (tIPC0) INFO: Server connection event received 1 server_port  = 5151 sock_fd=184 
+INIT 32.028 (tIPC5) smgr_init_nvm_get_schedules
+INIT 32.028 (tIPC5) ds NUM_ON =  0
+INIT 32.028 (tIPC5) ds NUM_OFF =  0
+INIT 32.028 (tIPC5) ds NUM_MAINT =  0
+SYSI 32.122 (tIPC0) INFO: Server connection event received 1 server_port  = 5151 sock_fd=196 
+UXPY 32.194 (SiriusInit) [undercroft_proxy] undercroft_proxy_sys: _start() called.
+UXPY 32.194 (SiriusInit) [undercroft_proxy_server]  undercroft_proxy_ipc_server_ready()  server_port=5154
+SYSI 32.284 (tIPC0) INFO: Server connection event received 1 server_port  = 5151 sock_fd=222 
+SYSI 32.580 (tIPC0) INFO: Server connection event received 1 server_port  = 5151 sock_fd=227 
+PESP 32.586 (SiriusInit) pe_settings_proxy_ipc_server_ready()  server_port=5140
+INIT 32.586 (SiriusInit) check_for_off_at_start calling _smgr_init_nvm_get_schedules
+INIT 32.586 (SiriusInit) smgr_init_nvm_get_schedules
+INIT 32.586 (SiriusInit) ds NUM_ON =  0
+INIT 32.586 (SiriusInit) ds NUM_OFF =  0
+INIT 32.586 (SiriusInit) ds NUM_MAINT =  0
+INIT 32.586 (SiriusInit) check_for_off_at_start done calling _smgr_init_nvm_get_schedules
+INIT 32.586 (SiriusInit) scheduled_to_be_off calling timedate_get_min_of_week
+JPGX 32.600 (tIPC0) IPC connection opened to server port 5121 : fd 228
+JPGX 32.618 (tIPC0) IPC connection opened to server port 5122 : fd 231
+INIT 32.618 (SiriusInit) scheduled_to_be_off donecalling timedate_get_min_of_week
+JPGX 32.666 (tIPC0) IPC connection opened to server port 5121 : fd 237
+JPGX 32.672 (tIPC0) IPC connection opened to server port 5122 : fd 238
+JPGX 32.676 (tIPC0) IPC connection opened to server port 5121 : fd 239
+JPGX 32.684 (tIPC0) IPC connection opened to server port 5122 : fd 240
+PEPP 32.704 (SiriusInit) cal_pg_status_get_cal_ipc_server_ready()  server_port=5105
+PEPP 32.704 (SiriusInit) cal_pg_status_set_cal_ipc_server_ready()  server_port=5106
+Cal_Sys:_start()  32.704 (SiriusInit) called _read_linefeed_cal_vals_from_nvm
+PEPP 32.704 (SiriusInit) cal_val_proxy_get_ipc_server_ready()  server_port=5107
+CFGR 32.718 (tIPC1) INFO: Modem type received: 1
+UPCM 32.758 (SiriusInit) remsh(upsh port 5026 5027): transferred 87 out of 87 bytes
+NETS 32.758 (SiriusInit) upsh port 5026 5027 : 87
+MODM 32.764 (SiriusInit) ifcs : start
+MODM 32.764 (SiriusInit) ifc init finish
+MODM 32.772 (SiriusInit) libscon key (feature.fax:supported)  value (1)
+MODM 32.778 (SiriusInit) libscon key (feature.fax:removable)  err (9)
+MODM 32.778 (SiriusInit) libscon key (feature.fax:removable)  value (0)
+MODM 32.778 (SiriusInit) DSID_FAX_SOLUTION_REMOVED @ _start 0
+CFG  32.778 (SiriusInit) cfg_mgr _start
+CFG  32.778 (SiriusInit) CFG_MGR_NUM_REQ_IFCS start
+CFG  32.778 (SiriusInit) CFG_MGR_NUM_REQ_IFCS end
+CFG  32.784 (SiriusInit) cfg_mgr_param_d
+JPGX 32.974 (tIPC0) IPC connection opened to server port 5121 : fd 255
+JPGX 32.976 (tIPC0) IPC connection opened to server port 5122 : fd 256
+STKH 33.086 (SiriusInit) Start stack height sensor VCNL3020
+STKH 33.770 (SiriusInit)   no response from device
+ALL  34.470 (SiriusInit) start function (0xe036574d) took 1428910 usec !!!
+ALL  34.470 (SiriusInit) Start TimeOut cid=0xb25, module_name=sensor_stack
+PTQP 34.480 (SiriusInit) pe_trays_query_proxy_ipc_server_ready()  server_port=5142
+PEN  34.488 (SiriusInit) PEN_SETTINGS_PROJECT =  52, 0, 0
+CNSP 34.516 (SiriusInit) constat_proxy_generic_ipc_server_ready(0)  server_port=5110
+CNSP 34.518 (SiriusInit) constat_proxy_generic_ipc_server_ready(1)  server_port=5111
+CNSP 34.518 (SiriusInit) constat_proxy_generic_ipc_server_ready(2)  server_port=5112
+SCAN 34.548 (SiriusInit) AFE: Comet mfr=0x08 rev=0x111 
+SCAN 34.548 (SiriusInit) SCANNER_ID A2D=1 
+SCAN 34.548 (SiriusInit) SCANNER SENSOR:   CIS_MODULE_TEMPO_TOS
+SCAN 34.548 (SiriusInit) SCANNER SUPPLIER: CIS_SUPPLIER_ATII
+PINK 34.592 (SiriusInit) pe_pink_server_ipc_server_ready()  server_port=5133
+DS2  34.592 (tDS2) DS2 error : DSID 70015 not found by register_trap_notify
+spc_server 34.698 (tIPC0)  IPC connection opened to server port 5150 : fd 262
+PTST 34.710 (SiriusInit) pe_policies_policy_tray_present_start: 
+PTST 34.710 (SiriusInit) pe_policies_policy_tray_media_start
+PVTS 34.710 (SiriusInit) pe_policies_policy_virtual_sensor_start: 
+PEPP 34.710 (SiriusInit) pe_proxy_mem_fund_ipc_server_ready()  server_port=5135
+PEPP 34.710 (SiriusInit) pe_proxy_pe_server_ipc_server_ready()  server_port=5134
+PEQP 34.710 (SiriusInit) ipc_server: start_ready(5136)
+PSTP 34.712 (SiriusInit) pe_set_trays_ipc_server_ready()  server_port=5138
+PETP 34.712 (SiriusInit) pe_test_proxy_ipc_server_ready()  server_port=5141
+CPXY 34.714 (SiriusInit) cal_pg_seq_auto_cal_ipc_server_ready()  server_port=5102
+CPXY 34.714 (SiriusInit) cal_pg_seq_manual_cal_ipc_server_ready()  server_port=5103
+CPXY 34.716 (SiriusInit) cal_pg_seq_semiauto_cal_ipc_server_ready()  server_port=5104
+RFSD 34.720 (SiriusInit) trigger EID 81063
+SMOD 34.720 (SiriusInit) ### START_COMPLETE ##
+SMDI 34.720 (SiriusInit) sm_module_start_complete() enter: #modules = 257, #IPCs prov = 54, #IPCs req = 22
+SMDI 34.720 (SiriusInit) _____________________________________________________________________________________________________________________
+DTCF 34.720 (tSmEvent) EID_EVT_SEC_EVENT id 2, action 2
+DTCF 34.720 (tSmEvent) EID_EVT_SEC_EVENT id 2, action 2
+DTCF 34.720 (tSmEvent) EID_EVT_SEC_EVENT id 2, action 2
+UDW  34.770 (SiriusInit) 
+
+ *** Mutexes subject to priority inversion: 590 ***
+ ***   partial list of at-risk mutexes: 
+UDW  34.770 (SiriusInit)  *** Mutex: SemM:hw_uart_v4.c:750 
+UDW  34.770 (SiriusInit)  *** Mutex: SemM:hw_micci2_v12.c:601 
+UDW  34.770 (SiriusInit)  *** Mutex: SemM:hw_micci2_v12.c:601 
+UDW  34.770 (SiriusInit)  *** Mutex: SemM:lib_udd.c:111 
+UDW  34.770 (SiriusInit)  *** Mutex: SemM:hw_mcasic_gpio.c:103 
+UDW  34.770 (SiriusInit)  *** Mutex: SemM:lib_tier1_module.c:28 
+UDW  34.770 (SiriusInit)  *** Mutex: SemM:nvm3_hal_eeprom.c:2804 
+UDW  34.770 (SiriusInit)  *** Mutex: SemM:patch_sys.c:56 
+UDW  34.770 (SiriusInit)  *** Mutex: SemM:redosmon.c:102 
+UDW  34.770 (SiriusInit)  *** Mutex: SemM:redosmon.c:102 
+UDW  34.770 (SiriusInit)  *** Mutex: SemM:redosmon.c:102 
+NVM3 34.820 (SiriusInit) /rfs/var/soxnvm_bkp.bin Successfully written
+SYSI 34.858 (SiriusInit) Info: _system_info_ipc_server_start_complete port number 5151
+SYSI 34.858 (SiriusInit) CID_SYSTEM_INFO is running
+CIDR 34.974 (SiriusInit) INFO: Client version: 10 Server version: 10
+MODM 34.974 (SiriusInit) > start_complete
+MODM 34.974 (SiriusInit) call : modem_init 04-06-2017 DP5 ver 7.17 - 1.5.1.10 217.2.11
+MODM 34.974 (SiriusInit) first_time
+MODM 34.974 (SiriusInit) BAMIL read on CS 0 RESET=0x8B
+MODM 34.974 (SiriusInit) modem_chip_select=0 (MAX=3)
+CFGR 35.212 (tIPC0) INFO: Server connection event received 1
+MODM 35.454 (SiriusInit) modem_init() result=1 (first_time=1)
+MODM 35.454 (SiriusInit) Start self test.
+MODM 35.454 (SiriusInit) ROM code version 1.05
+MODM 35.590 (SiriusInit) v17 fax code version 1.16
+MODM 35.590 (SiriusInit) modem_reset_modem (first_time=0)
+MODM 35.590 (SiriusInit) call : modem_init 04-06-2017 DP5 ver 7.17 - 1.5.1.10 217.2.11
+MODM 35.988 (SiriusInit) modem_init() result=1 (first_time=0)
+MODM 35.988 (SiriusInit) modem_reset_modem passes
+MODM 35.988 (SiriusInit) modem_self_test PASS
+MODM 35.988 (SiriusInit) Passed self test.
+MODM 36.154 (SiriusInit) < start_complete
+CFG  36.154 (SiriusInit) > start_complete
+CFG  36.154 (SiriusInit) resetting parameters for mask 0x4
+CFG  36.168 (SiriusInit) < start_complete
+_hm_debug_enabled: memset 47653376 bytes
+LCC  36.234 (SiriusInit) num_matrices = 1
+LCC  36.234 (SiriusInit) barcode index 0 =  ""
+LCC  36.234 (SiriusInit) WARNING: loading default matrix 0
+SMDI 36.240 (SiriusInit) sm_module_start_complete() exit: #modules = 257, #IPCs prov = 54, #IPCs req = 22
+SMDI 36.240 (SiriusInit) _____________________________________________________________________________________________________________________
+SMDI 36.244 (SiriusInit) code image sox start process is complete: 0
+MLOC 36.244 (SiriusInit) [33m[7mOS abstraction : os_malloc(92)[0m[0;;m
+MLOC 36.244 (SiriusInit) [33m[7mOS abstraction : os_malloc(140)[0m[0;;m
+MECH 36.254 (tMech) Flow override: Error: Could not open Flow Override partition.
+MECH 36.254 (tMech) MECH: start
+AENC 36.258 (tMech) AnalogEncoder:transmit_gains_offset, m_startup_int_counter: 3, m_phase: 0
+FXTR 36.288 (tIPC4) INFO: Client version: 10 Server version: 10
+MECH 36.316 (tMech) RTM: boot{"serial_id":"TH6AQ2W072","FW_ver":"PALSUPPPXA003.1841A.00","engine_pg_cnt":1024}
+CFGR 36.320 (tIPC5) Sync data list size 1152
+CFGR 36.320 (tIPC5) Remote ds list size 196
+CFGR 36.320 (tIPC5) INFO: Client version: 10 Server version: 10
+CFGR 36.320 (tIPC5) INFO: Client table version: 10 Server version: 10
+CFGR 36.322 (tIPC6) INFO: Client version: 10 Server version: 10
+T30R 36.348 (tIPC3) INFO: Client version: 10 Server version: 10
+PHOR 36.352 (tIPC1) INFO: Client version: 10 Server version: 10
+PMCR 36.358 (tIPC0) INFO: Server connection event received 1
+PMCR 36.372 (tIPC6) INFO: Client version: 10 Server version: 10
+PE   36.586 (tIPC6) pe_query::query_finisher_enabled: FALSE
+PE   36.660 (tIPC5) pe_query::query_finisher_enabled: FALSE
+PE   36.724 (tIPC4) pe_query::query_finisher_enabled: FALSE
+DS2  37.132 (tIPC5) DS2 error : DSID 78247 not found by ds2_get_sim_ob
+DTCF 37.836 (tSmEvent) EID_EVT_SEC_EVENT id 3, action 2
+DTCF 37.868 (tSmEvent) EID_EVT_SEC_EVENT id 3, action 2
+STGS 38.038 (tIPC6) sm_settings_try_get_setting | GET RETRY 0 !! 
+STGS 38.090 (tIPC6) sm_settings_try_get_setting | GET RETRY 0 !! 
+PE   38.216 (tIPC6) _set_oobe_state(state=0) called.
+MECH 38.216 (tIPC6) system_oobe_state = 0
+SMDI 38.266 (tIPC1) sm_module_system_start_complete() enter: #modules = 257, #IPCs prov = 54, #IPCs req = 22
+SMDI 38.266 (tIPC1) _____________________________________________________________________________________________________________________
+UDC  38.314 (tIPC1) Undercroft in system_start_complete
+UDC  38.314 (tIPC1) Undercroft to exit system_start_complete
+MODM 38.314 (tIPC1) < system_start_complete
+CFG  38.314 (tIPC1) > cfg_mgr_v2 System start complete called
+PHON 38.314 (tIPC1) Current Powerup mode is Normal
+DS2  38.316 (tPhone) DS2 error : DSID 67107 not found by ds2_get_sim_ob
+CFGR 38.316 (tCfgMgr) CMR: set data 69972 1
+CFGR 38.316 (tCfgMgr) CMR: set data 68105 1
+CFGR 38.316 (tCfgMgr) CMR: set data 67116 1
+CFGR 38.316 (tCfgMgr) CMR: set data 68106 1
+PHON 38.378 (tPhone) msgQReceive: MS_GOING_ON
+MODM 38.378 (tPhone) modem_reset_modem (first_time=0)
+MODM 38.378 (tPhone) call : modem_init 04-06-2017 DP5 ver 7.17 - 1.5.1.10 217.2.11
+udws "nca.get_wireless_scan"
+INIT 38.440 (tIPC3) smgr_init_nvm_get_schedules
+INIT 38.440 (tIPC3) ds NUM_ON =  0
+INIT 38.440 (tIPC3) ds NUM_OFF =  0
+INIT 38.440 (tIPC3) ds NUM_MAINT =  0
+CFG  38.690 (tIPC6) resetting parameters for mask 0x4
+CFG  38.690 (tIPC6) _reset_parameters_to_defaults: country 15
+CFGR 38.710 (tCfgMgr) CMR: set data 67374 2
+CFGR 38.710 (tCfgMgr) CMR: set data 67375 6
+CFGR 38.710 (tCfgMgr) CMR: set data 67406 0
+CFGR 38.710 (tCfgMgr) CMR: set data 68381 0
+CFGR 38.710 (tCfgMgr) CMR: set data 68676 1
+CFGR 38.710 (tCfgMgr) CMR: set data 66836 0
+SMDI 38.790 (tIPC1) sm_module_system_start_complete() exit: #modules = 257, #IPCs prov = 54, #IPCs req = 22
+SMDI 38.790 (tIPC1) _____________________________________________________________________________________________________________________
+SMDI 38.790 (tIPC1) ###  sox SYSTEM START is REALLY complete: #modules = 257, #IPC prov = 54, #IPC req = 22
+MODM 38.820 (tPhone) modem_init() result=1 (first_time=0)
+MODM 38.820 (tPhone) modem_reset_modem passes
+MODM 38.826 (tPhone) modem_reset_modem (first_time=0)
+MODM 38.826 (tPhone) call : modem_init 04-06-2017 DP5 ver 7.17 - 1.5.1.10 217.2.11
+MODM 39.238 (tPhone) modem_init() result=1 (first_time=0)
+MODM 39.238 (tPhone) modem_reset_modem passes
+PHON 39.270 (tPhone) change ring to false, phone_rdt.c_1
+CFGR 39.270 (tCfgMgr) CMR: set data 67349 2
+CFGR 39.272 (tCfgMgr) CMR: set data 67358 0
+CFGR 39.272 (tCfgMgr) CMR: set data 67354 0
+CFGR 39.358 (tCfgMgr) CMR: set data 74955 0
+SCN3 40.680 (tScanIllum) scan got start message
+PE   41.096 (tDS2) PE_QUERY::_pe_query_ds_trap.  publishing event for MECH DIRTY FLAG.   dirty=0
+IDSB 41.120 (tDefer) received PE_iev_digital_sensor_change_e for ISS door (current_door_open=0)
+PVTS 41.120 (tDefer) _handle_digital_sensor_change: Processing digital sensor change event. id=0
+PVTS 41.120 (tDefer) _handle_digital_sensor_change: Exiting, mech not started.
+PVTS 41.120 (tDefer) _handle_digital_sensor_change: Processing digital sensor change event. id=1
+PVTS 41.120 (tDefer) _handle_digital_sensor_change: Exiting, mech not started.
+PVTS 41.120 (tDefer) _handle_digital_sensor_change: Processing digital sensor change event. id=2
+PVTS 41.120 (tDefer) _handle_digital_sensor_change: Exiting, mech not started.
+PVTS 41.120 (tDefer) _handle_digital_sensor_change: Processing digital sensor change event. id=3
+PVTS 41.120 (tDefer) _handle_digital_sensor_change: Exiting, mech not started.
+MECH 41.122 (tMech) MECH: Executing _publish_mech_starting
+PTST 41.122 (tMech) Processing mech starting event
+PVTS 41.122 (tMech) _handle_mech_starting: MECH STARTING
+PVTS 41.122 (tMech) _process_cake_dr: entering, src=3
+PVTS 41.122 (tMech) _process_cake_dr: cake_sensor=0, cloop_sensor=0
+PVTS 41.122 (tMech) _publish_tray_closed: sending pe_iev tray closed event
+PVTS 41.122 (tMech) _process_cake_dr: exiting: virtual sensors: _oops_width_sensor=0, _tray1_present_sensor=1
+PTST 41.124 (tMech) Received PE_iev_mech_tray_status_e: tray=1, new_status=3
+IDSC 41.124 (tMech) idsconfig_pen_type is 45 in chute 0
+IDSC 41.124 (tMech) idsconfig_pen_type is 44 in chute 1
+PXG  41.124 (tMech) UpdatePenData() IFC called
+PXG  41.124 (tMech) TPenConfig::SetUp() called. Force=0
+PXG  41.124 (tMech) TPenConfig::SetUp() checking pen data... changed = 1
+PXG  41.126 (tMech) Pen change done, pen data was updated
+PEN  41.210 (tMech) pen_change.c: pen_missing in chute 0, 0, 0
+PEN  41.226 (tMech) ...skipped msgs due to thread priority... 0, 0, 0
+PEN  41.226 (tMech) pen_change.c: pen_missing in chute 1, 0, 0
+IDSC 41.226 (tMech) idsconfig_pen_type is 0 in chute 0
+IDSC 41.226 (tMech) idsconfig_pen_type is 0 in chute 1
+PXG  41.226 (tMech) UpdatePenData() IFC called
+PXG  41.226 (tMech) TPenConfig::SetUp() called. Force=0
+PXG  41.228 (tMech) TPenConfig::SetUp() checking pen data... changed = 0
+PXG  41.228 (tMech) Pen change done, no changes, data NOT updated
+PEN  41.228 (tMech) pen_finish_pen_change(), new pen, printing not permitted (yet)
+ 0, 0, 0
+PEN  41.228 (tMech) pen_finish_pen_change() duration in msec 48, 0, 0
+DTCF 42.020 (tSmEvent) locked psku_config = 0x00000000 : 0
+FPAN 42.050 (isr) Boot update_progress_bar_timer cancelled 0xf0bc47b2
+DS2  42.230 (tMech) DS2 error : DSID 66193 not found by ds2_set_sim_ob
+PEN  42.232 (tMech) Publishing PE_iev_supply_status_changed_e (num,list[0],list[1]) 2, 109, 108
+PEN  42.232 (tMech) pen_valid_set_client_needs (client, needs) 0, 1, 0
+PEN  42.232 (tMech) ids publishing PE_iev_ids_valid_e 0, 0, 0
+PEEV 42.252 (tMech) printing blocked
+IDSB 42.258 (tMech) IDS published PE_iev_ids_valid_e at the end of IDS_POST_CHNAGE.
+AENC 42.268 (tMech) AnalogEncoder:turn_on called, m_startup_int_counter:  3
+AENC 42.268 (tMech) AnalogEncoder:transmit_gains_offset, m_startup_int_counter: 3, m_phase: 0
+mergeout_get_mem_req() _mergeout_scan_in_progress is false, so we called _mergeout_init
+PE   42.404 (tDS2) PE_QUERY::_pe_query_ds_trap.  publishing event for MECH DIRTY FLAG.   dirty=0
+PEN  42.440 (tMech) ---CAPPED 0, 0, 0
+PE   42.444 (tDS2) PE_QUERY::_pe_query_ds_trap.  publishing event for MECH DIRTY FLAG.   dirty=1
+mergeout_get_mem_req() _mergeout_scan_in_progress is false, so we called _mergeout_init
+PHON 42.754 (tDS2) phone enter sleep
+CFGR 42.754 (tCfgMgr) CMR: set data 75227 0
+mergeout_get_mem_req() _mergeout_scan_in_progress is false, so we called _mergeout_init
+PEN  42.924 (tMech) ---UNCAP 0, 0, 0
+mergeout_get_mem_req() _mergeout_scan_in_progress is false, so we called _mergeout_init
+mergeout_get_mem_req() _mergeout_scan_in_progress is false, so we called _mergeout_init
+UDC  43.316 (tWorkTask1) Undercroft in device_init
+UDC  43.320 (tWorkTask1) PCR#1: enter _init_pcr
+UDC  43.320 (tWorkTask1) PCR#0: pcr is done; skip pcr process
+UDC  43.320 (tWorkTask1) Undercroft to exit device_init
+mergeout_get_mem_req() _mergeout_scan_in_progress is false, so we called _mergeout_init
+mergeout_get_mem_req() _mergeout_scan_in_progress is false, so we called _mergeout_init
+mergeout_get_mem_req() _mergeout_scan_in_progress is false, so we called _mergeout_init
+mergeout_get_mem_req() _mergeout_scan_in_progress is false, so we called _mergeout_init
+comet_currents_done fail = 1, r=0
+mergeout_get_mem_req() _mergeout_scan_in_progress is false, so we called _mergeout_init
+mergeout_get_mem_req() _mergeout_scan_in_progress is false, so we called _mergeout_init
+mergeout_get_mem_req() _mergeout_scan_in_progress is false, so we called _mergeout_init
+mergeout_get_mem_req() _mergeout_scan_in_progress is false, so we called _mergeout_init
+SCN3 46.738 (tScanIllum) scan doing deferred cals
+mergeout_get_mem_req() _mergeout_scan_in_progress is false, so we called _mergeout_init
+RPC  47.054 (rfsthread) Warning # 1: rpc_send_to(0x13065) did not respond in 5 seconds .. poking again
+RPC  47.248 (rfsthread)  ...  server responded to # 1 (rpc_id = 0x13065)
+RFSD 47.248 (rfsthread) RFSD ENFS_CMD_OPEN(encfaxfs): 0
+RFSD 47.248 (rfsthread) trigger_event(81064): 0xe037aed3
+RFSD 47.254 (rfsthread) No rootfs signatures!!
+
+going mute:
+68:FF:7B:A2:40:5F eemr500                          I WPA  -036 005 001    
+CA:5A:CF:66:18:2C DIRECT-2C-HP OfficeJet Pro 9125e I WPA  -040 005 006 WPS
+6C:C2:17:83:83:1C DIRECT-1B-HP OfficeJet Pro 8720  I WPA  -040 005 006 WPS
+D8:07:B6:2F:93:25 TP-Link_Solution                 I WPA  -044 005 001 WPS
+2C:44:FD:D3:BE:FD HP-Print-FD-Officejet 6700       I WPA  -045 005 006    
+AC:84:C6:32:4E:97 eetplm5                          I None -045 005 003 WPS
+86:A9:3E:32:91:BB DIRECT-BB-HP Tango               I WPA  -049 005 006 WPS
+A8:BD:27:5D:36:E1 hpinternet                       I Unsp -049 005 011    
+A8:BD:27:5D:36:E3 HPI_ZoomRoom                     I WPA  -049 005 011    
+A8:BD:27:5D:36:E0 hpguest                          I None -049 005 011    
+;udws() returns 0 (0x0)
+x> udws "smgr_init.restart 0"
+ 0;udws() returns 0 (0x0)
+x> 

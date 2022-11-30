@@ -1,19 +1,15 @@
 import serial
 
-WRITE_FILE_NAME = "serialdump.txt"
-SIGNAL_STRENGTH_FILE_NAME = "signalstrength.txt"
-
 # SYNC PRINTER BAUDRATE 115.2KBPS
 BAUD_RATE = 115200
 
-SERIAL_PATH = "/dev/ttyS0"
+SERIAL_PATH = "/dev/ttyAMA1"
+LINUX_PATH = "/dev/ttyAMA2"
 
 SER = serial.Serial(port=SERIAL_PATH, baudrate=BAUD_RATE, timeout=5)
+LINUX = serial.Serial(port=LINUX_PATH, baudrate=BAUD_RATE, timeout=5)
 
-# "KEYWORD": "CORRESPONDING FUNCTION NAME"
-KEYWORD_DICTIONARY = {
-    "Power": 'ping_wireless_scan',
-    "signalStrength": 'ping_wireless_config',
-    "noise": 'ping_wireless_config',
-    "restart": 'restart'
-}
+USER_DIRECTORY = '/home/eelab/Documents/woobotuan/MVP2/user'
+
+SERIAL_LOG_FILE_PATH = 'logs/seriallog.txt'
+LINUX_LOG_FILE_PATH = 'logs/linuxlog.txt'

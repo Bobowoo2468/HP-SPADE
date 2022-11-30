@@ -1,0 +1,1411 @@
+
+[   58.838952] GPIO: found device tree GPIO Driver Name Node
+[   58.844421] 
+ GPIO String formed (hp_gpio_driver_photo_led)
+[   58.849942] GPIO: Returning GPIO hp_gpio_driver_photo_led #23 
+[   59.045218] dhd_wlfc_deinit():3337, maintain HOST RXRERODER flag in tvl
+[   59.061610] dhd_wlfc_deinit():3351 successfully disabled bdcv2 tlv signaling, 64
+[   59.112702] net_ratelimit: 2 callbacks suppressed
+[   59.117344] dhd_cfg80211_clean_p2p_info : Clean : op_mode=0x0015
+[   59.132513] link down if wlan1 may call cfg80211_disconnected. event : 16, reason=4 from 0a:2e:5f:f1:d0:a9
+[   59.142089] wl_notify_connect_status : BSSID of event is not the connected BSSID(ignore it) cur: 00:00:00:00:00:00 event: 0a:2e:5f:f1:d0:a9
+[   59.156942] wl_cfg80211_concurrent_roam :  wlan1:failed to set roam_off : -1
+[   59.165948] deleting interface 'wlan1' idx 1
+[   59.172443] dhd_aoe_hostip_clr failed code -23
+[   59.190489] DHD-MON: dhd_del_monitor IF not found in monitor array, is this a monitor IF? 0xc6861000
+[   59.228719] dhd_wlfc_init(): successfully enabled bdcv2 tlv signaling, 79
+[   59.244858] dhd_wlfc_init: query wlfc_mode succeed, fw_caps=0x8
+[   59.259371] dhd_wlfc_init(): wlfc_mode=0x8, ret=0
+[   59.305411] wl_cfg80211_disconnect : Reason 3
+[   59.311166] link down if wlan0 may call cfg80211_disconnected. event : 16, reason=2 from 68:ff:7b:a2:40:5f
+[   59.325085] cfg80211: Calling CRDA to update world regulatory domain
+[   59.621840] dhd_aoe_hostip_clr failed code -23
+[cored] app webserver has disconnected
+[cored] app cloud_gen2_ii has disconnected
+[cored] app slangapp has disconnected
+[cored] app msws has disconnected
+[cored] app faxutil has disconnected
+[cored] app analogfax has disconnected
+[cored] app ippserver has disconnected
+[cored] app llmnrapp has disconnected
+[cored] app lockoutmanagerapp has disconnected
+[cored] app tracestore has disconnected
+[cored] app sol has disconnected
+[fwupd] Closing socket 7
+[cored] app reports_iph has disconnected
+[cored] app ledm has disconnected
+[cored] app httpusb has disconnected
+[cored] app digitalsend has disconnected
+[   62.788479] BTUSB btusb_proc_write: BTUSB unlock dhd mutex
+[   62.793911] BTUSB btusb_unlock_dhd_mutex: no outstanding cmd, skipping mutex unlock
+[cored] app ble_app has disconnected
+[cored] app addrbk has disconnected
+[cored] app ui has disconnected
+[cored] app copyapp has disconnected
+[cored] app scansvc has disconnected
+[cored] app syspm has disconnected
+[cored] app nvmmigration has disconnected
+[fwupd] Shutdown requested...
+[cored] app fax_ledm has disconnected
+[cored] app discovery has disconnected
+[cored] app snmpconsumer has disconnected
+[cored] app saudio has disconnected
+[cored] app photo has disconnected
+[cored] app plang has disconnected
+[fwupd] Shutting down server
+[cored] app secutils_app has disconnected
+[fwupd] Goodbye
+[cored] app jobtrk has disconnected
+[cored] app fwupd has disconnected
+[cored] app defnotdbusd has disconnected
+[cored] app test_client has disconnected
+[cored] app mdnsapp has disconnected
+[cored] app nginx_ctrl has disconnected
+[   64.550584] usbcore: deregistering interface driver btusb
+[cored] app framed has disconnected
+The system is going down NOW!
+[cored] got signal to quit!
+[   64.759324] rfs_release() : 1
+[cored] ERROR - failed to open /proc/sys/kernel/core_pattern - Read-only file system
+[   64.763580] rfsk: RPC_RFS_STATE: 0x0
+[   64.807451] WLC_E_IF: NO_IF set, event Ignored
+[   66.790941] reboot: Power down
+[   66.793915] kstatus: inform P0
+Uncompressing Linux... done, booting the kernel.
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 3.14.32 (fwbuild@rt0026.sdd.hp.com) (gcc version 4.9.4 20150629 (prerelease) (Linaro GCC ) ) #001.1815A 3.14.79 Tue Apr 10 07:09:49 PDT 2018
+[    0.000000] CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=10c53c7d
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] Machine model: pf53_pl
+[    0.000000] Memory policy: Data cache writeback
+[    0.000000] Implementer: ARM Ltd.
+[    0.000000] Cortex A7 version r0p5
+[    0.000000] 
+[    0.000000] Current CPU ID is 1 and indicates a multiprocessor system
+[    0.000000] CPU: All CPU(s) started in SVC mode.
+[    0.000000] COORD: found device tree Coord config table
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping off.  Total pages: 48768
+[    0.000000] Kernel command line: noinitrd console=ttyRS0,115200 ubi.mtd=2,2048 root=ubi0_0 rootfstype=ubifs ro init=/init earlyprintk
+[    0.000000] PID hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.000000] Dentry cache hash table entries: 32768 (order: 5, 131072 bytes)
+[    0.000000] Inode-cache hash table entries: 16384 (order: 4, 65536 bytes)
+[    0.000000] Memory: 181008K/196608K available (4926K kernel code, 206K rwdata, 1576K rodata, 179K init, 205K bss, 15600K reserved, 0K highmem)
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+[    0.000000]     vmalloc : 0xcc800000 - 0xff000000   ( 808 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xcc000000   ( 192 MB)
+[    0.000000]     pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+[    0.000000]     modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+[    0.000000]       .text : 0xc0008000 - 0xc0661db0   (6504 kB)
+[    0.000000]       .init : 0xc0662000 - 0xc068efbc   ( 180 kB)
+[    0.000000]       .data : 0xc0690000 - 0xc06c3b60   ( 207 kB)
+[    0.000000]        .bss : 0xc06c3b60 - 0xc06f6f80   ( 206 kB)
+[    0.000000] NR_IRQS:16 nr_irqs:0 0
+[    0.000000] 
+[    0.000000]  Reset HP Mach Generic Timer counter values
+[    0.000000] 
+[    0.000000]  IRQ Preemption Enabled :(0)
+[    0.000000]  Enabling GIC on peer core :(1)
+[    0.000000] 
+[    0.000000]  Enabling GIC IPC Mailbox with semaphore :(1)[    0.000000] gic: FIQ support enabled
+[    0.000000] 
+[    0.000000]  Previous Group Id (1) of Interrupt (141) 
+[    0.000000] 
+[    0.000000]  Updated Group Id (1) of Interrupt (141) 
+[    0.000000]  Current hw_irq (141) priority (20)
+[    0.000000] 
+[    0.000000]  Updated hw_irq (141) priority (5)
+[    0.000000]  GIC CPU Init: smp_processor_id(0)
+[    0.000000] Architected cp15 timer(s) running at 25.00MHz (phys).
+[    0.000005] sched_clock: 56 bits at 25MHz, resolution 40ns, wraps every 2748779069440ns
+[    0.000010] Switching to timer-based delay loop
+[    0.254913] bootconsole [early_ttyRS0] enabled
+[    0.259325] Calibrating delay loop (skipped), value calculated using timer frequency.. 50.00 BogoMIPS (lpj=250000)
+[    0.269599] pid_max: default: 32768 minimum: 301
+[    0.274248] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.280753] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.289275] CPU: Testing write buffer coherency: ok
+[    0.294145] Setting up static identity map for 0x644b3b90 - 0x644b3be8
+[    0.313667] _rpc_config(): physical addr q_mem = 0x609f3540, P1: 0x609f3a40
+[    0.320431] _rpc_config(): send_q = 0xcc81a7c0, recv_q = 0xcc81a540
+[    0.326655] _kpool_create(virt = 0xcc880a40, phys = 0x609f3a40) size = 245760
+[    0.333725] kpool:  phys = 0x609f3a40, virt = 0xcc880a40, size = 4096, mask = 0x0fffffffffffffff
+[    0.342449] kpool:  num_avail = 60, min_avail = 60
+[    0.347203] khdr:   phys = 0x60a2fa40, virt = 0xcc8bca40, size = 128, mask = 0xffffffff_0xffffffff_0xffffffff_ffffffff
+[    0.357828] khdr:   num_avail = 256, min_avail = 256
+[    0.362765] RPC_init: irq 100 setup to P0
+[    0.366732] RPC_init: module init successful, timer32 = 0xcc81c014, #conn = 1
+[    0.374602] kstatus: status config (bye) from DT: phy addr = 0x60772a98, vaddr = 0xcc81ea98
+[    0.382746] kstatus: initialized
+[    0.386353] devtmpfs: initialized
+[    0.391215] VFP support v0.3: implementor 41 architecture 2 part 30 variant 7 rev 5
+[    0.398862] RPC_core_init: successful
+[    0.402734] NET: Registered protocol family 16
+[    0.407414] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.414117] hp_netlink: initialized
+[    0.418436] cpuidle: using governor ladder
+[    0.422344] cpuidle: using governor menu
+[    0.426608] *** HP USB_PHY : [hp_usb_host_dt_parser] Configuring the port. port_num = 1 name = Wi-Fi suspend_flag = 0 phy_suspend_flag = 0 
+[    0.426608] 
+[    0.440384] *** HP USB_PHY : [hp_usb_host_dt_parser] Configuring the port. port_num = 2 name = USB suspend_flag = 0 phy_suspend_flag = 0 
+[    0.440384] 
+[    0.454229] unlocked 
+[    0.456351] Resetting HW Block 123 
+[    0.459807]  Validate IPC for Block Reset: Up
+[    0.464343] Handling block reset on peer core
+[    0.469260] 
+ hp_gpio_dt_parser irq_alloc_descs (192)
+[    0.474062] GPIO: found device tree GPIO config table
+[    0.479375] GPIO: Int ownership Start 3 End 6 
+[    0.483688] 
+ Index of the GPIO 2 as interrupt (0)
+[    0.488292]  Configure independently Index of the GPIO as interrupt IrqLevel(1) irq_sel(83) irq_num(5)
+[    0.497719] Setting up IRQ for GPIO (2) gpio_to_irq(206) irq_sel(83)
+[    0.504093] 
+ Index of the GPIO 3 as interrupt (1)
+[    0.508689]  Configure independently Index of the GPIO as interrupt IrqLevel(3) irq_sel(82) irq_num(4)
+[    0.518101] Setting up IRQ for GPIO (3) gpio_to_irq(205) irq_sel(82)
+[    0.524433] 
+ Index of the GPIO 1 as interrupt (4)
+[    0.529073]  Configure independently Index of the GPIO as interrupt IrqLevel(1) irq_sel(81) irq_num(3)
+[    0.538496] Setting up IRQ for GPIO (1) gpio_to_irq(204) irq_sel(81)
+[    0.544814] FDT found, populating platform devices...
+[    0.550471] done.
+[    0.552385] GPIO: found device tree GPIO Driver Name Node
+[    0.557741] 
+ GPIO String formed (hp_gpio_driver_linux_heartbeat_led)
+[    0.564090] Releasing HW Block reset 121 
+[    0.568195]  Validate IPC for Block Reset: Up
+[    0.572698] Handling block reset on peer core
+[    0.576890] photo hw ---- dev reg init called from setup
+[    0.582152] HP Sd device node is matched and enabled.
+[    0.587156] 
+ Device Tree I2C i2c_instance(2) Bit Rate(375000)
+ Registering i2c platform device without RCI and i2c_instance (2)
+ HP I2C BUS:[2] Devices registered:, LED , Cyttsp5 , Cherry 
+[    0.604073] Entered: init_wlan_plat
+[    0.607702] psku = 0x4fff000
+[    0.610558] This printer is intended to have WiFi.
+[    0.615299] creating dhd_bt_mut
+[    0.618434] Found hp,ulysses_43242 node in device tree.
+[    0.623602] Radio node matched and is enabled.
+[    0.628001] We found the wlan_on_noff gpio.
+[    0.632148] WLAN_ON_NOFF gpio is 15
+[    0.635608] init_wlan_on_noff
+[    0.638543] WLAN_ON_NOFF gpio is 15
+[    0.641998] WLAN_ON_NOFF: matched mcasic hp,gpio type
+[    0.647014] WLAN_ON_NOFF: mcasic_id: 1 read from device tree
+[    0.652661] pdev->name: ulysses.1
+[    0.655933] Wlan node matched.
+[    0.658945] Wlan0 MAC Address: 08:2e:5f:f1:50:a9
+[    0.663513] Wlan1 MAC Address: b8:db:ad:ba:db:ad
+[    0.668091] wlan_plat_probe country-code: 3
+[    0.672463] hw-breakpoint: found 5 (+1 reserved) breakpoint and 4 watchpoint registers.
+[    0.680255] hw-breakpoint: maximum watchpoint size is 8 bytes.
+[    0.698948] bio: create slab <bio-0> at 0
+[    0.703348] vgaarb: loaded
+[    0.706281] SCSI subsystem initialized
+[    0.710693] usbcore: registered new interface driver usbfs
+[    0.716079] usbcore: registered new interface driver hub
+[    0.721385] usbcore: registered new device driver usb
+[    0.726483] Hewlett Packard hp-i2c driver version 1.0
+[    0.731350] 
+ Registering HP I2C driver
+ HP I2C Probe
+ I2C clock02div (109)HP I2C Config Val 0x1
+[    0.740321] Clock val 0x109
+[    0.743108] HP I2C: claim IRQ(90) Name(hp-i2c)
+[    0.747801] Hewlett Packard hp-i2c driver version 1.0
+[    0.752723] pps_core: LinuxPPS API ver. 1 registered
+[    0.757589] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.766726] PTP clock support registered
+[    0.771061] Advanced Linux Sound Architecture Driver Initialized.
+[    0.777808] cfg80211: Calling CRDA to update world regulatory domain
+[    0.784220] Switched to clocksource arch_sys_counter
+[    0.790476] NET: Registered protocol family 2
+[    0.795149] TCP established hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.801927] TCP bind hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.808253] TCP: Hash tables configured (established 2048 bind 2048)
+[    0.814588] TCP: reno registered
+[    0.817726] UDP hash table entries: 256 (order: 0, 4096 bytes)
+[    0.823517] UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+[    0.829859] NET: Registered protocol family 1
+[    0.834262] RPC: Registered named UNIX socket transport module.
+[    0.839985] RPC: Registered udp transport module.
+[    0.844657] RPC: Registered tcp transport module.
+[    0.849314] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.856265]  (null) current power mode: (-881844224) 
+[    0.861144] hp_chipid driver 1.6 probe
+[    0.864869] Chip PF53 Version A.2
+[    0.868348] CPU PMU: probing PMU on CPU 0
+[    0.872173] hw perfevents: enabled with ARMv7 Cortex-A7 PMU driver, 5 counters available
+[    0.880258] 
+ Creating GPIO file in Debugfs
+[    0.884288] GPIO: found device tree GPIO Driver Name Node
+[    0.889793] 
+ GPIO String formed (hp_gpio_driver_nfc_irq)
+[    0.895330] *** [_usb_host_util_check_ovc_auto_recovery_support] INFO! USB Host Port overcurrent auto recovery not supported 
+[    0.895330] 
+[    0.908058] GPIO: found device tree GPIO Driver Name Node
+[    0.913397] 
+ GPIO String formed (hp_gpio_driver_usbh_port_0_pwr)
+[    0.919375] GPIO: found device tree GPIO Driver Name Node
+[    0.924894] 
+ GPIO String formed (hp_gpio_driver_usbh_port_1_pwr)
+[    0.930859] GPIO: found device tree GPIO Driver Name Node
+[    0.936385] 
+ GPIO String formed (hp_gpio_driver_usbh_port_0_ovc)
+[    0.942344] GPIO: Returning GPIO hp_gpio_driver_usbh_port_0_ovc #1 
+[    0.948746] GPIO: found device tree GPIO Driver Name Node
+[    0.954091] 
+ GPIO String formed (hp_gpio_driver_usbh_port_1_ovc)
+[    0.960068] !!! [usb_host_util_init] Couldn't find usbh_port_1_ovc from device tree!
+[    0.967921] _ipc_init(): registering RPC command
+[    0.972504] 0: mtd0  Boot                              00000000:00001023  RDONLY  BLKS      0:     3
+[    0.981576] 1: mtd1  UpdatableLBI                      00001024:00046591  RDONLY  BLKS      4:   181
+[    0.990648] 2: mtd2  RootFS                            00046592:00276479  RDONLY  BLKS    182:  1079
+[    0.999720] 3: mtd3  RWFS                              00276480:00409599  RDWR    BLKS   1080:  1599
+[    1.008791] 4: mtd4  RecoveryRootFS                    00409600:00510975  RDONLY  BLKS   1600:  1995
+[    1.017864] 5: mtd5  RecoveryLBI                       00510976:00523263  RDONLY  BLKS   1996:  2043
+[    1.026936] 6: mtd6  BBT                               00523264:00524287  RDWR    BLKS   2044:  2047
+[    1.036025] fwauth = 0
+[    1.038334] psku = 0x4fff000
+[    1.041186] _upcom_init: debug mode enabled, #conn = 1
+[    1.046443] upcomk: sirius version = 3 reported by host 0
+[    1.051647] _upcom_init: registered upcom successfully
+[    1.056766] _upstream_init: debug mode enabled
+[    1.061160] _upstream_init: registered upstream successfully
+[    1.066771] _rfs_init: debug mode enabled
+[    1.070754] _rfs_init: registered rfs successfully
+[    1.075500] _pshm_init: debug mode enabled: #conns = 1, max conns = 3
+[    1.081893] _pshm_init: registered pshm successfully
+[    1.086833] 
+ Peer Allocator Primary Core Init
+[    1.091136] 
+[    1.091136] _rci_init: registered successfully[    1.097016] UDM init
+[    1.099325] pwrup_mode = 0
+[    1.101969] feature_set = 0
+[    1.104643] _nand_init: debug mode enabled
+[    1.108683] _nand_init: registered nand successfully
+[    1.114402] futex hash table entries: 256 (order: -1, 3072 bytes)
+
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   22.122733] 
+[   22.122733]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   22.132985] 
+[   22.132985]  Reading Chip Id Unique reg [3]: [0x14aa6720]Starting faxutil ...
+Starting /etc/init.d/S79msws ...
+Starting msws ...
+Starting /etc/init.d/S79samba_mgr ...
+Starting samba_mgr ...
+Starting /etc/init.d/S80slangapp ...
+Starting slangapp ...
+Starting /etc/init.d/S85cloud_gen2_ii ...
+Starting Cloud Gen2 Instant Ink...
+Starting /etc/init.d/S88webserver ...
+
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   23.110643] 
+[   23.110643]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   23.120900] 
+[   23.120900]  Reading Chip Id Unique reg [3]: [0x14aa6720]
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   23.338103] 
+[   23.338103]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   23.348381] 
+[   23.348381]  Reading Chip Id Unique reg [3]: [0x14aa6720]Starting webserver ...
+Starting /etc/init.d/S90iperf2 ...
+Starting iperf2
+Starting /etc/init.d/S90iperf3 ...
+Running Iperf Server as a daemon
+The Iperf daemon process ID : 2759
+Starting iperf3
+Starting /etc/init.d/S90nettestd ...
+
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   23.984700] 
+[   23.984700]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   23.994949] 
+[   23.994949]  Reading Chip Id Unique reg [3]: [0x14aa6720]Starting nettestd
+Starting /etc/init.d/S91smb ...
+Starting NMB services: done
+
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   24.886865] 
+[   24.886865]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   24.897121] 
+[   24.897121]  Reading Chip Id Unique reg [3]: [0x14aa6720]
+ok
+rfs_open() : 2
+[   25.127996] rfsk: RPC_RFS_STATE: 0x68
+[   25.172533] rfs_release() : 2
+[root@HPF150A8 ]# [   25.942979] 
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   25.948141] 
+[   25.948141]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   25.958379] 
+[   25.958379]  Reading Chip Id Unique reg [3]: [0x14aa6720]
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   26.265874] 
+[   26.265874]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   26.276109] 
+[   26.276109]  Reading Chip Id Unique reg [3]: [0x14aa6720]
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   26.323825] 
+[   26.323825]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   26.334081] 
+[   26.334081]  Reading Chip Id Unique reg [3]: [0x14aa6720]
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   26.368271] 
+[   26.368271]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   26.378552] 
+[   26.378552]  Reading Chip Id Unique reg [3]: [0x14aa6720]
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   27.072641] 
+[   27.072641]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   27.082893] 
+[   27.082893]  Reading Chip Id Unique reg [3]: [0x14aa6720]
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   27.178752] 
+[   27.178752]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   27.189025] 
+[   27.189025]  Reading Chip Id Unique reg [3]: [0x14aa6720]
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   27.218860] 
+[   27.218860]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   27.229132] 
+[   27.229132]  Reading Chip Id Unique reg [3]: [0x14aa6720]
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   27.315361] 
+[   27.315361]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   27.325617] 
+[   27.325617]  Reading Chip Id Unique reg [3]: [0x14aa6720]
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   27.628175] 
+[   27.628175]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   27.638453] 
+[   27.638453]  Reading Chip Id Unique reg [3]: [0x14aa6720]
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   28.306514] 
+[   28.306514]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   28.316766] 
+[   28.316766]  Reading Chip Id Unique reg [3]: [0x14aa6720]
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   28.627774] 
+[   28.627774]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   28.638016] 
+[   28.638016]  Reading Chip Id Unique reg [3]: [0x14aa6720][   29.771326] GPIO: found device tree GPIO Driver Name Node
+[   29.776685] 
+ GPIO String formed (hp_gpio_driver_photo_led)
+[   29.782089] GPIO: Returning GPIO hp_gpio_driver_photo_led #23 
+[   31.803641] wl_cfg80211_connect : Connectting withff:ff:ff:ff:ff:ff channel (0) ssid "eemr500", len (7)
+
+[   33.165785] wl_bss_connect_done succeeded with 68:ff:7b:a2:40:5f
+[   33.267124] wl_bss_connect_done succeeded with 68:ff:7b:a2:40:5f
+[   33.430918] dhd_wlfc_deinit():3337, maintain HOST RXRERODER flag in tvl
+[   33.548598] dhd_wlfc_deinit():3351 successfully disabled bdcv2 tlv signaling, 64
+[   33.755009] Register interface [wlan1]  MAC: 0a:2e:5f:f1:d0:a9
+[   33.755009] 
+[   33.777811] wl_cfg80211_add_virtual_iface :  virtual interface(wlan1) is created net attach done
+[   33.799359] wl_cfg80211_determine_vsdb_mode : Same Channel concurrency is enabled
+[   33.830700] dhd_cfg80211_set_p2p_info : Set : op_mode=0x0055
+[   33.988145] dhd_aoe_hostip_clr failed code -23
+[   34.506199] dhd_wlfc_init(): successfully enabled bdcv2 tlv signaling, 79
+[   34.525460] dhd_wlfc_init: query wlfc_mode succeed, fw_caps=0x8
+[   34.545429] dhd_wlfc_init(): wlfc_mode=0x8, ret=0
+[   34.595932] wl_cfg80211_set_channel : netdev_ifidx(5), chan_type(1) target channel(6) 
+[   34.774336] dhd_wlfc_deinit():3337, maintain HOST RXRERODER flag in tvl
+[   34.798801] dhd_wlfc_deinit():3351 successfully disabled bdcv2 tlv signaling, 64
+[   34.835331] dhd_cfg80211_clean_p2p_info : Clean : op_mode=0x0015
+[   34.856631] link down if wlan1 may call cfg80211_disconnected. event : 16, reason=4 from 0a:2e:5f:f1:d0:a9
+[   34.866224] wl_notify_connect_status : BSSID of event is not the connected BSSID(ignore it) cur: 00:00:00:00:00:00 event: 0a:2e:5f:f1:d0:a9
+[   34.883837] wl_cfg80211_concurrent_roam :  wlan1:failed to set roam_off : -1
+[   34.894232] deleting interface 'wlan1' idx 1
+[   34.904573] dhd_aoe_hostip_clr failed code -23
+[   34.924140] DHD-MON: dhd_del_monitor IF not found in monitor array, is this a monitor IF? 0xc6869800
+[   35.104853] Register interface [wlan1]  MAC: 0a:2e:5f:f1:d0:a9
+[   35.104853] 
+[   35.154378] wl_cfg80211_add_virtual_iface :  virtual interface(wlan1) is created net attach done
+[   35.244438] wl_cfg80211_determine_vsdb_mode : Multi Channel concurrency is enabled
+[   35.336396] dhd_aoe_hostip_clr failed code -23
+[   35.653961] dhd_wlfc_init(): successfully enabled bdcv2 tlv signaling, 79
+[   35.682501] dhd_wlfc_init: query wlfc_mode succeed, fw_caps=0x8
+[   35.712684] dhd_wlfc_init(): wlfc_mode=0x8, ret=0
+[   36.672459] !!! [_hp_usb_host_util_ioctl] _ioctl: ERROR got ioctl cmd=0x40046821 
+[   36.672459] 
+[   36.829630] !!! [_hp_usb_host_util_ioctl] _ioctl: ERROR got ioctl cmd=0x40046821 
+[   36.829630] 
+[fwupd] Got client socket 7
+[fwupd] fwupd configured for firmware: PALSUPPPXA003.1841A.00 (palsup)
+[fwupd] Setting automatic mode => check: auto, install: auto
+[fwupd] No manifest found at /sirius/rw/var/lib/fwupd/fwupd_nvm_manifest.xml
+[fwupd] No manifest found at /sirius/rw/var/lib/fwupd/fwupd_manifest.xml
+[fwupd] Using saved check timer: 99416 sec until next check
+[fwupd] safe_to_cancel: YES
+[fwupd] State change: Idle => Idle
+[   40.229641] HPfb: hpfb_mmap
+[   40.232416] HPfb: hpfb_rpc_set_display_state
+[   40.236641] HPfb: hp_rpc_set_display_state is set to 1
+[   40.242371] HPfb: disable clcd
+[   40.245393] HPfb: init_controller
+[   40.248641] HPfb:input data format 4 
+[   40.252274] HPfb: reg 0x60001000
+[   40.255481] HPfb: smem 0x60001000
+[   40.258745] HPfb: enable clcd
+[   40.266092] HPfb: hpfb_ioctl
+[   40.268934] HPfb: input data format (reg)4 
+[   40.273096] HPfb: input data format (info)4 
+[   40.277314] HPfb: input data format after ioctl 36 
+[   40.282151] HPfb: hpfb_set_var
+[   40.285161] HPfb: Bit per pixel:32
+[   40.288519] HPfb: AXI byte swap enabled
+[   40.292332] HPfb: final input data format 36 
+
+encfs open encfaxfs /dev/loop3
+
+[   40.454775] dhd_aoe_hostip_clr failed code -23
+/dev/mapper/encfaxfs: clean, 11/1024 files, 1202/4096 blocks
+[   45.477366] EXT4-fs (dm-1): mounted filesystem with ordered data mode. Opts: (null)
+/dev/mapper/encfaxfs on /mnt/encfaxfs type ext4 (rw,noexec,relatime,data=ordered)
+encfs exit status = 0, errno = 0
+[   59.802247] GPIO: found device tree GPIO Driver Name Node
+[   59.807710] 
+ GPIO String formed (hp_gpio_driver_photo_led)
+[   59.813228] GPIO: Returning GPIO hp_gpio_driver_photo_led #23 
+[   60.055085] dhd_wlfc_deinit():3337, maintain HOST RXRERODER flag in tvl
+[   60.074238] dhd_wlfc_deinit():3351 successfully disabled bdcv2 tlv signaling, 64
+[   60.120298] net_ratelimit: 2 callbacks suppressed
+[   60.124930] dhd_cfg80211_clean_p2p_info : Clean : op_mode=0x0015
+[   60.139695] link down if wlan1 may call cfg80211_disconnected. event : 16, reason=4 from 0a:2e:5f:f1:d0:a9
+[   60.149293] wl_notify_connect_status : BSSID of event is not the connected BSSID(ignore it) cur: 00:00:00:00:00:00 event: 0a:2e:5f:f1:d0:a9
+[   60.164018] wl_cfg80211_concurrent_roam :  wlan1:failed to set roam_off : -1
+[   60.174166] deleting interface 'wlan1' idx 1
+[   60.184015] dhd_aoe_hostip_clr failed code -23
+[   60.212970] DHD-MON: dhd_del_monitor IF not found in monitor array, is this a monitor IF? 0xc685f000
+[   60.239903] dhd_wlfc_init(): successfully enabled bdcv2 tlv signaling, 79
+[   60.279563] dhd_wlfc_init: query wlfc_mode succeed, fw_caps=0x8
+[   60.302217] dhd_wlfc_init(): wlfc_mode=0x8, ret=0
+[   60.337395] wl_cfg80211_disconnect : Reason 3
+[   60.345346] link down if wlan0 may call cfg80211_disconnected. event : 16, reason=2 from 68:ff:7b:a2:40:5f
+[   60.365527] cfg80211: Calling CRDA to update world regulatory domain
+[   60.655631] dhd_aoe_hostip_clr failed code -23
+[cored] app webserver has disconnected
+[cored] app cloud_gen2_ii has disconnected
+[cored] app slangapp has disconnected
+[cored] app msws has disconnected
+[cored] app faxutil has disconnected
+[cored] app analogfax has disconnected
+[cored] app ippserver has disconnected
+[cored] app llmnrapp has disconnected
+[cored] app lockoutmanagerapp has disconnected
+[cored] app tracestore has disconnected
+[cored] app sol has disconnected
+[fwupd] Closing socket 7
+[cored] app reports_iph has disconnected
+[cored] app ledm has disconnected
+[cored] app httpusb has disconnected
+[cored] app digitalsend has disconnected
+[   63.815469] BTUSB btusb_proc_write: BTUSB unlock dhd mutex
+[   63.820893] BTUSB btusb_unlock_dhd_mutex: no outstanding cmd, skipping mutex unlock
+[cored] app ble_app has disconnected
+[cored] app addrbk has disconnected
+[cored] app ui has disconnected
+[cored] app copyapp has disconnected
+[cored] app scansvc has disconnected
+[cored] app syspm has disconnected
+[cored] app nvmmigration has disconnected
+[fwupd] Shutdown requested...
+[cored] app fax_ledm has disconnected
+[cored] app discovery has disconnected
+[cored] app snmpconsumer has disconnected
+[cored] app saudio has disconnected
+[cored] app photo has disconnected
+[cored] app plang has disconnected
+[cored] app secutils_app has disconnected
+[fwupd] Shutting down server
+[fwupd] Goodbye
+[cored] app jobtrk has disconnected
+[cored] app fwupd has disconnected
+[cored] app defnotdbusd has disconnected
+[cored] app test_client has disconnected
+[cored] app mdnsapp has disconnected
+[cored] app nginx_ctrl has disconnected
+[   65.595211] usbcore: deregistering interface driver btusb
+[cored] app framed has disconnected
+The system is going down NOW!
+[cored] got signal to quit!
+[   65.805843] rfs_release() : 1
+[cored] ERROR - failed to open /proc/sys/kernel/core_pattern - Read-only file system
+[   65.810050] rfsk: RPC_RFS_STATE: 0x0
+[   65.856400] WLC_E_IF: NO_IF set, event Ignored
+[   67.835889] reboot: Power down
+[   67.838882] kstatus: inform P0
+Uncompressing Linux... done, booting the kernel.
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 3.14.32 (fwbuild@rt0026.sdd.hp.com) (gcc version 4.9.4 20150629 (prerelease) (Linaro GCC ) ) #001.1815A 3.14.79 Tue Apr 10 07:09:49 PDT 2018
+[    0.000000] CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=10c53c7d
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] Machine model: pf53_pl
+[    0.000000] Memory policy: Data cache writeback
+[    0.000000] Implementer: ARM Ltd.
+[    0.000000] Cortex A7 version r0p5
+[    0.000000] 
+[    0.000000] Current CPU ID is 1 and indicates a multiprocessor system
+[    0.000000] CPU: All CPU(s) started in SVC mode.
+[    0.000000] COORD: found device tree Coord config table
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping off.  Total pages: 48768
+[    0.000000] Kernel command line: noinitrd console=ttyRS0,115200 ubi.mtd=2,2048 root=ubi0_0 rootfstype=ubifs ro init=/init earlyprintk
+[    0.000000] PID hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.000000] Dentry cache hash table entries: 32768 (order: 5, 131072 bytes)
+[    0.000000] Inode-cache hash table entries: 16384 (order: 4, 65536 bytes)
+[    0.000000] Memory: 181008K/196608K available (4926K kernel code, 206K rwdata, 1576K rodata, 179K init, 205K bss, 15600K reserved, 0K highmem)
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+[    0.000000]     vmalloc : 0xcc800000 - 0xff000000   ( 808 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xcc000000   ( 192 MB)
+[    0.000000]     pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+[    0.000000]     modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+[    0.000000]       .text : 0xc0008000 - 0xc0661db0   (6504 kB)
+[    0.000000]       .init : 0xc0662000 - 0xc068efbc   ( 180 kB)
+[    0.000000]       .data : 0xc0690000 - 0xc06c3b60   ( 207 kB)
+[    0.000000]        .bss : 0xc06c3b60 - 0xc06f6f80   ( 206 kB)
+[    0.000000] NR_IRQS:16 nr_irqs:0 0
+[    0.000000] 
+[    0.000000]  Reset HP Mach Generic Timer counter values
+[    0.000000] 
+[    0.000000]  IRQ Preemption Enabled :(0)
+[    0.000000]  Enabling GIC on peer core :(1)
+[    0.000000] 
+[    0.000000]  Enabling GIC IPC Mailbox with semaphore :(1)[    0.000000] gic: FIQ support enabled
+[    0.000000] 
+[    0.000000]  Previous Group Id (1) of Interrupt (141) 
+[    0.000000] 
+[    0.000000]  Updated Group Id (1) of Interrupt (141) 
+[    0.000000]  Current hw_irq (141) priority (20)
+[    0.000000] 
+[    0.000000]  Updated hw_irq (141) priority (5)
+[    0.000000]  GIC CPU Init: smp_processor_id(0)
+[    0.000000] Architected cp15 timer(s) running at 25.00MHz (phys).
+[    0.000006] sched_clock: 56 bits at 25MHz, resolution 40ns, wraps every 2748779069440ns
+[    0.000010] Switching to timer-based delay loop
+[    0.254918] bootconsole [early_ttyRS0] enabled
+[    0.259330] Calibrating delay loop (skipped), value calculated using timer frequency.. 50.00 BogoMIPS (lpj=250000)
+[    0.269604] pid_max: default: 32768 minimum: 301
+[    0.274258] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.280761] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.289271] CPU: Testing write buffer coherency: ok
+[    0.294142] Setting up static identity map for 0x644b3b90 - 0x644b3be8
+[    0.313665] _rpc_config(): physical addr q_mem = 0x609f3540, P1: 0x609f3a40
+[    0.320436] _rpc_config(): send_q = 0xcc81a7c0, recv_q = 0xcc81a540
+[    0.326662] _kpool_create(virt = 0xcc880a40, phys = 0x609f3a40) size = 245760
+[    0.333731] kpool:  phys = 0x609f3a40, virt = 0xcc880a40, size = 4096, mask = 0x0fffffffffffffff
+[    0.342454] kpool:  num_avail = 60, min_avail = 60
+[    0.347210] khdr:   phys = 0x60a2fa40, virt = 0xcc8bca40, size = 128, mask = 0xffffffff_0xffffffff_0xffffffff_ffffffff
+[    0.357833] khdr:   num_avail = 256, min_avail = 256
+[    0.362770] RPC_init: irq 100 setup to P0
+[    0.366737] RPC_init: module init successful, timer32 = 0xcc81c014, #conn = 1
+[    0.374614] kstatus: status config (bye) from DT: phy addr = 0x60772a98, vaddr = 0xcc81ea98
+[    0.382751] kstatus: initialized
+[    0.386368] devtmpfs: initialized
+[    0.391220] VFP support v0.3: implementor 41 architecture 2 part 30 variant 7 rev 5
+[    0.398862] RPC_core_init: successful
+[    0.402730] NET: Registered protocol family 16
+[    0.407413] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.414119] hp_netlink: initialized
+[    0.418443] cpuidle: using governor ladder
+[    0.422351] cpuidle: using governor menu
+[    0.426615] *** HP USB_PHY : [hp_usb_host_dt_parser] Configuring the port. port_num = 1 name = Wi-Fi suspend_flag = 0 phy_suspend_flag = 0 
+[    0.426615] 
+[    0.440389] *** HP USB_PHY : [hp_usb_host_dt_parser] Configuring the port. port_num = 2 name = USB suspend_flag = 0 phy_suspend_flag = 0 
+[    0.440389] 
+[    0.454242] unlocked 
+
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   20.893067] 
+[   20.893067]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   20.903322] 
+[   20.903322]  Reading Chip Id Unique reg [3]: [0x14aa6720]Starting tracestore ...
+Starting /etc/init.d/S75lockoutmanagerapp ...
+Starting firewallapp ...
+Starting /etc/init.d/S76llmnrapp ...
+Starting llmnrapp ...
+Starting /etc/init.d/S77ippserver ...
+Starting ippserver ...
+Starting /etc/init.d/S78analogfax ...
+
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   21.400753] 
+[   21.400753]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   21.411009] 
+[   21.411009]  Reading Chip Id Unique reg [3]: [0x14aa6720]Starting analogfax ...
+Starting /etc/init.d/S78faxutil ...
+
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   21.895172] 
+[   21.895172]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   21.905427] 
+[   21.905427]  Reading Chip Id Unique reg [3]: [0x14aa6720]Starting faxutil ...
+Starting /etc/init.d/S79msws ...
+Starting msws ...
+Starting /etc/init.d/S79samba_mgr ...
+Starting samba_mgr ...
+Starting /etc/init.d/S80slangapp ...
+Starting slangapp ...
+Starting /etc/init.d/S85cloud_gen2_ii ...
+
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   22.621999] 
+[   22.621999]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   22.632254] 
+[   22.632254]  Reading Chip Id Unique reg [3]: [0x14aa6720]Starting Cloud Gen2 Instant Ink...
+Starting /etc/init.d/S88webserver ...
+
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   22.938323] 
+[   22.938323]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   22.948532] 
+[   22.948532]  Reading Chip Id Unique reg [3]: [0x14aa6720]Starting webserver ...
+Starting /etc/init.d/S90iperf2 ...
+Starting iperf2
+Starting /etc/init.d/S90iperf3 ...
+Running Iperf Server as a daemon
+The Iperf daemon process ID : 2780
+Starting iperf3
+Starting /etc/init.d/S90nettestd ...
+Starting nettestd
+Starting /etc/init.d/S91smb ...
+
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   23.631774] 
+[   23.631774]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   23.642029] 
+[   23.642029]  Reading Chip Id Unique reg [3]: [0x14aa6720]Starting NMB services: done
+
+ok
+rfs_open() : 2
+[   24.574033] rfsk: RPC_RFS_STATE: 0x68
+[   24.580495] 
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   24.585646] 
+[   24.585646]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   24.595906] 
+[   24.595906]  Reading Chip Id Unique reg [3]: [0x14aa6720]rfs_release() : 2
+[root@HPF150A8 ]# [   25.500079] 
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   25.505252] 
+[   25.505252]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   25.515496] 
+[   25.515496]  Reading Chip Id Unique reg [3]: [0x14aa6720]
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   25.891901] 
+[   25.891901]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   25.902150] 
+[   25.902150]  Reading Chip Id Unique reg [3]: [0x14aa6720]
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   25.994536] 
+[   25.994536]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   26.004791] 
+[   26.004791]  Reading Chip Id Unique reg [3]: [0x14aa6720]
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   26.088166] 
+[   26.088166]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   26.098434] 
+[   26.098434]  Reading Chip Id Unique reg [3]: [0x14aa6720]
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   26.704058] 
+[   26.704058]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   26.714317] 
+[   26.714317]  Reading Chip Id Unique reg [3]: [0x14aa6720]
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   26.788690] 
+[   26.788690]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   26.798948] 
+[   26.798948]  Reading Chip Id Unique reg [3]: [0x14aa6720]
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   26.902254] 
+[   26.902254]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   26.912511] 
+[   26.912511]  Reading Chip Id Unique reg [3]: [0x14aa6720]
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   26.930404] 
+[   26.930404]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   26.940679] 
+[   26.940679]  Reading Chip Id Unique reg [3]: [0x14aa6720]
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   27.232522] 
+[   27.232522]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   27.242775] 
+[   27.242775]  Reading Chip Id Unique reg [3]: [0x14aa6720]
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   27.958586] 
+[   27.958586]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   27.968846] 
+[   27.968846]  Reading Chip Id Unique reg [3]: [0x14aa6720]
+ Reading Chip Id Unique reg [0]: [0x460009]
+[   28.305222] 
+[   28.305222]  Reading Chip Id Unique reg [1]: [0x0]
+ Reading Chip Id Unique reg [2]: [0xaacb2000]
+[   28.315490] 
+[   28.315490]  Reading Chip Id Unique reg [3]: [0x14aa6720][   28.544675] GPIO: found device tree GPIO Driver Name Node
+[   28.549993] 
+ GPIO String formed (hp_gpio_driver_photo_led)
+[   28.555499] GPIO: Returning GPIO hp_gpio_driver_photo_led #23 
+[   30.524744] wl_cfg80211_connect : Connectting withff:ff:ff:ff:ff:ff channel (0) ssid "eemr500", len (7)
+
+[   31.895244] wl_bss_connect_done succeeded with 68:ff:7b:a2:40:5f
+[   31.986029] wl_bss_connect_done succeeded with 68:ff:7b:a2:40:5f
+[   32.415125] dhd_wlfc_deinit():3337, maintain HOST RXRERODER flag in tvl
+[   32.422609] dhd_wlfc_deinit():3351 successfully disabled bdcv2 tlv signaling, 64
+[   32.451411] Register interface [wlan1]  MAC: 0a:2e:5f:f1:d0:a9
+[   32.451411] 
+[   32.530421] wl_cfg80211_add_virtual_iface :  virtual interface(wlan1) is created net attach done
+[   32.564494] wl_cfg80211_determine_vsdb_mode : Same Channel concurrency is enabled
+[   32.601271] dhd_cfg80211_set_p2p_info : Set : op_mode=0x0055
+[   32.667539] dhd_aoe_hostip_clr failed code -23
+[   33.234596] dhd_wlfc_init(): successfully enabled bdcv2 tlv signaling, 79
+[   33.259446] dhd_wlfc_init: query wlfc_mode succeed, fw_caps=0x8
+[   33.280876] dhd_wlfc_init(): wlfc_mode=0x8, ret=0
+[   33.372480] wl_cfg80211_set_channel : netdev_ifidx(5), chan_type(1) target channel(6) 
+[   33.537843] dhd_wlfc_deinit():3337, maintain HOST RXRERODER flag in tvl
+[   33.563894] dhd_wlfc_deinit():3351 successfully disabled bdcv2 tlv signaling, 64
+[   33.616645] dhd_cfg80211_clean_p2p_info : Clean : op_mode=0x0015
+[   33.647207] link down if wlan1 may call cfg80211_disconnected. event : 16, reason=4 from 0a:2e:5f:f1:d0:a9
+[   33.656803] wl_notify_connect_status : BSSID of event is not the connected BSSID(ignore it) cur: 00:00:00:00:00:00 event: 0a:2e:5f:f1:d0:a9
+[   33.671153] wlan1: set promisc 0 failed
+[   33.681447] wlan1: set mcast_list failed, cnt 0
+[   33.687989] wlan1: set allmulti 0 failed
+[   33.692602] wl_cfg80211_concurrent_roam :  wlan1:failed to set roam_off : -1
+[   33.700442] wlan1: set promisc 0 failed
+[   33.706199] deleting interface 'wlan1' idx 1
+[   33.716588] dhd_aoe_hostip_clr failed code -23
+[   33.731618] DHD-MON: dhd_del_monitor IF not found in monitor array, is this a monitor IF? 0xc6877000
+[   33.875792] Register interface [wlan1]  MAC: 0a:2e:5f:f1:d0:a9
+[   33.875792] 
+[   33.912573] wl_cfg80211_add_virtual_iface :  virtual interface(wlan1) is created net attach done
+[   33.951344] wl_cfg80211_determine_vsdb_mode : Multi Channel concurrency is enabled
+[   34.044025] dhd_aoe_hostip_clr failed code -23
+[   34.359253] dhd_wlfc_init(): successfully enabled bdcv2 tlv signaling, 79
+[   34.385672] dhd_wlfc_init: query wlfc_mode succeed, fw_caps=0x8
+[   34.417520] dhd_wlfc_init(): wlfc_mode=0x8, ret=0
+[   35.350989] !!! [_hp_usb_host_util_ioctl] _ioctl: ERROR got ioctl cmd=0x40046821 
+[   35.350989] 
+[   35.540979] !!! [_hp_usb_host_util_ioctl] _ioctl: ERROR got ioctl cmd=0x40046821 
+[   35.540979] 
+[fwupd] Got client socket 7
+[fwupd] fwupd configured for firmware: PALSUPPPXA003.1841A.00 (palsup)
+[fwupd] Setting automatic mode => check: auto, install: auto
+[fwupd] No manifest found at /sirius/rw/var/lib/fwupd/fwupd_nvm_manifest.xml
+[fwupd] No manifest found at /sirius/rw/var/lib/fwupd/fwupd_manifest.xml
+[fwupd] Using saved check timer: 99342 sec until next check
+[fwupd] safe_to_cancel: YES
+[fwupd] State change: Idle => Idle
+[   38.676743] dhd_aoe_hostip_clr failed code -23
+[   39.114225] HPfb: hpfb_mmap
+[   39.117011] HPfb: hpfb_rpc_set_display_state
+[   39.121215] HPfb: hp_rpc_set_display_state is set to 1
+[   39.134287] HPfb: disable clcd
+[   39.137258] HPfb: init_controller
+[   39.140537] HPfb:input data format 4 
+[   39.144171] HPfb: reg 0x60001000
+[   39.147366] HPfb: smem 0x60001000
+[   39.150641] HPfb: enable clcd
+[   39.162316] HPfb: hpfb_ioctl
+[   39.165237] HPfb: input data format (reg)4 
+[   39.169370] HPfb: input data format (info)4 
+[   39.173622] HPfb: input data format after ioctl 36 
+[   39.178433] HPfb: hpfb_set_var
+[   39.181416] HPfb: Bit per pixel:32
+[   39.184793] HPfb: AXI byte swap enabled
+[   39.188603] HPfb: final input data format 36 
+
+encfs open encfaxfs /dev/loop3
+
+/dev/mapper/encfaxfs: clean, 11/1024 files, 1202/4096 blocks
+[   43.839650] EXT4-fs (dm-1): mounted filesystem with ordered data mode. Opts: (null)
+/dev/mapper/encfaxfs on /mnt/encfaxfs type ext4 (rw,noexec,relatime,data=ordered)
+encfs exit status = 0, errno = 0
+[   58.802144] GPIO: found device tree GPIO Driver Name Node
+[   58.807636] 
+ GPIO String formed (hp_gpio_driver_photo_led)
+[   58.813171] GPIO: Returning GPIO hp_gpio_driver_photo_led #23 
+[   59.022627] dhd_wlfc_deinit():3337, maintain HOST RXRERODER flag in tvl
+[   59.034064] dhd_wlfc_deinit():3351 successfully disabled bdcv2 tlv signaling, 64
+[   59.083853] net_ratelimit: 2 callbacks suppressed
+[   59.088579] dhd_cfg80211_clean_p2p_info : Clean : op_mode=0x0015
+[   59.103998] link down if wlan1 may call cfg80211_disconnected. event : 16, reason=4 from 0a:2e:5f:f1:d0:a9
+[   59.113578] wl_notify_connect_status : BSSID of event is not the connected BSSID(ignore it) cur: 00:00:00:00:00:00 event: 0a:2e:5f:f1:d0:a9
+[   59.128220] wl_cfg80211_concurrent_roam :  wlan1:failed to set roam_off : -1
+[   59.137433] deleting interface 'wlan1' idx 1
+[   59.151222] dhd_aoe_hostip_clr failed code -23
+[   59.164631] DHD-MON: dhd_del_monitor IF not found in monitor array, is this a monitor IF? 0xc7689800
+[   59.207126] dhd_wlfc_init(): successfully enabled bdcv2 tlv signaling, 79
+[   59.228904] dhd_wlfc_init: query wlfc_mode succeed, fw_caps=0x8
+[   59.261654] dhd_wlfc_init(): wlfc_mode=0x8, ret=0
+[   59.286121] wl_cfg80211_disconnect : Reason 3
+[   59.294492] link down if wlan0 may call cfg80211_disconnected. event : 16, reason=2 from 68:ff:7b:a2:40:5f
+[   59.313985] cfg80211: Calling CRDA to update world regulatory domain
+[   59.573077] dhd_aoe_hostip_clr failed code -23
+[cored] app webserver has disconnected
+[cored] app cloud_gen2_ii has disconnected
+[cored] app slangapp has disconnected
+[cored] app msws has disconnected
+[cored] app faxutil has disconnected
+[cored] app analogfax has disconnected
+[cored] app ippserver has disconnected
+[cored] app llmnrapp has disconnected
+[cored] app lockoutmanagerapp has disconnected
+[cored] app tracestore has disconnected
+[cored] app sol has disconnected
+[fwupd] Closing socket 7
+[cored] app reports_iph has disconnected
+[cored] app ledm has disconnected
+[cored] app httpusb has disconnected
+[cored] app digitalsend has disconnected
+[   62.735629] BTUSB btusb_proc_write: BTUSB unlock dhd mutex
+[   62.741059] BTUSB btusb_unlock_dhd_mutex: no outstanding cmd, skipping mutex unlock
+[cored] app ble_app has disconnected
+[cored] app addrbk has disconnected
+[cored] app ui has disconnected
+[cored] app copyapp has disconnected
+[cored] app scansvc has disconnected
+[cored] app syspm has disconnected
+[cored] app nvmmigration has disconnected
+[fwupd] Shutdown requested...
+[cored] app fax_ledm has disconnected
+[cored] app discovery has disconnected
+[cored] app snmpconsumer has disconnected
+[cored] app saudio has disconnected
+[cored] app photo has disconnected
+[cored] app plang has disconnected
+[cored] app secutils_app has disconnected
+[cored] app jobtrk has disconnected
+[fwupd] Shutting down server
+[fwupd] Goodbye
+[cored] app fwupd has disconnected
+[cored] app defnotdbusd has disconnected
+[cored] app test_client has disconnected
+[cored] app mdnsapp has disconnected
+[cored] app nginx_ctrl has disconnected
+[   64.480429] usbcore: deregistering interface driver btusb
+[cored] app framed has disconnected
+The system is going down NOW!
+[cored] got signal to quit!
+[   64.688948] rfs_release() : 1
+[cored] ERROR - failed to open /proc/sys/kernel/core_pattern - Read-only file system
+[   64.693225] rfsk: RPC_RFS_STATE: 0x0
+[   64.745353] WLC_E_IF: NO_IF set, event Ignored
+[   66.791966] reboot: Power down
+[   66.794958] kstatus: inform P0
+Uncompressing Linux... done, booting the kernel.
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 3.14.32 (fwbuild@rt0026.sdd.hp.com) (gcc version 4.9.4 20150629 (prerelease) (Linaro GCC ) ) #001.1815A 3.14.79 Tue Apr 10 07:09:49 PDT 2018
+[    0.000000] CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=10c53c7d
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] Machine model: pf53_pl
+[    0.000000] Memory policy: Data cache writeback
+[    0.000000] Implementer: ARM Ltd.
+[    0.000000] Cortex A7 version r0p5
+[    0.000000] 
+[    0.000000] Current CPU ID is 1 and indicates a multiprocessor system
+[    0.000000] CPU: All CPU(s) started in SVC mode.
+[    0.000000] COORD: found device tree Coord config table
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping off.  Total pages: 48768
+[    0.000000] Kernel command line: noinitrd console=ttyRS0,115200 ubi.mtd=2,2048 root=ubi0_0 rootfstype=ubifs ro init=/init earlyprintk
+[    0.000000] PID hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.000000] Dentry cache hash table entries: 32768 (order: 5, 131072 bytes)
+[    0.000000] Inode-cache hash table entries: 16384 (order: 4, 65536 bytes)
+[    0.000000] Memory: 181008K/196608K available (4926K kernel code, 206K rwdata, 1576K rodata, 179K init, 205K bss, 15600K reserved, 0K highmem)
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+[    0.000000]     vmalloc : 0xcc800000 - 0xff000000   ( 808 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xcc000000   ( 192 MB)
+[    0.000000]     pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+[    0.000000]     modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+[    0.000000]       .text : 0xc0008000 - 0xc0661db0   (6504 kB)
+[    0.000000]       .init : 0xc0662000 - 0xc068efbc   ( 180 kB)
+[    0.000000]       .data : 0xc0690000 - 0xc06c3b60   ( 207 kB)
+[    0.000000]        .bss : 0xc06c3b60 - 0xc06f6f80   ( 206 kB)
+[    0.000000] NR_IRQS:16 nr_irqs:0 0
+[    0.000000] 
+[    0.000000]  Reset HP Mach Generic Timer counter values
+[    0.000000] 
+[    0.000000]  IRQ Preemption Enabled :(0)
+[    0.000000]  Enabling GIC on peer core :(1)
+[    0.000000] 
+[    0.000000]  Enabling GIC IPC Mailbox with semaphore :(1)[    0.000000] gic: FIQ support enabled
+[    0.000000] 
+[    0.000000]  Previous Group Id (1) of Interrupt (141) 
+[    0.000000] 
+[    0.000000]  Updated Group Id (1) of Interrupt (141) 
+[    0.000000]  Current hw_irq (141) priority (20)
+[    0.000000] 
+[    0.000000]  Updated hw_irq (141) priority (5)
+[    0.000000]  GIC CPU Init: smp_processor_id(0)
+[    0.000000] Architected cp15 timer(s) running at 25.00MHz (phys).
+[    0.000006] sched_clock: 56 bits at 25MHz, resolution 40ns, wraps every 2748779069440ns
+[    0.000010] Switching to timer-based delay loop
+[    0.254916] bootconsole [early_ttyRS0] enabled
+[    0.259331] Calibrating delay loop (skipped), value calculated using timer frequency.. 50.00 BogoMIPS (lpj=250000)
+[    0.269604] pid_max: default: 32768 minimum: 301
+[    0.274257] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.280761] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.289255] CPU: Testing write buffer coherency: ok
+[    0.294127] Setting up static identity map for 0x644b3b90 - 0x644b3be8
+[    0.313646] _rpc_config(): physical addr q_mem = 0x609f3540, P1: 0x609f3a40
+[    0.320408] _rpc_config(): send_q = 0xcc81a7c0, recv_q = 0xcc81a540
+[    0.326636] _kpool_create(virt = 0xcc880a40, phys = 0x609f3a40) size = 245760
+[    0.333703] kpool:  phys = 0x609f3a40, virt = 0xcc880a40, size = 4096, mask = 0x0fffffffffffffff
+[    0.342427] kpool:  num_avail = 60, min_avail = 60
+[    0.347183] khdr:   phys = 0x60a2fa40, virt = 0xcc8bca40, size = 128, mask = 0xffffffff_0xffffffff_0xffffffff_ffffffff
+[    0.357807] khdr:   num_avail = 256, min_avail = 256
+[    0.362744] RPC_init: irq 100 setup to P0
+[    0.366714] RPC_init: module init successful, timer32 = 0xcc81c014, #conn = 1
+[    0.374579] kstatus: status config (bye) from DT: phy addr = 0x60772a98, vaddr = 0xcc81ea98
+[    0.382716] kstatus: initialized
+[    0.386328] devtmpfs: initialized
+[    0.391185] VFP support v0.3: implementor 41 architecture 2 part 30 variant 7 rev 5
+[    0.398826] RPC_core_init: successful
+[    0.402696] NET: Registered protocol family 16
+[    0.407374] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.414076] hp_netlink: initialized
+[    0.418379] cpuidle: using governor ladder
+[    0.422279] cpuidle: using governor menu
+[    0.426541] *** HP USB_PHY : [hp_usb_host_dt_parser] Configuring the port. port_num = 1 name = Wi-Fi suspend_flag = 0 phy_suspend_flag = 0 
+[    0.426541] 
+[    0.440311] *** HP USB_PHY : [hp_usb_host_dt_parser] Configuring the port. port_num = 2 name = USB suspend_flag = 0 phy_suspend_flag = 0 
+[    0.440311] 
+[    0.454155] unlocked 
+[    0.456278] Resetting HW Block 123 
+[    0.459734]  Validate IPC for Block Reset: Up
+[    0.464268] Handling block reset on peer core
+[    0.469186] 
+ hp_gpio_dt_parser irq_alloc_descs (192)
+[    0.473990] GPIO: found device tree GPIO config table
+[    0.479307] GPIO: Int ownership Start 3 End 6 
+[    0.483616] 
+ Index of the GPIO 2 as interrupt (0)
+[    0.488220]  Configure independently Index of the GPIO as interrupt IrqLevel(1) irq_sel(83) irq_num(5)
+[    0.497646] Setting up IRQ for GPIO (2) gpio_to_irq(206) irq_sel(83)
+[    0.504005] 
+ Index of the GPIO 3 as interrupt (1)
+[    0.508616]  Configure independently Index of the GPIO as interrupt IrqLevel(3) irq_sel(82) irq_num(4)
+[    0.518027] Setting up IRQ for GPIO (3) gpio_to_irq(205) irq_sel(82)
+[    0.524362] 
+ Index of the GPIO 1 as interrupt (4)
+[    0.529002]  Configure independently Index of the GPIO as interrupt IrqLevel(1) irq_sel(81) irq_num(3)
+[    0.538423] Setting up IRQ for GPIO (1) gpio_to_irq(204) irq_sel(81)
+[    0.544741] FDT found, populating platform devices...
+[    0.550401] done.
+[    0.552314] GPIO: found device tree GPIO Driver Name Node
+[    0.557669] 
+ GPIO String formed (hp_gpio_driver_linux_heartbeat_led)
+[    0.564016] Releasing HW Block reset 121 
+[    0.568122]  Validate IPC for Block Reset: Up
+[    0.572618] Handling block reset on peer core
+[    0.576805] photo hw ---- dev reg init called from setup
+[    0.582069] HP Sd device node is matched and enabled.
+[    0.587075] 
+ Device Tree I2C i2c_instance(2) Bit Rate(375000)
+ Registering i2c platform device without RCI and i2c_instance (2)
+ HP I2C BUS:[2] Devices registered:, LED , Cyttsp5 , Cherry 
+[    0.603989] Entered: init_wlan_plat
+[    0.607621] psku = 0x4fff000
+[    0.610476] This printer is intended to have WiFi.
+[    0.615217] creating dhd_bt_mut
+[    0.618357] Found hp,ulysses_43242 node in device tree.
+[    0.623520] Radio node matched and is enabled.
+[    0.627921] We found the wlan_on_noff gpio.
+[    0.632066] WLAN_ON_NOFF gpio is 15
+[    0.635526] init_wlan_on_noff
+[    0.638462] WLAN_ON_NOFF gpio is 15
+[    0.641916] WLAN_ON_NOFF: matched mcasic hp,gpio type
+[    0.646932] WLAN_ON_NOFF: mcasic_id: 1 read from device tree
+[    0.652577] pdev->name: ulysses.1
+[    0.655850] Wlan node matched.
+[    0.658864] Wlan0 MAC Address: 08:2e:5f:f1:50:a9
+[    0.663430] Wlan1 MAC Address: b8:db:ad:ba:db:ad
+[    0.668009] wlan_plat_probe country-code: 3
+[    0.672379] hw-breakpoint: found 5 (+1 reserved) breakpoint and 4 watchpoint registers.
+[    0.680175] hw-breakpoint: maximum watchpoint size is 8 bytes.
+[    0.698871] bio: create slab <bio-0> at 0
+[    0.703268] vgaarb: loaded
+[    0.706190] SCSI subsystem initialized
+[    0.710604] usbcore: registered new interface driver usbfs
+[    0.715985] usbcore: registered new interface driver hub
+[    0.721296] usbcore: registered new device driver usb
+[    0.726390] Hewlett Packard hp-i2c driver version 1.0
+[    0.731259] 
+ Registering HP I2C driver
+ HP I2C Probe
+ I2C clock02div (109)HP I2C Config Val 0x1
+[    0.740231] Clock val 0x109
+[    0.743017] HP I2C: claim IRQ(90) Name(hp-i2c)
+[    0.747719] Hewlett Packard hp-i2c driver version 1.0
+[    0.752641] pps_core: LinuxPPS API ver. 1 registered
+[    0.757508] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.766641] PTP clock support registered
+[    0.770973] Advanced Linux Sound Architecture Driver Initialized.
+[    0.777726] cfg80211: Calling CRDA to update world regulatory domain
+[    0.784140] Switched to clocksource arch_sys_counter
+[    0.790392] NET: Registered protocol family 2
+[    0.795087] TCP established hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.801862] TCP bind hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.808192] TCP: Hash tables configured (established 2048 bind 2048)
+[    0.814521] TCP: reno registered
+[    0.817661] UDP hash table entries: 256 (order: 0, 4096 bytes)
+[    0.823452] UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+[    0.829785] NET: Registered protocol family 1
+[    0.834208] RPC: Registered named UNIX socket transport module.
+[    0.839928] RPC: Registered udp transport module.
+[    0.844603] RPC: Registered tcp transport module.
+[    0.849259] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.856216]  (null) current power mode: (-881844224) 
+[    0.861096] hp_chipid driver 1.6 probe
+[    0.864840] Chip PF53 Version A.2
+[    0.868349] CPU PMU: probing PMU on CPU 0
+[    0.872168] hw perfevents: enabled with ARMv7 Cortex-A7 PMU driver, 5 counters available
+[    0.880246] 
+ Creating GPIO file in Debugfs
+[    0.884283] GPIO: found device tree GPIO Driver Name Node
+[    0.889790] 
+ GPIO String formed (hp_gpio_driver_nfc_irq)
+[    0.895291] *** [_usb_host_util_check_ovc_auto_recovery_support] INFO! USB Host Port overcurrent auto recovery not supported 
+[    0.895291] 
+[    0.908018] GPIO: found device tree GPIO Driver Name Node
+[    0.913360] 
+ GPIO String formed (hp_gpio_driver_usbh_port_0_pwr)
+[    0.919336] GPIO: found device tree GPIO Driver Name Node
+[    0.924857] 
+ GPIO String formed (hp_gpio_driver_usbh_port_1_pwr)
+[    0.930821] GPIO: found device tree GPIO Driver Name Node
+[    0.936346] 
+ GPIO String formed (hp_gpio_driver_usbh_port_0_ovc)
+[    0.942307] GPIO: Returning GPIO hp_gpio_driver_usbh_port_0_ovc #1 
+[    0.948708] GPIO: found device tree GPIO Driver Name Node
+[    0.954053] 
+ GPIO String formed (hp_gpio_driver_usbh_port_1_ovc)
+[    0.960029] !!! [usb_host_util_init] Couldn't find usbh_port_1_ovc from device tree!
+[    0.967884] _ipc_init(): registering RPC command
+[    0.972467] 0: mtd0  Boot                              00000000:00001023  RDONLY  BLKS      0:     3
+[    0.981538] 1: mtd1  UpdatableLBI                      00001024:00046591  RDONLY  BLKS      4:   181
+[    0.990610] 2: mtd2  RootFS                            00046592:00276479  RDONLY  BLKS    182:  1079
+[    0.999682] 3: mtd3  RWFS                              00276480:00409599  RDWR    BLKS   1080:  1599
+[    1.008754] 4: mtd4  RecoveryRootFS                    00409600:00510975  RDONLY  BLKS   1600:  1995
+[    1.017825] 5: mtd5  RecoveryLBI                       00510976:00523263  RDONLY  BLKS   1996:  2043
+[    1.026899] 6: mtd6  BBT                               00523264:00524287  RDWR    BLKS   2044:  2047
+[    1.035988] fwauth = 0
+[    1.038296] psku = 0x4fff000
+[    1.041147] _upcom_init: debug mode enabled, #conn = 1
+[    1.046408] upcomk: sirius version = 3 reported by host 0
+[    1.051608] _upcom_init: registered upcom successfully
+[    1.056726] _upstream_init: debug mode enabled
+[    1.061122] _upstream_init: registered upstream successfully
+[    1.066735] _rfs_init: debug mode enabled
+[    1.070716] _rfs_init: registered rfs successfully
+[    1.075461] _pshm_init: debug mode enabled: #conns = 1, max conns = 3
+[    1.081855] _pshm_init: registered pshm successfully
+[    1.086795] 
+ Peer Allocator Primary Core Init
+[    1.091097] 
+[    1.091097] _rci_init: registered successfully[    1.096979] UDM init
+[    1.099299] pwrup_mode = 0
+[    1.101950] feature_set = 0
+[    1.104625] _nand_init: debug mode enabled
+[    1.108659] _nand_init: registered nand successfully
+[    1.114449] futex hash table entries: 256 (order: -1, 3072 bytes)
+[    1.127547] fuse init (API version 7.22)
+[    1.131555] msgmni has been set to 353
+[    1.136063] io scheduler noop registered
+[    1.139797] io scheduler deadline registered
+[    1.144039] io scheduler cfq registered (default)
+[    1.148866] HPfb: framebuffer init
+[    1.152297] HPfb: hpfb_probe
+[    1.155010] HPfb: hpfb_set_par
+[    1.158017] HPfb: hpfb default cgd_index 4
+[    1.162084] HPfb: CGD set to INNOLUX_265
+[    1.165991] HPfb: clcd_reg_regs ptr 0xcc924000
+[    1.170375] HPfb: clcd_reg_sram  ptr 0xcc926000
+[    1.174876] HPfb: clcd_reg_strip ptr 0xcc928000
+[    1.179358] HPfb: hpfb_set_var
+[    1.182384] HPfb: Bit per pixel:32
+[    1.185759] HPfb: info->var res=320x240
+[    1.189554] HPfb: set_fb_fix
+[    1.192405] HPfb: DMA addr=0x60001000
+[    1.196040] HPfb: Smem_start addr 0x60001000 Page Aligned to 0x60001000
+[    1.202601] HPfb: fix.smem_len=0x4b000 fix.smem_start=0x60001000
+[    1.208578] HPfb: info->screen_base=0xcc980000
+[    1.212972] HPfb: hpfb_check_var
+[    1.220028] hprs: driver initialized (version 1.1)
+[    1.224721] hprs.0: ttyRS0 at MMIO 0x401be000 (irq = 116, base_baud = 461537) is a hprs[    1.232595] console [ttyRS0] enabled
+[    1.236129] bootconsole [early_ttyRS0] disabled
+[    1.240888] hprs.1: ttyRS1 at MMIO 0x401bf000 (irq = 117, base_baud = 461537) is a hprs
+[    1.249090] bootconsole [early_ttyRS0] disabled
+[    1.254191] brd: module loaded
+[    1.260162] loop: module loaded
+[    1.265582] nand: device found, Manufacturer ID: 0xc2, Chip ID: 0xda
+[    1.271828] nand: Macronix NAND 256MiB 3,3V 8-bit
+[    1.276513] nand: 256MiB, SLC, page size: 2048, OOB size: 64
+[    1.282123] Scanning device for bad blocks
+[    1.292649] Bad eraseblock 96 at 0x000000c00000
+[    1.426335] 7 ofpart partitions found on MTD device NAND 256MiB 3,3V 8-bit
+[    1.433092] Creating 7 MTD partitions on "NAND 256MiB 3,3V 8-bit":
+[    1.439239] 0x000000000000-0x000000080000 : "Boot"
+[    1.445009] 0x000000080000-0x0000016c0000 : "UpdatableLBI"
+[    1.451108] 0x0000016c0000-0x000008700000 : "RootFS"
+[    1.456766] 0x000008700000-0x00000c800000 : "RWFS"
+[    1.462218] 0x00000c800000-0x00000f980000 : "RecoveryRootFS"
+[    1.468530] 0x00000f980000-0x00000ff80000 : "RecoveryLBI"
+[    1.474546] 0x00000ff80000-0x000010000000 : "BBT"
+[    1.480257] libphy: umac_mdio_bus: probed
+[    1.484702] umac: Gigabit Ethernet Driver version 1.47 IP rev 3.2
+[    1.564153] Marvell T28LP 4015b080.mdio:01: attached PHY driver [Marvell T28LP-0.4] (bus mode=12:phy_addr=1)
+[    1.574991] usbcore: registered new interface driver r8152
+[    1.580480] usbcore: registered new interface driver asix
+[    1.585890] usbcore: registered new interface driver ax88179_178a
+[    1.591960] usbcore: registered new interface driver cdc_ether
+[    1.597787] usbcore: registered new interface driver net1080
+[    1.603431] usbcore: registered new interface driver cdc_subset
+[    1.609336] usbcore: registered new interface driver zaurus
+[    1.615014] usbcore: registered new interface driver cdc_ncm
+[    1.620653] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    1.627122] Releasing HW Block reset 123 
+[    1.631043]  Validate IPC for Block Reset: Up
+[    1.635561] Handling block reset on peer core
+[    1.644847] ehci-hp ehci-hp.0: HP On-Chip EHCI Host Controller
+[    1.650595] ehci-hp ehci-hp.0: new USB bus registered, assigned bus number 1
+[    1.657665] ehci-hp ehci-hp.0: irq 34, io mem 0x40161000
+[    1.674155] ehci-hp ehci-hp.0: USB 2.0 started, EHCI 1.00
+[    1.680177] hub 1-0:1.0: USB hub found
+[    1.683847] hub 1-0:1.0: 2 ports detected
+[    1.688103] ehci-pci: EHCI PCI platform driver
+[    1.692559] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    1.698691] ohci-hp ohci-hp.0: HP On-Chip OHCI Host Controller
+[    1.704436] ohci-hp ohci-hp.0: new USB bus registered, assigned bus number 2
+[    1.711428] ohci-hp ohci-hp.0: irq 36, io mem 0x40162000
+[    1.782743] hub 2-0:1.0: USB hub found
+[    1.786461] hub 2-0:1.0: 2 ports detected
+[    1.790545] usb host int enable status 0x10003
+[    1.794892] USB: ENABLING USB HOST PORTS 
+[    1.798856] USB: Error while enabling the USB host port0 
+[    1.804218] USB: Error while enabling the USB host port1 
+[    1.809678] ohci-pci: OHCI PCI platform driver
+[    1.814273] usbcore: registered new interface driver usblp
+[    1.819779] usbcore: registered new interface driver usb-storage
+[    1.825782] usbcore: registered new interface driver ums-datafab
+[    1.831773] usbcore: registered new interface driver ums-freecom
+[    1.837783] usbcore: registered new interface driver ums-jumpshot
+[    1.843844] usbcore: registered new interface driver ums-sddr09
+[    1.849752] usbcore: registered new interface driver ums-sddr55
+[    1.855570] USB: usb_ehset_test INITIALIZED 
+[    1.859889] usbcore: registered new interface driver usb_ehset_test
+[    1.866110] *** HP USBD: [hp_udc_init] HP On-Chip USB2.0 Device Controller Driver (Sep 2016)
+[    1.874481] Releasing HW Block reset 120 
+[    1.878398]  Validate IPC for Block Reset: Up
+[    1.882896] Handling block reset on peer core
+[    1.887179] USB DEVICE BLOCK RESET DONE 
+[    1.891462] *** HP USBD: [hp_udc_probe] Waiting for gadget driver...
+[    1.897834] serial number from device-tree -> TH6AQ2W072
+[    1.904324] hp_composite gadget: HP Composite USB Gadget Driver (2016/09/01)
+[    1.911256] hp_composite gadget: hp_composite ready
+[    1.916109] GPIO: found device tree GPIO Driver Name Node
+[    1.921450] 
+ GPIO String formed (hp_gpio_driver_usb_connect)
+[    1.927068] GPIO: Returning GPIO hp_gpio_driver_usb_connect #2 
+[    1.933125] *** HP USBD: [hp_udc_start] Gadget hp_composite is started with udc driver hp-udc
+[    1.941586] *** HP USBD: [_udc_pullup] Gadget driver has disabled pull-up so can't do much
+[    1.950175] mousedev: PS/2 mouse device common for all mice
+[    1.955757] i2c-core: driver [cyttsp3-i2c] using legacy suspend method
+[    1.962169] i2c-core: driver [cyttsp3-i2c] using legacy resume method
+[    1.968595] hp_ts_rpc_dt_read: Could not find hp,input_device_config_0
+[    1.975057] hp_ts_rpc_dt_read: Could not find hp,input_device_config_0
+[    1.981530] hp_ts_rpc_dt_read: Could not find hp,input_device_config_0
+[    1.988018] hp_ts_rpc_dt_read: Could not find hp,input_device_config_0
+[    1.994494] HP_TS: init
+[    1.997121] input: hp_ts_rpc as /devices/virtual/input/input0
+[    2.003018] cyttsp5_i2c_init bus no:2
+[    2.006604] cyttsp5_i2c_detect
+[    2.009606] GPIO: found device tree GPIO Driver Name Node
+[    2.014966] 
+ GPIO String formed (hp_gpio_driver_cp_reset)
+[    2.020318] GPIO: Returning GPIO hp_gpio_driver_cp_reset #49 
+[    2.027113] cyttsp5_detect_read: R reg=0 len=32 buf[0]=2 result=2
+[    2.033095] cyttsp5_i2c_detect: 0:0x2 2:0x3b 0x1A:0xd
+[    2.038246] cyttsp5_i2c_init: client gets registered!
+[    2.043208] cyttsp5_i2c_probe
+[    2.046146] cyttsp5_i2c 2-0024: cyttsp5_probe: Delay_work init
+[    2.051917] cyttsp5_i2c 2-0024: cyttsp5_probe:start wait for probe timer
+[    2.058573] cyttsp5_i2c_probe: rc:0
+[    2.062111] cyttsp5_i2c_init: Cypress TTSP I2C Driver (Built TTDA.03.05.784410) rc=0
+[    2.069744] cyttsp5_loader_init: found cyttsp5 in device tree
+[    2.075438] cyttsp5_loader_init: Cypress TTSP FW Loader Driver (Built TTDA.03.05.784410) rc=0
+[    2.083901] cyttsp5_device_access_init: found cyttsp5 in device tree
+[    2.090211] cyttsp5_device_access_init: Cypress TTSP Device Access Driver (Built TTDA.03.05.784410) rc=0
+[    2.099633] hp_cherry_device_init: Warning: no cherry client
+[    2.105353] hp_btn_rpc_dt_read: Could not find hp,input_device_config_0
+[    2.111859] hp_btn_rpc_dt_read: Could not find hp,input_device_config_0
+[    2.118443] hp_btn_rpc_dt_read: Could not find hp,input_device_config_0
+[    2.124997] hp_btn_rpc_dt_read: Could not find hp,input_device_config_0
+[    2.131553] HP_BTN_RPC: not defined in dev-tree exiting.
+[    2.137422] RTC read_time: 1669797865  (11/30/2022  08:44:25), status: 0
+[    2.144115] RTC read_alarm: 0, status: 0
+[    2.148060] RTC read_time: 1669797865  (11/30/2022  08:44:25), status: 0
+[    2.154997] rtc-hp rtc-hp.0: rtc core: registered rtc-hp as rtc0
+[    2.160901] i2c /dev entries driver
+[    2.164595] CPUFreq Dynamic Max Freq: (1200)
+[    2.168591] 
+[    2.168591]  CPUFreq Dynamic Device Tree Status: (1) vcore_trim: (0) frequency transition (0)
+ HP CPU Dynamic Freq Scaling init
+[    2.181548] 
+[    2.181548]  Frequency_table_cpuinfo 1.2GHz Result: (0)[    2.188373] hp_cpufreq driver 1.7 Init Status: 0
+[    2.193022] SD Driver -- PROBE IS CALLED
+[    2.196866] Releasing HW Block reset 130 
+[    2.200817]  Validate IPC for Block Reset: Up
+[    2.205323] Handling block reset on peer core
+[    2.209635] SD Driver -- INITIALIZED
+[    2.244150] SD_Driver Probe  End
+[    2.251675] HP_LED_RPC: not defined in dev-tree exiting.
+[    2.257083] hp_led_i2c DEV (PROBE)
+[    2.260386] 	address:0x8
+[    2.262891] 	flags:0x0
+[    2.265237] 	name:hp_led_i2c
+[    2.268075] 	irq:0
+[    2.270074] GPIO: found device tree GPIO Driver Name Node
+[    2.275431] 
+ GPIO String formed (hp_gpio_driver_cp_reset)
+[    2.280781] GPIO: Returning GPIO hp_gpio_driver_cp_reset #49 
+[    2.287868] 
+[    2.287868] hp_led_i2c
+[    2.291602] 	Product ID:0x4d
+[    2.294463] 	FW version:0x5
+[    2.297219] 	Micro version:0x51
+[    2.300329] 	Micro type:0x5
+[    2.303094] 	CGD type:0x7
+[    2.305694] 	Keys size:0
+[    2.308191] 	Leds size:5
+[    2.310696] 	Test[0]:0x0
+[    2.313202] 	Vendor[0]:0x2
+[    2.319061] hp_led_i2c registering led hpled0
+[    2.324587] hp_led_i2c registering led hpled1
+[    2.328941] hp_led_i2c registering led hpled2
+[    2.333285] hp_led_i2c registering led hpled3
+[    2.337635] hp_led_i2c registering led hpled4
+[    2.341981] hp_led_i2c registering backlight hpbacklight0
+[    2.347588] ledtrig-cpu: registered to indicate activity on CPUs
+[    2.353653] hidraw: raw HID events driver (C) Jiri Kosina
+[    2.359263] usbcore: registered new interface driver usbhid
+[    2.364743] usbhid: USB HID core driver
+[    2.373733] HP_audio: audio driver successfully initialised 
+[    2.379550] TCP: cubic registered
+[    2.382793] NET: Registered protocol family 10
+[    2.387775] NET: Registered protocol family 17
+[    2.393747] Key type encrypted registered
+[    2.398069] UBI: attaching mtd2 to ubi0
+[    2.775673] UBI: scanning is finished
+[    2.785546] UBI: attached mtd2 (name "RootFS", size 112 MiB) to ubi0
+[    2.791794] UBI: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+[    2.798553] UBI: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+[    2.805189] UBI: VID header offset: 2048 (aligned 2048), data offset: 4096
+[    2.812008] UBI: good PEBs: 898, bad PEBs: 0, corrupted PEBs: 0
+[    2.817890] UBI: user volume: 1, internal volumes: 1, max. volumes count: 128
+[    2.824976] UBI: max/mean erase counter: 1/0, WL threshold: 4096, image sequence number: 489398446
+[    2.833868] UBI: available PEBs: 0, total reserved PEBs: 898, PEBs reserved for bad PEB handling: 40
+[    2.842950] _ubi_notify(): device 0.0 added (PID 539)
+[    2.847987] UBI: background thread "ubi_bgt0d" started, PID 539
+[    2.853857] RTC read_time: 1669797866  (11/30/2022  08:44:26), status: 0
+[    2.860522] rtc-hp rtc-hp.0: setting system clock to 2022-11-30 08:44:26 UTC (1669797866)
+[    2.868632] ALSA device list:
+[    2.871537]   #0: 
+[    2.900920] UBIFS: recovery needed
+[    2.951318] UBIFS: recovery deferred
+[    2.954869] UBIFS: mounted UBI device 0, volume 0, name "rootfs", R/O mode
+[    2.961631] UBIFS: LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+[    2.970712] UBIFS: FS size: 107040768 bytes (102 MiB, 843 LEBs), journal size 9023488 bytes (8 MiB, 72 LEBs)
+[    2.980467] UBIFS: reserved for root: 0 bytes (0 KiB)
+[    2.985484] UBIFS: media format: w4/r0 (latest is w4/r0), UUID CE2C595B-829F-4AA6-BBDE-1F1DBC8821CA, small LPT model
+[    2.996681] VFS: Mounted root (ubifs filesystem) readonly on device 0:14.
+[    3.004692] devtmpfs: mounted
+[    3.007776] Freeing unused kernel memory: 176K (c0662000 - c068e000)
+[    3.054173] 
+ Entered GPIO Request for pin (49)
+[    3.058515] 
+[    3.058515]  GPIO direction passed :- [    3.063691]  OUT
+[    3.065515] 
+ Found the gpio 
+[    3.068359] 
+[    3.068359]  Entered GPIO Request for pin (3)
+ GPIO direction passed :- 
+[    3.076563]  IN
+[    3.078464] 
+ Found the gpio 
+[    3.081327] cyttsp5_i2c 2-0024: cyttsp5_init: INIT CYTTSP RST gpio=49 and IRQ gpio=3 r=0
+[    3.089535] cyttsp5_i2c 2-0024: irq=82 gpio=3 cd p cb6ab000
+[    3.101435] cyttsp5_i2c 2-0024: cyttsp5_startup_: Bootloader mode
+[    3.135306] cyttsp5_i2c 2-0024: cyttsp5_startup_: Operational mode
+[    3.141380] cyttsp5_i2c 2-0024: cyttsp5_startup_: Reading report descriptor
+[    3.157126] cyttsp5_i2c 2-0024: cyttsp5 Protocol Version: 1.3
+[    3.169818] input: cyttsp5_mt as /devices/platform/hp-i2c.2/i2c-2/2-0024/input/input1
+[    3.178156] input: cyttsp5_btn as /devices/platform/hp-i2c.2/i2c-2/2-0024/input/input2
+[    3.186286] cyttsp5_i2c 2-0024: cyttsp5_loader_probe: Successful probe 2-0024
+[    3.193303] cyttsp5_probe_work: Probe_complete returns rc=0
+vm.panic_on_oom = 1
+kernel.core_pattern = /tmp/core.%p
+net.ipv6.confddresses = 6
+net.ipv6.conf.default.max_addresses = 6
+net.ipv6.conf.eth0.max_addresses = 6
+sysctl: error: 'net.ipv6.conf.wlan0.max_addresses' is an unknown key
+Init script now calling busybox /sbin/init
+
+Remounting / as read-only
+
+[    3.332453] UBIFS assert failed in ubifs_remount_fs at 1866 (pid 565)
+[    3.338825] CPU: 0 PID: 565 Comm: busybox Not tainted 3.14.32 #001.1815A
+[    3.345470] [<c0014bf4>] (unwind_backtrace) from [<c001172c>] (show_stack+0x10/0x14)
+[    3.353135] [<c001172c>] (show_stack) from [<c01b83b8>] (ubifs_remount_fs+0x488/0x6d8)
+[    3.361003] [<c01b83b8>] (ubifs_remount_fs) from [<c00b5240>] (do_remount_sb+0x98/0x15c)
+[    3.369042] [<c00b5240>] (do_remount_sb) from [<c00cda54>] (do_mount+0x5a4/0x968)
+[    3.376465] [<c00cda54>] (do_mount) from [<c00ce148>] (SyS_mount+0x84/0xb8)
+[    3.383370] [<c00ce148>] (SyS_mount) from [<c000e180>] (ret_fast_syscall+0x0/0x38)
+Remounting /dev as noexec
+Starting /etc/init.d/S00rwfs ...
+No eMMC device/partition in the product
+[    3.647170] UBI: attaching mtd3 to ubi3
+[    3.722245] random: nonblocking pool is initialized
+[    3.870150] UBI: scanning is finished
+[    3.879715] UBI: attached mtd3 (name "RWFS", size 65 MiB) to ubi3
+[    3.885730] UBI: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes

@@ -1,112 +1,111 @@
 from guizero import App, PushButton, Text, TextBox
-from datetime import datetime
-import os, sys
+import sys
 import globalparams as gp
 import globalfunctions as gf
+
+#-----------------------IMPORT FROM USER DIRECTORY-----------------------#
+
+from user import params as user_p
+from user import functions as user_f
 
 #-----------------------GLOBAL VARIABLES-----------------------#
 
 cmd_no = 1
+stored_count = -1
+linux_stored_count = -1
+
+#-----------------------GLOBAL WIDGETS-----------------------#
 
 app = App(title='prAUTO-testing', layout="grid")
 
-input_cmd = TextBox(app, width=50, scrollbar=True, grid=[0,1], align="left")
+user_input = TextBox(app, width=50, scrollbar=True, grid=[0,1], align="left")
 
-log = TextBox(app, grid=[0,4,2,5], width=100, height=100, multiline=True, scrollbar=True)
+cmd_log = TextBox(app, grid=[0,4,2,5], width=75, height=70, multiline=True, scrollbar=True)
 
-serial_output = TextBox(app, grid=[10,5], width=200, height=100, multiline=True, scrollbar=True)
+serial_log = TextBox(app, grid=[2,5], width=100, height=70, multiline=True, scrollbar=True)
 
-# serial_output.tk.vbar - Scrollbar Tkinter Property
+linux_log = TextBox(app, grid=[5,5], width=100, height=70, multiline=True, scrollbar=True)
 
-stored_count = 0
-
-#-----------------------STRING PARSERS-----------------------#
+# serial_log.tk.vbar >> SCROLLBAR PROPERTY (TKINTER)
 
 # DETECT ENTER KEYSTROKE FOR EASE OF INPUT
 def submit_on_enter(event_data):
     if (event_data.key=='\r'):
         poll_and_transmit()
 
-# PARSE INPUT COMMAND WITH DATETIME
-def parse_input_cmd(string, cmd_no):
-    now = datetime.now()
-    current_time = now.strftime("%H:%M:%S")
-    parsed_input = "Command " + str(cmd_no) + ": "  + str(current_time) + " - " + string.rstrip().lstrip() + "\n"
-    return parsed_input
-
-def remove_whitespace(string):
-    return "".join(string.rstrip().lstrip())
-
 #-----------------------EVENT HANDLERS-----------------------#
 
-def update_label():
+def update_serial_log():
     global stored_count
-    count = -1
     
-    with open(gp.WRITE_FILE_NAME, 'rb') as fp:
-        for count, line in enumerate(fp):
-            pass
+    count = gf.get_line_count(gp.SERIAL_LOG_FILE_PATH)
     
+    # IF NUMBER OF LINES IN FILE REMAINS THE SAME, DO NOT UPDATE SERIAL LOGGER
     if count == stored_count:
         return
     else:
         stored_count = count
-    
-    with open(gp.WRITE_FILE_NAME, 'rb') as f:
-        try:
-            f.seek(-2, os.SEEK_END)
-            while f.read(1) != b'\n':
-                f.seek(-2, os.SEEK_CUR)
-                
-        except OSError:
-            f.seek(0)
+        last_line = gf.get_lastline(gp.SERIAL_LOG_FILE_PATH)
+        serial_log.value += last_line
+        serial_log.tk.yview_moveto('1')
 
-        last_line = f.readline().decode()
-        serial_output.value += last_line
-        serial_output.tk.yview_moveto('1')
+def update_linux_log():
+    global linux_stored_count
+    
+    count = gf.get_line_count(gp.LINUX_LOG_FILE_PATH)
+    
+    # IF NUMBER OF LINES IN FILE REMAINS THE SAME, DO NOT UPDATE SERIAL LOGGER
+    if count == linux_stored_count:
+        return
+    else:
+        linux_stored_count = count
+        last_line = gf.get_lastline(gp.LINUX_LOG_FILE_PATH)
+        linux_log.value += last_line
+        linux_log.tk.yview_moveto('1')
+        
 
 def poll_and_transmit():
-    global app
-    global cmd_no
-    global input_cmd
-    global log
-    global serial_output
+    global app, cmd_no, user_input, cmd_log, serial_log
     
-    parsed_whitespace_cmd = remove_whitespace(input_cmd.value)
+    parsed_whitespace_cmd = gf.remove_whitespace(user_input.value)
     
     if parsed_whitespace_cmd == "":
         return
     
     if parsed_whitespace_cmd == "EXIT":
+        gf.destroy_process_children()
         app.destroy()
         sys.exit(0)
     
     else:
-        print ("ECHO: " + parsed_whitespace_cmd) 
+        gf.simple_logger_append(user_p.FILE_NAMES["command_log"], parsed_whitespace_cmd)
         gp.SER.write(gf.string_to_byte(parsed_whitespace_cmd))
         
-    parsed_input_cmd = parse_input_cmd(input_cmd.value, cmd_no)
-    log.value += parsed_input_cmd
-    input_cmd.value = ''
+    parsed_input_cmd = gf.parse_input_cmd(user_input.value, cmd_no)
+    cmd_log.value += parsed_input_cmd
+    user_input.value = ''
     cmd_no = cmd_no + 1
 
 #-----------------------GUI INIT-----------------------#
 
 def gui_f():
-    global app
-    global cmd_no
-    global input_cmd
-    global log
-    global serial_output
+    global app, cmd_no, user_input, cmd_log, serial_log
     
-    input_cmd_label = Text(app, text="Insert command here:", grid=[0,0], align="left")
-    log_label = Text(app, text="Commands sent here:", grid=[0,3], align="left")
-    serial_output_label = Text(app, text="Serial output here:", grid=[10,0], align="left")
-
-    send_command = PushButton(app, text="SEND COMMAND", command=poll_and_transmit, grid=[0,2], align="left")
-    input_cmd.when_key_pressed = submit_on_enter
+    # WIDGETS
+    Text(app, text="Insert command here:", grid=[0,0], align="left") #USER INPUT LABEL
+    Text(app, text="Command Log:", grid=[0,3], align="left") #COMMAND LOG LABEL
+    Text(app, text="Serial Log:", grid=[2,3], align="left") #SERIAL LOG LABEL
+    Text(app, text="Linux Log:", grid=[5,3], align="left") #LINUX LOG LABEL
     
-    app.repeat(20, update_label)
+    PushButton(app, text="SEND COMMAND", command=poll_and_transmit, grid=[0,2], align="left") #SUBMIT BUTTON
+    
+    # GUI LOGIC
+    user_input.when_key_pressed = submit_on_enter
+    
+    # PRINT SERIAL OUTPUTS
+    app.repeat(4, update_serial_log)
+    app.repeat(5, update_linux_log)
+    
     app.display()
 
 
