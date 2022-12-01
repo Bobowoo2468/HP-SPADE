@@ -1,4 +1,3 @@
-import globalparams as gp
 import os
 import multiprocessing as mp
 from datetime import datetime
@@ -9,9 +8,9 @@ from datetime import datetime
 #-----------------------STRING PARSERS-----------------------#
 
 # PARSE INPUT COMMAND WITH DATETIME
-def parse_input_cmd(string, cmd_no):
+def parse_input_cmd(string, cmd_no, prepend):
     current_time = get_current_time()
-    parsed_input = "Command " + str(cmd_no) + ": "  + str(current_time) + " - " + string.rstrip().lstrip() + "\n"
+    parsed_input = "{0}: Command {1}: {2} - {3}\n".format(prepend, cmd_no, current_time, string.rstrip().lstrip())
     return parsed_input
 
 def remove_whitespace(string):
@@ -23,11 +22,15 @@ def get_current_time():
     now = datetime.now()
     return now.strftime("%H:%M:%S")
 
+def append_time(write_str):
+    return "{0}: {1}\n".format(get_current_time(), write_str)
+
 # PACKAGE COMMAND TO BYTE_ENCODING (FOR SERIAL)
 def string_to_byte(cmd_string):
     return str.encode(cmd_string + "\r")
 
 def write_to_file(file_ref, write_str):
+    time_appended_str = append_time(write_str)
     file_ref.write(write_str)
     file_ref.flush()
     os.fsync(file_ref.fileno())    

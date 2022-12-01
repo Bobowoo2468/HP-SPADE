@@ -10,6 +10,5 @@ FILE_NAMES = {
 KEYWORD_DICTIONARY = {
     "Power": 'ping_wireless_scan',
     "signalStrength": 'ping_wireless_config',
-    "noise": 'ping_wireless_config',
-    "mute:": 'restart'
+    "noise": 'ping_wireless_config'
 }
