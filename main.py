@@ -4,12 +4,15 @@ import multiprocessing as mp
 import globalparams as gp
 import globalfunctions as gf
 import gui
+import random
 
 #-----------------------IMPORT FROM USER DIRECTORY-----------------------#
-
 sys.path.insert(0, gp.USER_DIRECTORY)
 import params as user_p
 import functions as user_f
+
+
+#-----------------------PROCESS 1: LINUX PROCESS-----------------------#
 
 def linux_f(q):
         
@@ -28,13 +31,10 @@ def linux_f(q):
                     print("LINUX SERIAL ERROR: " + str(e))
                     pass
 
+#-----------------------PROCESS 2: RTOS PROCESS-----------------------#
+
 def main_f(q):
     
-    #-----------ARTIFICIAL SERIAL WRITE-------------#
-    
-#     command = 'udws XXX'
-#     gp.RTOS.write(gf.string_to_byte(command))
-
     #-----------CONTINUOUS LOOP TO DETECT KEYWORD MATCH-------------#
     
     with open(gp.RTOS_LOG_FILE_PATH, "a") as serial_dump:
@@ -44,12 +44,14 @@ def main_f(q):
             while gp.RTOS.inWaiting(): # IF DATA EXISTS IN BUFFER
                 try:
                     received_line = gp.RTOS.readline()
-                    decoded = received_line.decode('ascii') # decode data to detect carriage return (/r) and newline (/n): see python lexical analysis
+                    decoded = received_line.decode('ascii') # decode data to detect carriage return (/r) and newline (/n): PYTHON LEXICAL ANALYSIS
                     decoded_str = str(decoded)
-                    
+                    if (random.random() > 0.9985):
+                        received_line_test = str(received_line)+"asserted"
+                    else:
+                        received_line_test = str(received_line)
                     for key in user_p.KEYWORD_DICTIONARY.keys():
-                        
-                        if key in str(received_line): # KEY DETECTION
+                        if key in str(received_line_test): # KEY DETECTION
                             params_dict = {"key": key, "exec": str(user_p.KEYWORD_DICTIONARY[key]), "dataline": decoded_str}
                             q.put(params_dict)
                     
@@ -58,6 +60,9 @@ def main_f(q):
                     print("RTOS SERIAL ERROR: " + str(e))
                     pass
 
+
+#-----------------------PROCESS 3: TRANSMIT PROCESS-----------------------#
+                
 def sub_f(q):
     
     while True:
@@ -70,7 +75,7 @@ def sub_f(q):
               
 if __name__ == '__main__':
     
-    #-----------MULTIPROCESSING VARIABLES----------------#
+    #-----------MULTIPROCESSING QUEUE----------------#
     
     keyword_queue = mp.Queue()
     
@@ -90,7 +95,7 @@ if __name__ == '__main__':
     linuxp = mp.Process(target=linux_f, args=(keyword_queue,))
     linuxp.start()
     
-    gui.gui_f()
+    gui.gui_f(keyword_queue)
     
     try:
         p.join()

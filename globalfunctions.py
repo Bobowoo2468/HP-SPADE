@@ -2,8 +2,6 @@ import os
 import multiprocessing as mp
 from datetime import datetime
 
-# from user import params as user_p
-# from user import functions as user_f
 
 #-----------------------STRING PARSERS-----------------------#
 
@@ -22,19 +20,26 @@ def get_current_time():
     now = datetime.now()
     return now.strftime("%H:%M:%S")
 
+
 def append_time(write_str):
     return "{0}: {1}\n".format(get_current_time(), write_str)
 
+
+def append_time_wo_newline(write_str):
+     return "{0}: {1}".format(get_current_time(), write_str)
+    
+    
 # PACKAGE COMMAND TO BYTE_ENCODING (FOR SERIAL)
 def string_to_byte(cmd_string):
     return str.encode(cmd_string + "\r")
 
+
 def write_to_file(file_ref, write_str):
-    time_appended_str = append_time(write_str)
-    file_ref.write(write_str)
+    file_ref.write(append_time_wo_newline(write_str))
     file_ref.flush()
     os.fsync(file_ref.fileno())    
     return
+
 
 def destroy_process_children():
     active = mp.active_children()
@@ -42,27 +47,29 @@ def destroy_process_children():
         child.terminate()
     return
 
-# RETURN LAST LINE FOUND IN LOG FILE - TO BE PRINTED IN GUI
-def get_lastline(file_path):
-    with open(file_path, 'rb') as f:
-        try:
-            f.seek(-2, os.SEEK_END)
-            while f.read(1) != b'\n':
-                f.seek(-2, os.SEEK_CUR)
-                
-        except OSError:
-            f.seek(0)
-
-        # UPDATE GUI LOGGER WITH LAST LINE IN FILE
-        last_line = f.readline().decode()
-        return last_line
-
 def get_line_count(file_path):
     count = 0
     with open(file_path, 'rb') as fp:
         for count, line in enumerate(fp):
             pass
     return count;
+
+def get_last_Nlines(file_path, N):
+    pos = N + 1
+    lines = []
+    with open(file_path) as f:
+        while len(lines) <= N:
+            try:
+                f.seek(-pos, os.SEEK_END)
+            except IOError:
+                f.seek(0)
+                break
+            finally:
+                lines = list(f)
+            pos *= 2
+    return ''.join(lines[-N:])
+    
+    
 
 #-----------------------RESULT HANDLER FUNCTIONS-----------------------#
 

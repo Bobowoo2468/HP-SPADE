@@ -32,9 +32,9 @@ linux_log = TextBox(app, grid=[5,5], width=100, height=70, multiline=True, scrol
 # rtos_log.tk.vbar >> SCROLLBAR PROPERTY (TKINTER)
 
 # DETECT ENTER KEYSTROKE FOR EASE OF INPUT
-def submit_on_enter(event_data):
-    if (event_data.key=='\r'):
-        poll_and_transmit()
+def submit_on_enter(keypress_data, q):
+    if (keypress_data.char=='\r'):
+        poll_and_transmit(q)
 
 #-----------------------EVENT HANDLERS-----------------------#
         
@@ -59,10 +59,11 @@ def update_rtos_log():
     if count == stored_count:
         return
     else:
-        stored_count = count
-        last_line = gf.get_lastline(gp.RTOS_LOG_FILE_PATH)
-        rtos_log.value += gf.append_time(last_line)
+        buffered_log = gf.get_last_Nlines(gp.RTOS_LOG_FILE_PATH, count-stored_count)
+        rtos_log.value += buffered_log
         rtos_log.tk.yview_moveto('1')
+        stored_count = count
+
 
 def update_linux_log():
     global linux_stored_count
@@ -73,10 +74,11 @@ def update_linux_log():
     if count == linux_stored_count:
         return
     else:
-        linux_stored_count = count
-        last_line = gf.get_lastline(gp.LINUX_LOG_FILE_PATH)
-        linux_log.value += gf.append_time(last_line)
+        buffered_log = gf.get_last_Nlines(gp.LINUX_LOG_FILE_PATH, count-linux_stored_count)
+        linux_log.value += buffered_log
         linux_log.tk.yview_moveto('1')
+        linux_stored_count = count
+
 
 def update_command_log(cmd, input_mode, cmd_no, user_input_value):
     global cmd_log
@@ -93,7 +95,7 @@ def update_command_log(cmd, input_mode, cmd_no, user_input_value):
         
     #-----------------------TRANSMIT RTOS/KERNEL COMMAND-----------------------#
         
-def poll_and_transmit():
+def poll_and_transmit(q):
     global app, cmd_no, user_input, rtos_log, input_mode
     
     user_input_value = user_input.value
@@ -107,15 +109,15 @@ def poll_and_transmit():
         sys.exit(0)
     
     if input_mode == gp.RTOS_MODE: 
-        gp.RTOS.write(gf.string_to_byte(parsed_whitespace_cmd))
+        params_dict = {"key": "RTOS", "exec": "user_input", "dataline": parsed_whitespace_cmd}
     elif input_mode == gp.LINUX_MODE:
-        gp.LINUX.write(gf.string_to_byte(parsed_whitespace_cmd))       
-    
+        params_dict = {"key": "LINUX", "exec": "user_input", "dataline": parsed_whitespace_cmd}
+    q.put(params_dict)
     user_input.value, cmd_no = update_command_log(parsed_whitespace_cmd, input_mode, cmd_no, user_input_value)
     
 #-----------------------GUI INIT-----------------------#
 
-def gui_f():
+def gui_f(q):
     global app, cmd_no, user_input, cmd_log, rtos_log
     
     # WIDGETS
@@ -124,16 +126,15 @@ def gui_f():
     Text(app, text="RTOS Log:", grid=[2,3], align="left") #RTOS LOG LABEL
     Text(app, text="Linux Log:", grid=[5,3], align="left") #LINUX LOG LABEL
     
-    PushButton(app, text="SEND COMMAND", command=poll_and_transmit, grid=[0,2], align="left") #SUBMIT BUTTON
-    
-    # GUI LOGIC
-    user_input.when_key_pressed = submit_on_enter
-    
-    toggle_input_button.when_clicked = toggle_rtos_linux_mode
-    
     # PRINT SERIAL OUTPUTS
     app.repeat(10, update_rtos_log)
     app.repeat(10, update_linux_log)
+    
+    PushButton(app, text="SEND COMMAND", command=poll_and_transmit, args=[q], grid=[0,2], align="left") #SUBMIT BUTTON
+    
+    # GUI LOGIC
+    user_input.tk.bind('<Key>', lambda event, arg=q: submit_on_enter(event, arg))
+    toggle_input_button.when_clicked = toggle_rtos_linux_mode
     
     app.display()
 
