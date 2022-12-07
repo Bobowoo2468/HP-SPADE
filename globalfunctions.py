@@ -1,6 +1,7 @@
 import os
 import multiprocessing as mp
 from datetime import datetime
+import globalparams as gp
 
 
 #-----------------------STRING PARSERS-----------------------#
@@ -34,12 +35,17 @@ def string_to_byte(cmd_string):
     return str.encode(cmd_string + "\r")
 
 
-def write_to_file(file_ref, write_str):
-    file_ref.write(append_time_wo_newline(write_str))
+def file_write(file_ref, write_str):
+    file_ref.write(write_str)
     file_ref.flush()
     os.fsync(file_ref.fileno())    
     return
 
+def file_log(file_ref, write_str):
+    timed_str = append_time_wo_newline(write_str)
+    file_ref.write(timed_str)
+    file_ref.flush()
+    os.fsync(file_ref.fileno()) 
 
 def destroy_process_children():
     active = mp.active_children()
@@ -73,8 +79,18 @@ def get_last_Nlines(file_path, N):
 
 #-----------------------RESULT HANDLER FUNCTIONS-----------------------#
 
+def timed_logger_append(file_name, res):
+    with open(file_name, "a") as file:
+        file_log(file, res)
+    return
+
 def simple_logger_append(file_name, res):
     with open(file_name, "a") as file:
-        write_to_file(file, res)
+        file_write(file, res)
     return
     
+def console_log(res):
+    timed_res = append_time(res)
+    print(timed_res)
+    simple_logger_append(gp.CONSOLE_LOG_FILE_PATH, timed_res)
+    return

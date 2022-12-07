@@ -5,8 +5,10 @@ import globalparams as gp
 import globalfunctions as gf
 import gui
 import random
+from time import sleep
 
 #-----------------------IMPORT FROM USER DIRECTORY-----------------------#
+
 sys.path.insert(0, gp.USER_DIRECTORY)
 import params as user_p
 import functions as user_f
@@ -23,12 +25,20 @@ def linux_f(q):
             while gp.LINUX.inWaiting(): # IF DATA EXISTS IN BUFFER
                 try:
                     received_line = gp.LINUX.readline()
-                    decoded = received_line.decode('ascii') # decode data to detect carriage return (/r) and newline (/n): see python lexical analysis
+                    decoded = received_line.decode('ascii') # DECODE carriage return (/r) and newline (/n): PYTHON LEXICAL ANALYSIS
                     decoded_str = str(decoded)
                     
-                    gf.write_to_file(serial_dump, decoded_str)
+                    for key in user_p.LINUX_KEYWORD_DICTIONARY.keys():
+                        if key in str(received_line):
+                            params_dict = {"key": key, "exec": str(user_p.LINUX_KEYWORD_DICTIONARY[key]), "dataline": decoded_str}
+                            q.put(params_dict)
+
+                            gf.console_log("LINUX KEY MATCH:" + key) # SHOW KEYWORD MATCH
+                            
+                    gf.file_log(serial_dump, decoded_str)
+                    
                 except Exception as e:
-                    print("LINUX SERIAL ERROR: " + str(e))
+                    gf.console_log("LINUX SERIAL ERROR: " + str(e))
                     pass
 
 #-----------------------PROCESS 2: RTOS PROCESS-----------------------#
@@ -44,20 +54,27 @@ def main_f(q):
             while gp.RTOS.inWaiting(): # IF DATA EXISTS IN BUFFER
                 try:
                     received_line = gp.RTOS.readline()
-                    decoded = received_line.decode('ascii') # decode data to detect carriage return (/r) and newline (/n): PYTHON LEXICAL ANALYSIS
+                    decoded = received_line.decode('ascii') # DECODE carriage return (/r) and newline (/n): PYTHON LEXICAL ANALYSIS
                     decoded_str = str(decoded)
+                    
+                    #-----------RANDOM ADD ASSERT TO ALL LINES OF RTOS OUTPUT-------------#
+                    
                     if (random.random() > 0.9985):
                         received_line_test = str(received_line)+"asserted"
                     else:
                         received_line_test = str(received_line)
+                        
                     for key in user_p.KEYWORD_DICTIONARY.keys():
                         if key in str(received_line_test): # KEY DETECTION
                             params_dict = {"key": key, "exec": str(user_p.KEYWORD_DICTIONARY[key]), "dataline": decoded_str}
                             q.put(params_dict)
+                            
+                            gf.console_log("RTOS KEY MATCH:" + key) # SHOW KEYWORD MATCH
                     
-                    gf.write_to_file(serial_dump, decoded_str)
+                    gf.file_log(serial_dump, decoded_str)
+                    
                 except Exception as e:
-                    print("RTOS SERIAL ERROR: " + str(e))
+                    gf.console_log("RTOS SERIAL ERROR: " + str(e))
                     pass
 
 
@@ -70,7 +87,12 @@ def sub_f(q):
         while q:
             params = q.get()
             key = params["key"]
-            res = getattr(user_f, params["exec"])(key, params["dataline"])
+            func = params["exec"]
+            gf.console_log("CALLING: {0} - KEY MATCHED: {1}".format(func, key))
+            
+            res = getattr(user_f, func)(key, params["dataline"])
+
+            gf.console_log("COMPLETED: {0} - KEY MATCHED: {1}".format(func, key))
             
               
 if __name__ == '__main__':
@@ -87,18 +109,19 @@ if __name__ == '__main__':
     #-----------START PROCESSES----------------#
     
     p = mp.Process(target=main_f, args=(keyword_queue,))
-    p.start()
-    
-    subp = mp.Process(target=sub_f, args=(keyword_queue,))
-    subp.start()
-    
     linuxp = mp.Process(target=linux_f, args=(keyword_queue,))
+    subp = mp.Process(target=sub_f, args=(keyword_queue,))
+    
+    p.start()
     linuxp.start()
+    subp.start()
     
     gui.gui_f(keyword_queue)
     
     try:
         p.join()
+        linuxp.join()
+        subp.join()
     except:
         exit()
         
