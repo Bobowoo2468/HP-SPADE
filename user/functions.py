@@ -1,6 +1,5 @@
-import globalfunctions as gf
-import globalparams as gp
 import os
+import globalfunctions as gf, globalparams as gp
 from datetime import datetime
 from time import sleep
 
@@ -29,6 +28,7 @@ def parse_data_from_dataline(dataline):
 #-------------------------------------------------------------------TEST FUNCTIONS--------------------------------------------------------------------#
 
 def empty_test(key, dataline):
+    gf.console_log("EMPTY: " + dataline)
     sleep(5)
     return
 
@@ -59,7 +59,6 @@ def ping_wireless_scan(key, dataline):
 
 def restart(key, dataline):
     if user_p.assert_flag == 0:
-        gf.timed_logger_append(user_p.FILE_NAMES["command_log"], 'udws "smgr_init.restart 0"')
         gp.RTOS.write(gf.string_to_byte('udws "smgr_init.restart 0"'))
         gf.console_log("RESTARTED")
         sleep(20)

@@ -15,14 +15,12 @@ FILE_NAMES = {
 
 # "KEYWORD": "CORRESPONDING FUNCTION NAME"
 KEYWORD_DICTIONARY = {
-    "signalStrength": 'ping_wireless_config',
-    "noise": 'log_wireless_config_noise',
     "going mute:": 'restart',
     "asserted": 'halt_restart'
 }
 
 LINUX_KEYWORD_DICTIONARY = {
-#     "test": 'empty_test'  
+    "test": 'empty_test'  
 }
 
 SIGNALSTRENGTH_DICTIONARY = {
@@ -31,6 +29,13 @@ SIGNALSTRENGTH_DICTIONARY = {
 }
 
 RESTART_ASSERT_DICTIONARY = {
+    "going mute:": 'restart',
+    "asserted": 'halt_restart'
+}
+
+BACKUP_DICTIONARY = {
+    "signalStrength": 'ping_wireless_config',
+    "noise": 'log_wireless_config_noise',
     "going mute:": 'restart',
     "asserted": 'halt_restart'
 }

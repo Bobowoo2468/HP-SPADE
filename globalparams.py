@@ -1,3 +1,4 @@
+import os
 import serial
 
 # SYNC PRINTER BAUDRATE 115.2KBPS
@@ -12,14 +13,18 @@ RTOS = serial.Serial(port=RTOS_PATH, baudrate=BAUD_RATE, timeout=5)
 LINUX = serial.Serial(port=LINUX_PATH, baudrate=BAUD_RATE, timeout=5)
 
 # USER API DIRECTORY
-USER_DIRECTORY = '/home/eelab/Documents/woobotuan/MVP3/user'
+USER_DIRECTORY = os.getcwd() + '/user'
 
 RTOS_LOG_FILE_PATH = 'logs/seriallog.txt'
 LINUX_LOG_FILE_PATH = 'logs/linuxlog.txt'
 CONSOLE_LOG_FILE_PATH = 'logs/consolelog.txt'
+COMMAND_LOG_FILE_PATH = 'logs/commandlog.txt'
 
 RTOS_MODE = 0
 LINUX_MODE = 1
+AUTO_MODE = 2
 
 RTOS_PREPEND_INDICATOR = "#"
 LINUX_PREPEND_INDICATOR = "X"
+AUTO_PREPEND_INDICATOR = "AUTO"
+
