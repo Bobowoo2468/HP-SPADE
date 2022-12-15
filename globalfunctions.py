@@ -24,14 +24,18 @@ def get_current_time():
     now = datetime.now()
     return now.strftime("%H:%M:%S")
 
+
 def append_time(write_str):
     return "{0}: {1}\n".format(get_current_time(), write_str)
 
+
 def append_time_wo_newline(write_str):
-     return "{0}: {1}".format(get_current_time(), write_str)
+    return "{0}: {1}".format(get_current_time(), write_str)
+
 
 def remove_whitespace(string):
     return "".join(string.rstrip().lstrip())
+
 
 # PACKAGE COMMAND TO BYTE_ENCODING (FOR SERIAL)
 def string_to_byte(cmd_string):
@@ -45,6 +49,7 @@ def file_write(file_ref, write_str):
     file_ref.flush()
     os.fsync(file_ref.fileno())    
     return
+
 
 def file_log(file_ref, write_str):
     timed_str = append_time_wo_newline(write_str)
@@ -61,6 +66,7 @@ def get_line_count(file_path):
         for count, line in enumerate(fp):
             pass
     return count 
+
 
 def get_last_Nlines(file_path, N):
     pos = N + 1
@@ -94,10 +100,12 @@ def timed_logger_append(file_name, res):
         file_log(file, res)
     return
 
+
 def simple_logger_append(file_name, res):
     with open(file_name, "a") as file:
         file_write(file, res)
     return
+    
     
 def console_log(res):
     timed_res = append_time(res)

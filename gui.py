@@ -1,11 +1,11 @@
-from guizero import App, PushButton, Text, TextBox
+from guizero import App, PushButton, Text, TextBox, Slider
 import sys
 import globalparams as gp, globalfunctions as gf
 
 #-----------------------IMPORT FROM USER DIRECTORY-----------------------#
 
-from user import params as user_p
-from user import functions as user_f
+from user import params as up
+from user import functions as uf
 
 #-----------------------GLOBAL VARIABLES-----------------------#
 
@@ -20,6 +20,9 @@ input_mode = 0
 command_history = []
 command_history_curs = -1
 
+def change_attn_value(slider_value):
+    attenuation_control.value = "WiFi Attenuation: " + slider_value
+    return
 
 #-----------------------GLOBAL WIDGETS-----------------------#
 
@@ -29,13 +32,17 @@ toggle_input_button = PushButton(app, width=50, height=5, text="RTOS MODE", grid
 
 user_input = TextBox(app, width=50, scrollbar=True, grid=[0,1], align="left")
 
-command_log = TextBox(app, grid=[0,4,2,5], width=user_p.CMD_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
+command_log = TextBox(app, grid=[0,4,2,5], width=up.CMD_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
 
-rtos_log = TextBox(app, grid=[2,5], width=user_p.RTOS_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
+rtos_log = TextBox(app, grid=[2,5], width=up.RTOS_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
 
-linux_log = TextBox(app, grid=[5,5], width=user_p.LINUX_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
+linux_log = TextBox(app, grid=[5,5], width=up.LINUX_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
 
-console_log = TextBox(app, grid=[7,5], width=user_p.CMD_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
+console_log = TextBox(app, grid=[7,5], width=up.CMD_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
+
+attenuation_control = Text(app, grid=[8,2], width=20, text="Attenuation: ")
+
+slider = Slider(app, grid=[8,1], width="fill", command=change_attn_value, end=95)
 
 
 #-----------------------EVENT HANDLERS-----------------------#
@@ -44,10 +51,12 @@ def save_prev_commands(input_str):
     command_history.append(input_str)
     return
 
+
 # DETECT 'ENTER' KEYSTROKE FOR EASE OF INPUT
 def send_command_on_enter(keypress_data, q):
     send_command(q)
     return
+    
     
 # DETECT 'UP' KEYSTROKE TO RECALL CMD HISTORY
 def up_handler(keypress_data, q):
@@ -94,6 +103,7 @@ def down_handler(keypress_data, q):
     # LOAD STORED COMMANDS
     user_input.value = command_history[command_history_curs]     
 
+
 # TOGGLE TRANSMISSION MODE FOR SERIAL 
 def toggle_rtos_linux_mode():
     global input_mode
@@ -139,17 +149,17 @@ def update_linux_log():
         linux_stored_count = count
 
 
-def send_command_log(input_mode, cmd_no, user_input_value):
-    if input_mode == gp.RTOS_MODE:
+def send_command_log(in_mode, cmd_index, user_input_value):
+    if in_mode == gp.RTOS_MODE:
         prepend = gp.RTOS_PREPEND_INDICATOR 
-    elif input_mode == gp.LINUX_MODE:
+    elif in_mode == gp.LINUX_MODE:
         prepend = gp.LINUX_PREPEND_INDICATOR
         
     parsed_cmd = gf.parse_input_cmd(user_input_value, cmd_no, prepend)
     
     gf.simple_logger_append(gp.COMMAND_LOG_FILE_PATH, parsed_cmd)
 
-    return '', cmd_no+1 
+    return '', cmd_index+1 
 
 
 def update_command_log():
@@ -211,9 +221,20 @@ def send_command(q):
     user_input.value, cmd_no = send_command_log(input_mode, cmd_no, user_input_value)
     
     
+def set_attenuation(wa, val):
+    #SET ATTENUATION FOR ALL CHANNELS
+    wa.set_all_channels_attenuation(0)
+    print("SUCCESSFUL SET VALUES")
+    return
+
+
+def get_user_input_attenuation():
+    global slider
+    return slider.value
+
 #-----------------------MAIN GUI FUNCTION-----------------------#
 
-def gui_f(q):
+def gui_f(q, wa):
     global app, cmd_no, user_input, command_log, rtos_log
     
     # DEFINE WIDGETS
@@ -223,13 +244,16 @@ def gui_f(q):
     Text(app, text="Linux Log:", grid=[5,3], align="left") #LINUX LOG LABEL
     Text(app, text="Console Log:", grid=[7,3], align="left") #CONSOLE LOG LABEL
     
+    slider.value = 0
+    
     # CONTINUOUSLY UPDATE SERIAL OUTPUTS FOR CONCURRENCY
-    app.repeat(user_p.LOGGER_REFRESH_RATE, update_rtos_log)
-    app.repeat(user_p.LOGGER_REFRESH_RATE, update_linux_log)
-    app.repeat(user_p.LOGGER_REFRESH_RATE, update_console_log)
-    app.repeat(user_p.LOGGER_REFRESH_RATE, update_command_log)
+    app.repeat(up.LOGGER_REFRESH_RATE, update_rtos_log)
+    app.repeat(up.LOGGER_REFRESH_RATE, update_linux_log)
+    app.repeat(up.LOGGER_REFRESH_RATE, update_console_log)
+    app.repeat(up.LOGGER_REFRESH_RATE, update_command_log)
     
     PushButton(app, text="SEND COMMAND", command=send_command, args=[q], grid=[0,2], align="left") #SUBMIT BUTTON
+    PushButton(app, text="SET ATTENUATION", command=uf.adjust_attenuation_and_ping_wireless_config, args=[wa], grid=[9,1,1,2], align="left")
     
     # GUI EVENTS (KEYSTROKE DETECTION AND BUTTON CLICKS)
     # rtos_log.tk.vbar >> SCROLLBAR PROPERTY (TKINTER)

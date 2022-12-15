@@ -4,7 +4,7 @@ import multiprocessing as mp
 import globalparams as gp, globalfunctions as gf
 import gui
 import random
-from time import sleep
+import wifiattenuator as wa
 
 #-----------------------IMPORT FROM USER DIRECTORY-----------------------#
 
@@ -63,16 +63,16 @@ def rtos_f(q):
                     
                     #-----------RANDOM ADD ASSERT TO ALL LINES OF RTOS OUTPUT-------------#
                     
-                    if (random.random() > 0.9999):
-                        received_line_test = str(received_line)+"asserted"
-                    else:
-                        received_line_test = str(received_line)
+#                     if (random.random() > 0.9999):
+#                         received_line_rand_assert = str(received_line)+"asserted"
+#                     else:
+#                         received_line_rand_assert = str(received_line)
                     
                     
                     #-----------ADD CORRESPONDING FUNCTION TO QUEUE-------------#
                         
                     for key in user_p.KEYWORD_DICTIONARY.keys():
-                        if key in str(received_line_test): # KEY DETECTION
+                        if key in str(received_line): # KEY DETECTION
                             params_dict = {"key": key, "exec": str(user_p.KEYWORD_DICTIONARY[key]), "dataline": decoded_str}
                             q.put(params_dict)
                             
@@ -94,6 +94,8 @@ def exec_f(q):
         #-----------WHILE THERE ARE FUNCTIONS YET TO BE EXECUTED-------------#
         
         while q:
+            gf.console_log("QUEUE SIZE: {0}".format(q.qsize()))
+            
             params = q.get() # POP CORRESPONDING FUNCTION FROM QUEUE
             key = params["key"]
             func = params["exec"]
@@ -102,7 +104,7 @@ def exec_f(q):
             
             gf.console_log("CALLING: {0} - KEY MATCHED: {1}".format(func, key))
             
-            res = getattr(user_f, func)(key, params["dataline"]) # FUNCTION EXECUTION
+            getattr(user_f, func)(key, params["dataline"]) # FUNCTION EXECUTION
             
             parsed_cmd = gf.parse_input_cmd(func, 0, gp.AUTO_PREPEND_INDICATOR)
             gf.simple_logger_append(user_p.FILE_NAMES["command_log"], parsed_cmd)
@@ -121,7 +123,9 @@ if __name__ == '__main__':
     
     for file_name in user_p.FILE_NAMES.values():
         open(file_name, "w").close()
-
+    
+    wifiattenuator = wa.WiFi_Attenuator()
+    
     #-----------START PROCESSES----------------#
     
     rtosp = mp.Process(target=rtos_f, args=(keyword_queue,))
@@ -132,7 +136,7 @@ if __name__ == '__main__':
     linuxp.start()
     execp.start()
     
-    gui.gui_f(keyword_queue)
+    gui.gui_f(keyword_queue, wifiattenuator)
     
     try:
         rtosp.join()

@@ -3,7 +3,8 @@ import globalfunctions as gf, globalparams as gp
 from datetime import datetime
 from time import sleep
 
-from user import params as user_p
+from user import params as up
+import gui
 
 #-----------------------EXAMPLE FUNCTION CALLS-----------------------#
 #
@@ -19,6 +20,7 @@ from user import params as user_p
 def parse_data_from_dataline(dataline):
     return dataline.split(": ")[1]
 
+
 #-----------------------HELPER FUNCTIONS-----------------------#
 
 
@@ -32,34 +34,38 @@ def empty_test(key, dataline):
     sleep(5)
     return
 
+
 #------------PING WIRELESS CONFIG EVERY 10S, LOG NOISE AND SIGNAL STRENGTH----------#
 
 def ping_wireless_config(key, dataline):
-    gp.RTOS.write(gf.string_to_byte('udws "nca.get_wireless_config"'))
+    gp.RTOS.write(gf.string_to_byte(up.GET_WIFI_CONFIG))
     signal_strength = parse_data_from_dataline(dataline)
-    gf.timed_logger_append(user_p.FILE_NAMES["signal_strength"], dataline)
+    gf.timed_logger_append(up.FILE_NAMES["signal_strength"], dataline)
     gf.console_log("STRENGTH: " + dataline)
     sleep(10)
     return
 
+
 def log_wireless_config_noise(key, dataline):
     noise = parse_data_from_dataline(dataline)
-    gf.timed_logger_append(user_p.FILE_NAMES["noise"], dataline)
+    gf.timed_logger_append(up.FILE_NAMES["noise"], dataline)
     gf.console_log("NOISE: " + dataline)
     return 
+
 
 #------------PING WIRELESS SCAN EVERY 5S----------#
 
 def ping_wireless_scan(key, dataline):
-    gp.RTOS.write(gf.string_to_byte('udws "nca.get_wireless_scan"'))
+    gp.RTOS.write(gf.string_to_byte(up.GET_WIFI_SCAN))
     sleep(5)
     return
+
 
 #------------RESTART SYSTEM CONTINUOUSLY UNTIL ASSERT APPEARS----------#
 
 def restart(key, dataline):
-    if user_p.assert_flag == 0:
-        gp.RTOS.write(gf.string_to_byte('udws "smgr_init.restart 0"'))
+    if up.assert_flag == 0:
+        gp.LINUX.write(gf.string_to_byte('restart'))
         gf.console_log("RESTARTED")
         sleep(20)
     else:
@@ -67,10 +73,22 @@ def restart(key, dataline):
         sleep(3)
     return
 
+
 def halt_restart(key, dataline):
-    user_p.assert_flag = 1
+    up.assert_flag = 1
     gf.console_log("ASSERT ASSERT ASSERT")
     return
+
+
+#------------ADJUST ATTENUATION AND PING WIRELESS CONFIG----------#
+
+def adjust_attenuation_and_ping_wireless_config(wa):
+    user_input_attenuation_value = gui.get_user_input_attenuation()
+    wa.set_all_channels_attenuation(user_input_attenuation_value)
+#     gf.console_log("SUCCESSFUL SET ATTENUATION VALUE TO {0}".format(val))
+#     sleep(10)
+    return
+    
     
 #-----------------------INPUT FUNCTION-----------------------#
 
