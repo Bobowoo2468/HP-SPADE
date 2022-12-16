@@ -1,4 +1,5 @@
 import os
+import random
 import multiprocessing as mp
 from datetime import datetime
 import globalparams as gp
@@ -9,14 +10,22 @@ import globalparams as gp
 # PARSE INPUT COMMAND WITH DATETIME
 def parse_input_cmd(string, cmd_no, prepend):
     current_time = get_current_time()
+    
+    # AUTO COMMANDS
     if cmd_no == 0:
         cmd_no = ""
-    parsed_input = "{0}: Command {1}: {2} - {3}\n".format(prepend, cmd_no, current_time, string.rstrip().lstrip())
+        
+    parsed_input = "{0},Command {1},{2},{3}\n".format(prepend, cmd_no, current_time, string.rstrip().lstrip())
     return parsed_input
 
 
 #--------------------------------HELPER FUNCTIONS--------------------------------#
 
+def add_random_assert(received_str):
+    if (random.random() > 0.9999):
+        return str(received_str) + "asserted"
+    
+    return str(received_str)    
 
 #-----------------STRING PROCESSING FUNCTIONS------------------#
 
@@ -26,11 +35,11 @@ def get_current_time():
 
 
 def append_time(write_str):
-    return "{0}: {1}\n".format(get_current_time(), write_str)
+    return "{0},{1}\n".format(get_current_time(), write_str)
 
 
 def append_time_wo_newline(write_str):
-    return "{0}: {1}".format(get_current_time(), write_str)
+    return "{0},{1}".format(get_current_time(), write_str)
 
 
 def remove_whitespace(string):

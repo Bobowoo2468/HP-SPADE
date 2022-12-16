@@ -1,10 +1,10 @@
 import os
 import globalfunctions as gf, globalparams as gp
+import gui
+
 from datetime import datetime
 from time import sleep
-
 from user import params as up
-import gui
 
 #-----------------------EXAMPLE FUNCTION CALLS-----------------------#
 #
@@ -85,8 +85,6 @@ def halt_restart(key, dataline):
 def adjust_attenuation_and_ping_wireless_config(wa):
     user_input_attenuation_value = gui.get_user_input_attenuation()
     wa.set_all_channels_attenuation(user_input_attenuation_value)
-#     gf.console_log("SUCCESSFUL SET ATTENUATION VALUE TO {0}".format(val))
-#     sleep(10)
     return
     
     

@@ -44,3 +44,4 @@ GET_ATT = "*:ATT?"
 SET_ALL_ATT = "*:CHAN:1:2:3:SETATT:{0}"
 
 # CH4 NOT CONNECTED CH4 SET TO 90
+in_progress_flag = 0

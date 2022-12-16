@@ -108,11 +108,13 @@ class WiFi_Attenuator():
     
     
     def set_all_channels_attenuation(self, attn_val):
+        if attn_val < 10:
+            attn_val = "0" + str(attn_val)
         self.write_to_attenuator(gp.SET_ALL_ATT.format(attn_val))
         rtn = self.read_from_attenuator()
         self.write_to_attenuator(gp.GET_ATT)
         rtn = self.read_from_attenuator()
-        print("EDITED ATTENUATOR VALUES: ", rtn)
+        gf.console_log("EDITED ATTENUATOR VALUES: {0}".format(rtn))
         return
     
     

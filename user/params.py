@@ -21,7 +21,7 @@ KEYWORD_DICTIONARY = {
 }
 
 LINUX_KEYWORD_DICTIONARY = {
-#     "test": 'empty_test'  
+    "test": 'empty_test'  
 }
 
 SIGNALSTRENGTH_DICTIONARY = {

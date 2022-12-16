@@ -3,100 +3,102 @@ import sys
 import multiprocessing as mp
 import globalparams as gp, globalfunctions as gf
 import gui
-import random
 import wifiattenuator as wa
 
 #-----------------------IMPORT FROM USER DIRECTORY-----------------------#
 
 sys.path.insert(0, gp.USER_DIRECTORY)
-import params as user_p
-import functions as user_f
+import params as up
+import functions as uf
 
 
 #-----------------------PROCESS 1: LINUX PROCESS-----------------------#
 
-def linux_f(q):
+def linux_f(q, e):
         
     with open(gp.LINUX_LOG_FILE_PATH, "a") as serial_dump:
         
-        while True:
-            
+        while True:            
             while gp.LINUX.inWaiting(): # IF DATA EXISTS IN BUFFER
                 try:
                     received_line = gp.LINUX.readline()
                     decoded = received_line.decode('ascii') # DECODE CARRIAGE RETURN (/r) AND NEWLINE (/n): PYTHON LEXICAL ANALYSIS
                     decoded_str = str(decoded)
                     
-                    
-                    #-----------ADD CORRESPONDING FUNCTION TO QUEUE-------------#
-                    
-                    for key in user_p.LINUX_KEYWORD_DICTIONARY.keys():
-                        if key in str(received_line):
-                            params_dict = {"key": key, "exec": str(user_p.LINUX_KEYWORD_DICTIONARY[key]), "dataline": decoded_str}
-                            q.put(params_dict)
-
-                            gf.console_log("LINUX KEY MATCH:" + key) # SHOW KEYWORD MATCH
-                            
                     gf.file_log(serial_dump, decoded_str)
                     
-                except Exception as e:
-                    gf.console_log("LINUX SERIAL ERROR: " + str(e))
+                    
+                    #-----------IF STATUS IS START, PERFORM KEYWORD DETECTION AND ENQUEUE CORRESPONDING FUNCTION-------------#
+                    
+                    if e.is_set():
+                        for key in up.LINUX_KEYWORD_DICTIONARY.keys():
+                            if key in str(received_line):
+                                params_dict = {"key": key, "exec": str(up.LINUX_KEYWORD_DICTIONARY[key]), "dataline": decoded_str}
+                                q.put(params_dict)
+
+                                gf.console_log("LINUX KEY MATCH:" + key) # SHOW KEYWORD MATCH
+                           
+                           
+                except Exception as ex:
+                    gf.console_log("LINUX SERIAL ERROR: " + str(ex))
                     pass
 
 
 #-----------------------PROCESS 2: RTOS PROCESS-----------------------#
 
-def rtos_f(q):
-    
+def rtos_f(q, e):
     with open(gp.RTOS_LOG_FILE_PATH, "a") as serial_dump:
         
         #-----------CONTINUOUS LOOP TO DETECT KEYWORD MATCH-------------#
         
         while True:
-                
+            
             while gp.RTOS.inWaiting(): # IF DATA EXISTS IN BUFFER
                 try:
                     received_line = gp.RTOS.readline()
                     decoded = received_line.decode('ascii') # DECODE CARR RETURN (/r) AND NEWLINE (/n): PYTHON LEXICAL ANALYSIS
                     decoded_str = str(decoded)
-                    
-                    
-                    #-----------RANDOM ADD ASSERT TO ALL LINES OF RTOS OUTPUT-------------#
-                    
-#                     if (random.random() > 0.9999):
-#                         received_line_rand_assert = str(received_line)+"asserted"
-#                     else:
-#                         received_line_rand_assert = str(received_line)
-                    
-                    
-                    #-----------ADD CORRESPONDING FUNCTION TO QUEUE-------------#
-                        
-                    for key in user_p.KEYWORD_DICTIONARY.keys():
-                        if key in str(received_line): # KEY DETECTION
-                            params_dict = {"key": key, "exec": str(user_p.KEYWORD_DICTIONARY[key]), "dataline": decoded_str}
-                            q.put(params_dict)
-                            
-                            gf.console_log("RTOS KEY MATCH:" + key) # SHOW KEYWORD MATCH
-                    
                     gf.file_log(serial_dump, decoded_str)
+
                     
-                except Exception as e:
-                    gf.console_log("RTOS SERIAL ERROR: " + str(e))
+                    #-----------IF STATUS IS START, PERFORM KEYWORD DETECTION AND ENQUEUE CORRESPONDING FUNCTION-------------#
+
+                    if e.is_set():
+                        for key in up.KEYWORD_DICTIONARY.keys():
+                            if key in str(received_line): # KEYWORD DETECTION
+                                params_dict = {"key": key, "exec": str(up.KEYWORD_DICTIONARY[key]), "dataline": decoded_str}
+                                q.put(params_dict)
+                                
+                                gf.console_log("RTOS KEY MATCH:" + key) # SHOW KEYWORD MATCH
+                    
+        
+                except Exception as ex:
+                    gf.console_log("RTOS SERIAL ERROR: " + str(ex))
                     pass
 
 
 #-----------------------PROCESS 3: TRANSMIT PROCESS-----------------------#
                 
-def exec_f(q):
-    
+def exec_f(q, e):
     while True:
-    
+        
         #-----------WHILE THERE ARE FUNCTIONS YET TO BE EXECUTED-------------#
         
         while q:
             gf.console_log("QUEUE SIZE: {0}".format(q.qsize()))
             
-            params = q.get() # POP CORRESPONDING FUNCTION FROM QUEUE
+            params = q.get() # POP CORRESPONDING FUNCTION FROM QUEUE            
+            
+            if params is None:
+                e.clear()
+                gf.console_log("AUTO DEBUG STOPPED ... AUTO DEBUG STOPPED ... AUTO DEBUG STOPPED ... AUTO DEBUG STOPPED")
+                continue
+            
+            if params == "START":
+                e.set()
+                gf.console_log("AUTO DEBUG STARTED ... AUTO DEBUG STARTED ... AUTO DEBUG STARTED ... AUTO DEBUG STARTED")
+                continue
+                
             key = params["key"]
             func = params["exec"]
             
@@ -104,10 +106,10 @@ def exec_f(q):
             
             gf.console_log("CALLING: {0} - KEY MATCHED: {1}".format(func, key))
             
-            getattr(user_f, func)(key, params["dataline"]) # FUNCTION EXECUTION
+            getattr(uf, func)(key, params["dataline"]) # FUNCTION EXECUTION
             
             parsed_cmd = gf.parse_input_cmd(func, 0, gp.AUTO_PREPEND_INDICATOR)
-            gf.simple_logger_append(user_p.FILE_NAMES["command_log"], parsed_cmd)
+            gf.simple_logger_append(up.FILE_NAMES["command_log"], parsed_cmd)
             
             gf.console_log("COMPLETED: {0} - KEY MATCHED: {1}".format(func, key))
             
@@ -115,22 +117,23 @@ def exec_f(q):
 
 if __name__ == '__main__':
     
-    #-----------MULTIPROCESSING QUEUE----------------#
+    #-----------MULTIPROCESSING VARIABLES----------------#
     
     keyword_queue = mp.Queue()
+    start_event = mp.Event()
     
     #-----------CLEAR LOG FILES----------------#
     
-    for file_name in user_p.FILE_NAMES.values():
+    for file_name in up.FILE_NAMES.values():
         open(file_name, "w").close()
     
     wifiattenuator = wa.WiFi_Attenuator()
     
     #-----------START PROCESSES----------------#
     
-    rtosp = mp.Process(target=rtos_f, args=(keyword_queue,))
-    linuxp = mp.Process(target=linux_f, args=(keyword_queue,))
-    execp = mp.Process(target=exec_f, args=(keyword_queue,))
+    rtosp = mp.Process(target=rtos_f, args=(keyword_queue,start_event,))
+    linuxp = mp.Process(target=linux_f, args=(keyword_queue,start_event,))
+    execp = mp.Process(target=exec_f, args=(keyword_queue,start_event,))
     
     rtosp.start()
     linuxp.start()

@@ -28,21 +28,21 @@ def change_attn_value(slider_value):
 
 app = App(title='HP Automated Serial Debugger', layout="grid")
 
-toggle_input_button = PushButton(app, width=50, height=5, text="RTOS MODE", grid=[2,1], align="left") #SUBMIT BUTTON
+toggle_input_button = PushButton(app, width=30, height=3, text="RTOS MODE", grid=[2,1], align="left") #SUBMIT BUTTON
 
 user_input = TextBox(app, width=50, scrollbar=True, grid=[0,1], align="left")
 
-command_log = TextBox(app, grid=[0,4,2,5], width=up.CMD_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
+command_log = TextBox(app, grid=[0,4,2,2], width=up.CMD_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
 
-rtos_log = TextBox(app, grid=[2,5], width=up.RTOS_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
+rtos_log = TextBox(app, grid=[2,4,2,2], width=up.RTOS_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
 
-linux_log = TextBox(app, grid=[5,5], width=up.LINUX_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
+linux_log = TextBox(app, grid=[4,4,2,2], width=up.LINUX_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
 
-console_log = TextBox(app, grid=[7,5], width=up.CMD_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
+console_log = TextBox(app, grid=[6,4,2,2], width=up.CMD_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
 
-attenuation_control = Text(app, grid=[8,2], width=20, text="Attenuation: ")
+slider = Slider(app, grid=[6,0], command=change_attn_value, end=95)
 
-slider = Slider(app, grid=[8,1], width="fill", command=change_attn_value, end=95)
+attenuation_control = Text(app, grid=[6,1], width=20, text="Attenuation: ")
 
 
 #-----------------------EVENT HANDLERS-----------------------#
@@ -113,6 +113,33 @@ def toggle_rtos_linux_mode():
     else:
         toggle_input_button.text = "RTOS MODE"
         input_mode = 0
+    return
+
+
+def start_auto_debug(q):
+    if gp.in_progress_flag == 1:
+        gf.console_log("AUTO DEBUGGER ALREADY RUNNING")
+        return
+    
+    q.put("START")
+    
+    gp.in_progress_flag = 1
+    return
+
+
+def stop_auto_debug(q):
+    if gp.in_progress_flag == 0:
+        gf.console_log("AUTO DEBUGGER ALREADY STOPPED")
+        return
+    
+    # CLEARS QUEUE
+    while not q.empty():
+        q.get_nowait()
+    
+    # ENQUEUE SENTINEL TO HALT PROGRAM
+    q.put(None)
+        
+    gp.in_progress_flag = 0
     return
 
 
@@ -224,13 +251,14 @@ def send_command(q):
 def set_attenuation(wa, val):
     #SET ATTENUATION FOR ALL CHANNELS
     wa.set_all_channels_attenuation(0)
-    print("SUCCESSFUL SET VALUES")
+    gf.console_log("SUCCESSFUL SET VALUES")
     return
 
 
 def get_user_input_attenuation():
     global slider
     return slider.value
+
 
 #-----------------------MAIN GUI FUNCTION-----------------------#
 
@@ -241,8 +269,8 @@ def gui_f(q, wa):
     Text(app, text="Insert command here:", grid=[0,0], align="left") #USER INPUT LABEL
     Text(app, text="Command Log:", grid=[0,3], align="left") #COMMAND LOG LABEL
     Text(app, text="RTOS Log:", grid=[2,3], align="left") #RTOS LOG LABEL
-    Text(app, text="Linux Log:", grid=[5,3], align="left") #LINUX LOG LABEL
-    Text(app, text="Console Log:", grid=[7,3], align="left") #CONSOLE LOG LABEL
+    Text(app, text="Linux Log:", grid=[4,3], align="left") #LINUX LOG LABEL
+    Text(app, text="Console Log:", grid=[6,3], align="left") #CONSOLE LOG LABEL
     
     slider.value = 0
     
@@ -252,8 +280,10 @@ def gui_f(q, wa):
     app.repeat(up.LOGGER_REFRESH_RATE, update_console_log)
     app.repeat(up.LOGGER_REFRESH_RATE, update_command_log)
     
-    PushButton(app, text="SEND COMMAND", command=send_command, args=[q], grid=[0,2], align="left") #SUBMIT BUTTON
-    PushButton(app, text="SET ATTENUATION", command=uf.adjust_attenuation_and_ping_wireless_config, args=[wa], grid=[9,1,1,2], align="left")
+    PushButton(app, text="SEND COMMAND", command=send_command, args=[q], height=3, grid=[0,2], align="left") #SUBMIT BUTTON
+    PushButton(app, text="START", grid=[3,0], command=start_auto_debug, args=[q], width=30, height=3, align="right") #START PROGRAM
+    PushButton(app, text="STOP", grid=[3,1], command=stop_auto_debug, args=[q], width=30, height=3, align="right") #STOP PROGRAM
+    PushButton(app, text="SET ATTENUATION", command=uf.adjust_attenuation_and_ping_wireless_config, args=[wa], height=3, grid=[6,2]) #SEND ATTENUATION VALUE
     
     # GUI EVENTS (KEYSTROKE DETECTION AND BUTTON CLICKS)
     # rtos_log.tk.vbar >> SCROLLBAR PROPERTY (TKINTER)
