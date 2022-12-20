@@ -24,6 +24,7 @@ def change_attn_value(slider_value):
     attenuation_control.value = "WiFi Attenuation: " + slider_value
     return
 
+
 #-----------------------GLOBAL WIDGETS-----------------------#
 
 app = App(title='HP Automated Serial Debugger', layout="grid")
@@ -184,7 +185,7 @@ def send_command_log(in_mode, cmd_index, user_input_value):
         
     parsed_cmd = gf.parse_input_cmd(user_input_value, cmd_no, prepend)
     
-    gf.simple_logger_append(gp.COMMAND_LOG_FILE_PATH, parsed_cmd)
+    gf.timed_logger_append(gp.COMMAND_LOG_FILE_PATH, parsed_cmd)
 
     return '', cmd_index+1 
 
@@ -247,13 +248,6 @@ def send_command(q):
     # UPDATE LOG FILES
     user_input.value, cmd_no = send_command_log(input_mode, cmd_no, user_input_value)
     
-    
-def set_attenuation(wa, val):
-    #SET ATTENUATION FOR ALL CHANNELS
-    wa.set_all_channels_attenuation(0)
-    gf.console_log("SUCCESSFUL SET VALUES")
-    return
-
 
 def get_user_input_attenuation():
     global slider
@@ -263,7 +257,7 @@ def get_user_input_attenuation():
 #-----------------------MAIN GUI FUNCTION-----------------------#
 
 def gui_f(q, wa):
-    global app, cmd_no, user_input, command_log, rtos_log
+    global app, cmd_no, user_input, command_log, rtos_log, slider, attenuation_control
     
     # DEFINE WIDGETS
     Text(app, text="Insert command here:", grid=[0,0], align="left") #USER INPUT LABEL
@@ -273,6 +267,7 @@ def gui_f(q, wa):
     Text(app, text="Console Log:", grid=[6,3], align="left") #CONSOLE LOG LABEL
     
     slider.value = 0
+
     
     # CONTINUOUSLY UPDATE SERIAL OUTPUTS FOR CONCURRENCY
     app.repeat(up.LOGGER_REFRESH_RATE, update_rtos_log)
@@ -283,7 +278,12 @@ def gui_f(q, wa):
     PushButton(app, text="SEND COMMAND", command=send_command, args=[q], height=3, grid=[0,2], align="left") #SUBMIT BUTTON
     PushButton(app, text="START", grid=[3,0], command=start_auto_debug, args=[q], width=30, height=3, align="right") #START PROGRAM
     PushButton(app, text="STOP", grid=[3,1], command=stop_auto_debug, args=[q], width=30, height=3, align="right") #STOP PROGRAM
-    PushButton(app, text="SET ATTENUATION", command=uf.adjust_attenuation_and_ping_wireless_config, args=[wa], height=3, grid=[6,2]) #SEND ATTENUATION VALUE
+    adj_attn_button = PushButton(app, text="SET ATTENUATION", command=gf.adjust_attenuation_and_ping_wireless_config, args=[wa], height=3, grid=[6,2]) #SEND ATTENUATION VALUE
+
+    if wa is False:
+        adj_attn_button.hide()
+        slider.hide()
+        attenuation_control.hide()
     
     # GUI EVENTS (KEYSTROKE DETECTION AND BUTTON CLICKS)
     # rtos_log.tk.vbar >> SCROLLBAR PROPERTY (TKINTER)

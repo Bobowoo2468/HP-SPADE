@@ -63,31 +63,80 @@ def ping_wireless_scan(key, dataline):
 
 #------------RESTART SYSTEM CONTINUOUSLY UNTIL ASSERT APPEARS----------#
 
+# def restart(key, dataline):
+#     if up.assert_flag == 0:
+#         gp.LINUX.write(gf.string_to_byte('restart'))
+#         gf.console_log("RESTARTED")
+#         sleep(20)
+#     else:
+#         gf.console_log("STOP RESTARTING")
+#         sleep(3)
+#     return
+# 
+# 
+# def halt_restart(key, dataline):
+#     up.assert_flag = 1
+#     gf.console_log("ASSERT ASSERT ASSERT")
+#     return
+
+#------------MVP TEST 1----------#
+
+shutdown_found = False
+restart_success_found = False
+restart_flag = False
+
+def shutdown_success(key, dataline):
+    global shutdown_found
+    if shutdown_found is True:
+        gf.console_log("ALREADY TRUE BRO")
+        return
+    gf.console_log("SHUTDOWN SET TO TRUE BRO")
+    shutdown_found = True
+    return    
+
+def restart_success(key, dataline):
+    global shutdown_found, restart_success_found, restart_flag
+    
+    if shutdown_found is False:
+        restart_flag = False
+        restart_success_found = False
+        return
+    
+    if restart_success_found is True:
+        gf.console_log("RESTART SUCCESS ALREADY TRUE")
+    
+    restart_success_found = True
+    
+    if shutdown_found and restart_success_found:
+        restart_flag = True
+        gf.console_log("RESTART SOONEST")
+    return
+
+def reset():
+    global shutdown_found, restart_success_found, restart_flag
+    shutdown_found = False
+    restart_success_found = False
+    restart_flag = False
+    gf.console_log("RESETTED")
+    return
+
 def restart(key, dataline):
-    if up.assert_flag == 0:
-        gp.LINUX.write(gf.string_to_byte('restart'))
-        gf.console_log("RESTARTED")
-        sleep(20)
-    else:
-        gf.console_log("STOP RESTARTING")
-        sleep(3)
-    return
-
-
-def halt_restart(key, dataline):
-    up.assert_flag = 1
-    gf.console_log("ASSERT ASSERT ASSERT")
-    return
-
-
-#------------ADJUST ATTENUATION AND PING WIRELESS CONFIG----------#
-
-def adjust_attenuation_and_ping_wireless_config(wa):
-    user_input_attenuation_value = gui.get_user_input_attenuation()
-    wa.set_all_channels_attenuation(user_input_attenuation_value)
-    return
+    global restart_flag
     
+    if restart_flag is False:
+        gf.console_log("CONDITIONS TO RESTART NOT FULFILLED, EXITING")
+        reset()
+        return
     
+    sleep(30)
+    gp.LINUX.write(gf.string_to_byte('restart'))
+    gf.console_log("RESTART SUCCESSFUL")
+    up.restart_count += 1
+    gf.timed_logger_append(up.FILE_NAMES["restart"], "RESTART COUNT, {0}\n".format(up.restart_count))
+    reset()
+
+    return
+
 #-----------------------INPUT FUNCTION-----------------------#
 
 def user_input(key, dataline):

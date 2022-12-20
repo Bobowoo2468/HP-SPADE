@@ -105,11 +105,10 @@ def exec_f(q, e):
             #-----------EXECUTE FUNCTION WITH LOGGING-------------#
             
             gf.console_log("CALLING: {0} - KEY MATCHED: {1}".format(func, key))
-            
             getattr(uf, func)(key, params["dataline"]) # FUNCTION EXECUTION
             
             parsed_cmd = gf.parse_input_cmd(func, 0, gp.AUTO_PREPEND_INDICATOR)
-            gf.simple_logger_append(up.FILE_NAMES["command_log"], parsed_cmd)
+            gf.timed_logger_append(up.FILE_NAMES["command_log"], parsed_cmd)
             
             gf.console_log("COMPLETED: {0} - KEY MATCHED: {1}".format(func, key))
             
@@ -124,10 +123,15 @@ if __name__ == '__main__':
     
     #-----------CLEAR LOG FILES----------------#
     
-    for file_name in up.FILE_NAMES.values():
+    for file_name in up.CLEAR_FILE_NAMES.values():
         open(file_name, "w").close()
     
-    wifiattenuator = wa.WiFi_Attenuator()
+    try:
+        wifiattenuator = wa.WiFi_Attenuator()
+    
+    except ValueError:
+        wifiattenuator = False
+        
     
     #-----------START PROCESSES----------------#
     

@@ -2,13 +2,26 @@ import serial
 
 #-----------------------DICTIONARY OF FILEPATHS-----------------------#
 
+# FILE NAMES TO BE CLEARED AT THE START OF THE PROGRAM
+CLEAR_FILE_NAMES = {
+    "linux_log": "logs/linuxlog.txt",
+    "serial_log": "logs/seriallog.txt",
+    "signal_strength": "logs/signalstrength.txt",
+    "command_log": "logs/commandlog.txt",
+    "noise": "logs/noise.txt",
+    "console_log": "logs/consolelog.txt",
+    "restart": "logs/restart.txt"
+}
+
+# COMPLETE LIST OF FILE NAMES
 FILE_NAMES = {
     "linux_log": "logs/linuxlog.txt",
     "serial_log": "logs/seriallog.txt",
     "signal_strength": "logs/signalstrength.txt",
     "command_log": "logs/commandlog.txt",
     "noise": "logs/noise.txt",
-    "console_log": "logs/consolelog.txt"
+    "console_log": "logs/consolelog.txt",
+    "restart": "logs/restart.txt"
 }
 
 
@@ -16,12 +29,13 @@ FILE_NAMES = {
 
 # "KEYWORD": "CORRESPONDING FUNCTION NAME"
 KEYWORD_DICTIONARY = {
-#     "signalStrength": 'ping_wireless_config',
-#     "noise": 'log_wireless_config_noise'
+    "going mute:": 'restart'
 }
 
 LINUX_KEYWORD_DICTIONARY = {
-    "test": 'empty_test'  
+    "Shutdown": 'shutdown_success',
+    "/dev/btusb0": 'restart_success'
+
 }
 
 SIGNALSTRENGTH_DICTIONARY = {
@@ -50,7 +64,11 @@ GET_WIFI_SCAN = 'udws "nca.get_wireless_scan"'
 #----------------------FLAGS----------------------#
 
 assert_flag = 0
+stop_restart_flag = 0
 
+#----------------------COUNT----------------------#
+
+restart_count = 0
 
 #----------------------GUI SETTINGS----------------------#
 

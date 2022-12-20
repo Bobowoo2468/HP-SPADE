@@ -1,5 +1,6 @@
 import os
 import random
+import gui
 import multiprocessing as mp
 from datetime import datetime
 import globalparams as gp
@@ -15,7 +16,7 @@ def parse_input_cmd(string, cmd_no, prepend):
     if cmd_no == 0:
         cmd_no = ""
         
-    parsed_input = "{0},Command {1},{2},{3}\n".format(prepend, cmd_no, current_time, string.rstrip().lstrip())
+    parsed_input = "{0},Command {1},{2}\n".format(prepend, cmd_no, string.rstrip().lstrip())
     return parsed_input
 
 
@@ -91,6 +92,14 @@ def get_last_Nlines(file_path, N):
                 lines = list(f)
             pos *= 2
     return ''.join(lines[-N:])
+
+
+#------------ADJUST ATTENUATION AND PING WIRELESS CONFIG----------#
+
+def adjust_attenuation_and_ping_wireless_config(wa):
+    user_input_attenuation_value = gui.get_user_input_attenuation()
+    wa.set_all_channels_attenuation(user_input_attenuation_value)
+    return
 
 
 #-----------------TERMINATE PROCESSES CLEANLY------------------#
