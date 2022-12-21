@@ -94,14 +94,6 @@ def get_last_Nlines(file_path, N):
     return ''.join(lines[-N:])
 
 
-#------------ADJUST ATTENUATION AND PING WIRELESS CONFIG----------#
-
-def adjust_attenuation_and_ping_wireless_config(wa):
-    user_input_attenuation_value = gui.get_user_input_attenuation()
-    wa.set_all_channels_attenuation(user_input_attenuation_value)
-    return
-
-
 #-----------------TERMINATE PROCESSES CLEANLY------------------#
 
 def destroy_process_children():

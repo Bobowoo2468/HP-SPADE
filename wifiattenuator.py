@@ -65,6 +65,7 @@ class WiFi_Attenuator():
             
         return rtn_string
 
+
 #-----------------------CLASS METHODS TO INITIALISE DEVICE-----------------------#
     
     def get_serial_number(self):

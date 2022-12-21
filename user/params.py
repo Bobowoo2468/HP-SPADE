@@ -29,12 +29,11 @@ FILE_NAMES = {
 
 # "KEYWORD": "CORRESPONDING FUNCTION NAME"
 KEYWORD_DICTIONARY = {
-    "going mute:": 'restart'
+    "signalStrength": 'adjust_attenuation_and_ping_wifi',
+    "noise": 'log_wireless_config_noise'
 }
 
 LINUX_KEYWORD_DICTIONARY = {
-    "Shutdown": 'shutdown_success',
-    "/dev/btusb0": 'restart_success'
 
 }
 
@@ -48,11 +47,13 @@ RESTART_ASSERT_DICTIONARY = {
     "asserted": 'halt_restart'
 }
 
-BACKUP_DICTIONARY = {
-    "signalStrength": 'ping_wireless_config',
-    "noise": 'log_wireless_config_noise',
-    "going mute:": 'restart',
-    "asserted": 'halt_restart'
+BACKUP_DICTIONARY_RTOS = {
+    "going mute:": 'restart'
+}
+
+BACKUP_DICTIONARY_LINUX = {
+    "Shutdown": 'shutdown_success',
+    "/dev/btusb0": 'restart_success'
 }
 
 
@@ -61,14 +62,17 @@ BACKUP_DICTIONARY = {
 GET_WIFI_CONFIG = 'udws "nca.get_wireless_config"'
 GET_WIFI_SCAN = 'udws "nca.get_wireless_scan"'
 
+
 #----------------------FLAGS----------------------#
 
 assert_flag = 0
 stop_restart_flag = 0
 
+
 #----------------------COUNT----------------------#
 
 restart_count = 0
+
 
 #----------------------GUI SETTINGS----------------------#
 
@@ -78,3 +82,9 @@ CMD_LOG_WIDTH = 50
 CONSOLE_LOG_WIDTH = 50
 RTOS_LOG_WIDTH = 75
 LINUX_LOG_WIDTH = 75
+
+
+#----------------------MVP2 (WIFI ATTENUATION) PARAMS----------------------#
+
+PING_NO = 7
+MAX_ATTENUATION = 50

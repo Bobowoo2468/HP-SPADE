@@ -20,16 +20,10 @@ from user import params as up
 def parse_data_from_dataline(dataline):
     return dataline.split(": ")[1]
 
-
-#-----------------------HELPER FUNCTIONS-----------------------#
-
-
-#-----------------------RESULT HANDLER FUNCTIONS-----------------------#
-
     
 #-------------------------------------------------------------------TEST FUNCTIONS--------------------------------------------------------------------#
 
-def empty_test(key, dataline):
+def empty_test(key, dataline, wa):
     gf.console_log("EMPTY: " + dataline)
     sleep(5)
     return
@@ -37,25 +31,24 @@ def empty_test(key, dataline):
 
 #------------PING WIRELESS CONFIG EVERY 10S, LOG NOISE AND SIGNAL STRENGTH----------#
 
-def ping_wireless_config(key, dataline):
+def ping_wireless_config(key, dataline, wa):
     gp.RTOS.write(gf.string_to_byte(up.GET_WIFI_CONFIG))
     signal_strength = parse_data_from_dataline(dataline)
-    gf.timed_logger_append(up.FILE_NAMES["signal_strength"], dataline)
-    gf.console_log("STRENGTH: " + dataline)
+    gf.timed_logger_append(up.FILE_NAMES["signal_strength"], "Signal Strength,{0}".format(signal_strength))
     sleep(10)
     return
 
 
-def log_wireless_config_noise(key, dataline):
+def log_wireless_config_noise(key, dataline, wa):
     noise = parse_data_from_dataline(dataline)
-    gf.timed_logger_append(up.FILE_NAMES["noise"], dataline)
+    gf.timed_logger_append(up.FILE_NAMES["noise"], "Noise,{0}".format(noise))
     gf.console_log("NOISE: " + dataline)
     return 
 
 
 #------------PING WIRELESS SCAN EVERY 5S----------#
 
-def ping_wireless_scan(key, dataline):
+def ping_wireless_scan(key, dataline, wa):
     gp.RTOS.write(gf.string_to_byte(up.GET_WIFI_SCAN))
     sleep(5)
     return
@@ -63,7 +56,7 @@ def ping_wireless_scan(key, dataline):
 
 #------------RESTART SYSTEM CONTINUOUSLY UNTIL ASSERT APPEARS----------#
 
-# def restart(key, dataline):
+# def restart(key, dataline, wa):
 #     if up.assert_flag == 0:
 #         gp.LINUX.write(gf.string_to_byte('restart'))
 #         gf.console_log("RESTARTED")
@@ -74,18 +67,19 @@ def ping_wireless_scan(key, dataline):
 #     return
 # 
 # 
-# def halt_restart(key, dataline):
+# def halt_restart(key, dataline, wa):
 #     up.assert_flag = 1
 #     gf.console_log("ASSERT ASSERT ASSERT")
 #     return
 
-#------------MVP TEST 1----------#
+
+#------------MVP TEST 1: TEST CONTINUOUS RESTARTS----------#
 
 shutdown_found = False
 restart_success_found = False
 restart_flag = False
 
-def shutdown_success(key, dataline):
+def shutdown_success(key, dataline, wa):
     global shutdown_found
     if shutdown_found is True:
         gf.console_log("ALREADY TRUE BRO")
@@ -94,7 +88,7 @@ def shutdown_success(key, dataline):
     shutdown_found = True
     return    
 
-def restart_success(key, dataline):
+def restart_success(key, dataline, wa):
     global shutdown_found, restart_success_found, restart_flag
     
     if shutdown_found is False:
@@ -120,7 +114,7 @@ def reset():
     gf.console_log("RESETTED")
     return
 
-def restart(key, dataline):
+def restart(key, dataline, wa):
     global restart_flag
     
     if restart_flag is False:
@@ -137,9 +131,59 @@ def restart(key, dataline):
 
     return
 
+
+#------------MVP TEST 2: TEST SIGNAL ATTENUATION EFFICACY----------#
+
+attenuation_asc = True
+adjusted_attenuation = 0
+ping_count = up.PING_NO
+
+def set_attenuation_and_log(adjusted_attenuation, wa):
+    wa.set_all_channels_attenuation(adjusted_attenuation)
+    gf.timed_logger_append(up.FILE_NAMES["signal_strength"], "SET ATTENUATION,{0}\n".format(adjusted_attenuation))
+    gf.timed_logger_append(up.FILE_NAMES["noise"], "SET ATTENUATION,{0}\n".format(adjusted_attenuation))
+    
+def reverse_attenuation(adj, asc):
+        if asc is True and adj == up.MAX_ATTENUATION:
+            return False
+        
+        if asc is False and adj == 0:
+            return True
+        
+        return asc
+
+def attenuation_control(wa):
+    global adjusted_attenuation, ping_count, attenuation_asc
+    
+    if ping_count > 0:
+        ping_count -= 1
+    elif ping_count == 0:
+        ping_count = up.PING_NO
+        attenuation_asc = reverse_attenuation(adjusted_attenuation, attenuation_asc)
+        
+        if attenuation_asc is True:
+            adjusted_attenuation += 1
+        else:
+            adjusted_attenuation -= 1
+        set_attenuation_and_log(adjusted_attenuation, wa)
+    return
+
+def adjust_attenuation_and_ping_wifi(key, dataline, wa):
+    if wa is False:
+        return
+    
+    attenuation_control(wa)
+    gp.RTOS.write(gf.string_to_byte(up.GET_WIFI_CONFIG))
+    signal_strength = parse_data_from_dataline(dataline)
+    gf.timed_logger_append(up.FILE_NAMES["signal_strength"], "Signal Strength,{0}".format(signal_strength))
+    gf.console_log("STRENGTH: " + dataline)
+    sleep(1)
+    return
+
+
 #-----------------------INPUT FUNCTION-----------------------#
 
-def user_input(key, dataline):
+def user_input(key, dataline, wa):
     if key == "RTOS":
         gp.RTOS.write(gf.string_to_byte(dataline))
     elif key == "LINUX":

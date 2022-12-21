@@ -79,7 +79,7 @@ def rtos_f(q, e):
 
 #-----------------------PROCESS 3: TRANSMIT PROCESS-----------------------#
                 
-def exec_f(q, e):
+def exec_f(q, e, wa):
     while True:
         
         #-----------WHILE THERE ARE FUNCTIONS YET TO BE EXECUTED-------------#
@@ -105,7 +105,7 @@ def exec_f(q, e):
             #-----------EXECUTE FUNCTION WITH LOGGING-------------#
             
             gf.console_log("CALLING: {0} - KEY MATCHED: {1}".format(func, key))
-            getattr(uf, func)(key, params["dataline"]) # FUNCTION EXECUTION
+            getattr(uf, func)(key, params["dataline"], wa) # FUNCTION EXECUTION
             
             parsed_cmd = gf.parse_input_cmd(func, 0, gp.AUTO_PREPEND_INDICATOR)
             gf.timed_logger_append(up.FILE_NAMES["command_log"], parsed_cmd)
@@ -137,13 +137,13 @@ if __name__ == '__main__':
     
     rtosp = mp.Process(target=rtos_f, args=(keyword_queue,start_event,))
     linuxp = mp.Process(target=linux_f, args=(keyword_queue,start_event,))
-    execp = mp.Process(target=exec_f, args=(keyword_queue,start_event,))
+    execp = mp.Process(target=exec_f, args=(keyword_queue,start_event,wifiattenuator,))
     
     rtosp.start()
     linuxp.start()
     execp.start()
     
-    gui.gui_f(keyword_queue, wifiattenuator)
+    gui.Gui(keyword_queue, wifiattenuator)
     
     try:
         rtosp.join()
