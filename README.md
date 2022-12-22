@@ -1,6 +1,8 @@
 # HP-SPADE
 HP SPADE (Automated Serial Printer DEbugger)  is designed to automate testing for HP Inkjet Printers by parsing serial output and automating transmit commands.
 
+<img src="https://user-images.githubusercontent.com/62021897/204767735-a90c36b6-514b-4266-a25a-79b489c620e0.png" width=250 height=250/>
+
 This project is one of the main deliverables of my electrical and electronics engineering (EE) internship at Hewlett-Packard (HP Inc.), to automate testing and debugging of printers.
 This involves routing the serial output from the main processor into a python script with the help of a Raspberry Pi interface to allow receive and transmission of UART.
 <br/>
