@@ -22,11 +22,9 @@ The automated debugger uses Python's <b> multiprocessing </b> dependency, to all
 Additionally, events and queues are used to maintain concurrency and shared data between multiple processes.
 
 <br/>
+![image](https://user-images.githubusercontent.com/62021897/209073987-415fddcb-9d34-43ed-bd2b-5037f513a00e.png)
+
+<br/>
+<br/>
 <b>Stay tuned for more!</b>
 
-<br/>
-![2022-12-22-140743_2560x1440_scrot](https://user-images.githubusercontent.com/62021897/209073775-947763b5-b1ae-42da-997e-e2cacd454d2a.png)
-
-
-<br/>
-![image](https://user-images.githubusercontent.com/62021897/204767735-a90c36b6-514b-4266-a25a-79b489c620e0.png)
