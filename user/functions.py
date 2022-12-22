@@ -1,6 +1,5 @@
 import os
 import globalfunctions as gf, globalparams as gp
-import gui
 
 from datetime import datetime
 from time import sleep
@@ -24,7 +23,7 @@ def parse_data_from_dataline(dataline):
 #-------------------------------------------------------------------TEST FUNCTIONS--------------------------------------------------------------------#
 
 def empty_test(key, dataline, wa):
-    gf.console_log("EMPTY: " + dataline)
+    gf.console_log("EMPTY," + dataline)
     sleep(5)
     return
 
@@ -33,16 +32,16 @@ def empty_test(key, dataline, wa):
 
 def ping_wireless_config(key, dataline, wa):
     gp.RTOS.write(gf.string_to_byte(up.GET_WIFI_CONFIG))
-    signal_strength = parse_data_from_dataline(dataline)
-    gf.timed_logger_append(up.FILE_NAMES["signal_strength"], "Signal Strength,{0}".format(signal_strength))
+    data = parse_data_from_dataline(dataline)
+    gf.timed_logger_append(up.FILE_NAMES["signal_strength"], "{0}".format(data))
     sleep(10)
     return
 
 
 def log_wireless_config_noise(key, dataline, wa):
-    noise = parse_data_from_dataline(dataline)
-    gf.timed_logger_append(up.FILE_NAMES["noise"], "Noise,{0}".format(noise))
-    gf.console_log("NOISE: " + dataline)
+    data = parse_data_from_dataline(dataline)
+    gf.timed_logger_append(up.FILE_NAMES["noise"], "{0}".format(data))
+    gf.console_log("NOISE," + dataline)
     return 
 
 
@@ -82,11 +81,11 @@ restart_flag = False
 def shutdown_success(key, dataline, wa):
     global shutdown_found
     if shutdown_found is True:
-        gf.console_log("ALREADY TRUE BRO")
+        gf.console_log("ALREADY MATCHED, SHUTDOWN")
         return
-    gf.console_log("SHUTDOWN SET TO TRUE BRO")
     shutdown_found = True
     return    
+
 
 def restart_success(key, dataline, wa):
     global shutdown_found, restart_success_found, restart_flag
@@ -97,7 +96,7 @@ def restart_success(key, dataline, wa):
         return
     
     if restart_success_found is True:
-        gf.console_log("RESTART SUCCESS ALREADY TRUE")
+        gf.console_log("ALREADY MATCHED, RESTART SUCCESS")
     
     restart_success_found = True
     
@@ -106,6 +105,7 @@ def restart_success(key, dataline, wa):
         gf.console_log("RESTART SOONEST")
     return
 
+
 def reset():
     global shutdown_found, restart_success_found, restart_flag
     shutdown_found = False
@@ -113,6 +113,7 @@ def reset():
     restart_flag = False
     gf.console_log("RESETTED")
     return
+
 
 def restart(key, dataline, wa):
     global restart_flag
@@ -126,7 +127,7 @@ def restart(key, dataline, wa):
     gp.LINUX.write(gf.string_to_byte('restart'))
     gf.console_log("RESTART SUCCESSFUL")
     up.restart_count += 1
-    gf.timed_logger_append(up.FILE_NAMES["restart"], "RESTART COUNT, {0}\n".format(up.restart_count))
+    gf.timed_logger_append(up.FILE_NAMES["restart"], "COUNT,{0}\n".format(up.restart_count))
     reset()
 
     return
@@ -137,11 +138,26 @@ def restart(key, dataline, wa):
 attenuation_asc = True
 adjusted_attenuation = 0
 ping_count = up.PING_NO
+iperf_connection = False
+
+def set_iperf_connection():
+    global iperf_connection
+    if iperf_connection is False:
+        gp.LINUX.write(gf.string_to_byte("iperf3 -s"))
+        gf.console_log("IPERF CONN START")
+        iperf_connection = True
+    
+    elif iperf_connection is True:
+        gf.console_log("IPERF CONN ACTIVE")
+    
+    return
 
 def set_attenuation_and_log(adjusted_attenuation, wa):
     wa.set_all_channels_attenuation(adjusted_attenuation)
     gf.timed_logger_append(up.FILE_NAMES["signal_strength"], "SET ATTENUATION,{0}\n".format(adjusted_attenuation))
     gf.timed_logger_append(up.FILE_NAMES["noise"], "SET ATTENUATION,{0}\n".format(adjusted_attenuation))
+    gf.timed_logger_append(up.FILE_NAMES["signal_strength"], "SET ATTENUATION,{0}\n".format(adjusted_attenuation))
+    
     
 def reverse_attenuation(adj, asc):
         if asc is True and adj == up.MAX_ATTENUATION:
@@ -151,6 +167,7 @@ def reverse_attenuation(adj, asc):
             return True
         
         return asc
+
 
 def attenuation_control(wa):
     global adjusted_attenuation, ping_count, attenuation_asc
@@ -168,17 +185,28 @@ def attenuation_control(wa):
         set_attenuation_and_log(adjusted_attenuation, wa)
     return
 
+
 def adjust_attenuation_and_ping_wifi(key, dataline, wa):
     if wa is False:
         return
-    
+    set_iperf_connection()
     attenuation_control(wa)
     gp.RTOS.write(gf.string_to_byte(up.GET_WIFI_CONFIG))
     signal_strength = parse_data_from_dataline(dataline)
-    gf.timed_logger_append(up.FILE_NAMES["signal_strength"], "Signal Strength,{0}".format(signal_strength))
-    gf.console_log("STRENGTH: " + dataline)
+    gf.timed_logger_append(up.FILE_NAMES["signal_strength"], "{0}".format(signal_strength))
+    gf.console_log("SIGNAL STRENGTH," + dataline)
     sleep(1)
     return
+
+
+def log_throughput(key, dataline, wa):
+    if wa is False:
+        return
+    transfer = dataline[25:36]
+    bandwidth = dataline[38:52]
+    gf.timed_logger_append(up.FILE_NAMES["throughput"], "{0},{1}\n".format(transfer, bandwidth))
+    gf.console_log("THROUGHPUT," + dataline[25:])
+    return 
 
 
 #-----------------------INPUT FUNCTION-----------------------#

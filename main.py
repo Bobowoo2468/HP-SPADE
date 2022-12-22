@@ -2,7 +2,7 @@
 import sys
 import multiprocessing as mp
 import globalparams as gp, globalfunctions as gf
-import gui
+from gui import Gui
 import wifiattenuator as wa
 
 #-----------------------IMPORT FROM USER DIRECTORY-----------------------#
@@ -36,11 +36,11 @@ def linux_f(q, e):
                                 params_dict = {"key": key, "exec": str(up.LINUX_KEYWORD_DICTIONARY[key]), "dataline": decoded_str}
                                 q.put(params_dict)
 
-                                gf.console_log("LINUX KEY MATCH:" + key) # SHOW KEYWORD MATCH
+                                gf.console_log("LINUX KEY MATCH," + key) # SHOW KEYWORD MATCH
                            
                            
                 except Exception as ex:
-                    gf.console_log("LINUX SERIAL ERROR: " + str(ex))
+                    gf.console_log("LINUX SERIAL ERROR," + str(ex))
                     pass
 
 
@@ -69,11 +69,11 @@ def rtos_f(q, e):
                                 params_dict = {"key": key, "exec": str(up.KEYWORD_DICTIONARY[key]), "dataline": decoded_str}
                                 q.put(params_dict)
                                 
-                                gf.console_log("RTOS KEY MATCH:" + key) # SHOW KEYWORD MATCH
+                                gf.console_log("RTOS KEY MATCH," + key) # SHOW KEYWORD MATCH
                     
         
                 except Exception as ex:
-                    gf.console_log("RTOS SERIAL ERROR: " + str(ex))
+                    gf.console_log("RTOS SERIAL ERROR," + str(ex))
                     pass
 
 
@@ -85,7 +85,7 @@ def exec_f(q, e, wa):
         #-----------WHILE THERE ARE FUNCTIONS YET TO BE EXECUTED-------------#
         
         while q:
-            gf.console_log("QUEUE SIZE: {0}".format(q.qsize()))
+            gf.console_log("QUEUE SIZE,{0}".format(q.qsize()))
             
             params = q.get() # POP CORRESPONDING FUNCTION FROM QUEUE            
             
@@ -104,13 +104,13 @@ def exec_f(q, e, wa):
             
             #-----------EXECUTE FUNCTION WITH LOGGING-------------#
             
-            gf.console_log("CALLING: {0} - KEY MATCHED: {1}".format(func, key))
+            gf.console_log("CALLING,{0},KEY MATCHED,{1}".format(func, key))
             getattr(uf, func)(key, params["dataline"], wa) # FUNCTION EXECUTION
             
             parsed_cmd = gf.parse_input_cmd(func, 0, gp.AUTO_PREPEND_INDICATOR)
             gf.timed_logger_append(up.FILE_NAMES["command_log"], parsed_cmd)
             
-            gf.console_log("COMPLETED: {0} - KEY MATCHED: {1}".format(func, key))
+            gf.console_log("COMPLETED,{0},KEY MATCHED,{1}".format(func, key))
             
 
 
@@ -143,7 +143,7 @@ if __name__ == '__main__':
     linuxp.start()
     execp.start()
     
-    gui.Gui(keyword_queue, wifiattenuator)
+    Gui(keyword_queue, wifiattenuator)
     
     try:
         rtosp.join()

@@ -10,7 +10,8 @@ CLEAR_FILE_NAMES = {
     "command_log": "logs/commandlog.txt",
     "noise": "logs/noise.txt",
     "console_log": "logs/consolelog.txt",
-    "restart": "logs/restart.txt"
+    "restart": "logs/restart.txt",
+    "throughput": "logs/throughput.txt"
 }
 
 # COMPLETE LIST OF FILE NAMES
@@ -21,7 +22,8 @@ FILE_NAMES = {
     "command_log": "logs/commandlog.txt",
     "noise": "logs/noise.txt",
     "console_log": "logs/consolelog.txt",
-    "restart": "logs/restart.txt"
+    "restart": "logs/restart.txt",
+    "throughput": "logs/throughput.txt"
 }
 
 
@@ -34,7 +36,7 @@ KEYWORD_DICTIONARY = {
 }
 
 LINUX_KEYWORD_DICTIONARY = {
-
+    "Mbits/sec": 'log_throughput'
 }
 
 SIGNALSTRENGTH_DICTIONARY = {

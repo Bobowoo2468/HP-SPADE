@@ -7,9 +7,7 @@ class WiFi_Attenuator():
 #-----------------------CLASS-LEVEL VARIABLES-----------------------#
     
     serial_number = ""
-    
     model_number = ""
-    
     firmware = ""
     
     dev = usb.core.find(idVendor=gp.VENDOR_ID, idProduct=gp.PRODUCT_ID) # CLASS-LEVEL PARAM OF ATTENUATOR

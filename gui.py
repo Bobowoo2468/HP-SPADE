@@ -11,6 +11,7 @@ from user import functions as uf
 class Gui():
     
     #-----------------------CLASS-LEVEL VARIABLES-----------------------#
+    
     q = None
     wa = None
     cmd_no = 1
@@ -26,32 +27,61 @@ class Gui():
     
     app = App(title='HP Automated Serial Debugger', layout="grid")
     
-    # DEFINE WIDGETS
+    
+    #-------------------------------------------GUI WIDGETS-------------------------------------------#
+    
+    #-----------------------INPUT WIDGETS-----------------------#
+    
+    toggle_input_button = PushButton(app, width=30, height=3, text="RTOS MODE", grid=[2,1], align="left") #SUBMIT BUTTON
     Text(app, text="Insert command here:", grid=[0,0], align="left") #USER INPUT LABEL
+    user_input = TextBox(app, width=50, scrollbar=True, grid=[0,1], align="left")
+    send_command_button = PushButton(app, text="SEND COMMAND", height=3, grid=[0,2], align="left") #SUBMIT BUTTON
+    
+    
+    #-----------------------PROGRAM STATUS WIDGETS-----------------------#
+    
+    start_auto_button = PushButton(app, text="START", grid=[3,0], width=30, height=3, align="right") #START PROGRAM
+    stop_auto_button = PushButton(app, text="STOP", grid=[3,1], width=30, height=3, align="right") #STOP PROGRAM
+    
+    
+    #-----------------------ATTENUATION CONTROL WIDGETS-----------------------#
+    
+    attenuation_control = Text(app, grid=[6,1], width=20, text="Attenuation: ")  #ATTENUATION VALUE DISPLAY
+    slider = Slider(app, grid=[6,0], end=95)
+    adj_attn_button = PushButton(app, text="SET ATTENUATION", height=3, grid=[6,2]) #SEND ATTENUATION VALUE
+    
+    
+    #-----------------------LOG WIDGETS-----------------------#
+    
     Text(app, text="Command Log:", grid=[0,3], align="left") #COMMAND LOG LABEL
     Text(app, text="RTOS Log:", grid=[2,3], align="left") #RTOS LOG LABEL
     Text(app, text="Linux Log:", grid=[4,3], align="left") #LINUX LOG LABEL
     Text(app, text="Console Log:", grid=[6,3], align="left") #CONSOLE LOG LABEL
-    attenuation_control = Text(app, grid=[6,1], width=20, text="Attenuation: ")  #ATTENUATION VALUE DISPLAY
-
-    toggle_input_button = PushButton(app, width=30, height=3, text="RTOS MODE", grid=[2,1], align="left") #SUBMIT BUTTON
-    send_command_button = PushButton(app, text="SEND COMMAND", height=3, grid=[0,2], align="left") #SUBMIT BUTTON
-    start_auto_button = PushButton(app, text="START", grid=[3,0], width=30, height=3, align="right") #START PROGRAM
-    stop_auto_button = PushButton(app, text="STOP", grid=[3,1], width=30, height=3, align="right") #STOP PROGRAM
-    adj_attn_button = PushButton(app, text="SET ATTENUATION", height=3, grid=[6,2]) #SEND ATTENUATION VALUE
     
-    slider = Slider(app, grid=[6,0], end=95)
-
-    user_input = TextBox(app, width=50, scrollbar=True, grid=[0,1], align="left")
     command_log = TextBox(app, grid=[0,4,2,2], width=up.CMD_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
     rtos_log = TextBox(app, grid=[2,4,2,2], width=up.RTOS_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
     linux_log = TextBox(app, grid=[4,4,2,2], width=up.LINUX_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
     console_log = TextBox(app, grid=[6,4,2,2], width=up.CMD_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
     
     
+    #-------------------------------------------CLASS FUNCTIONS-------------------------------------------#
+    
+    #-----------------------ATTENUATION CONTROL-----------------------#
+    
     def change_attn_value(self):
         attenuation_control.value = "WiFi Attenuation: " + str(self.slider.value)
         return
+    
+    def get_user_input_attenuation(self):
+        return self.slider.value
+
+    def adjust_attenuation_and_ping_wireless_config(self):
+        user_input_attenuation_value = self.get_user_input_attenuation()
+        self.wa.set_all_channels_attenuation(user_input_attenuation_value)
+        return
+
+
+    #-----------------------UPDATE LOGS-----------------------#
     
     def update_rtos_log(self):
         count = gf.get_line_count(gp.RTOS_LOG_FILE_PATH)
@@ -105,7 +135,20 @@ class Gui():
             self.command_stored_count = count
 
 
-    #-----------------------TRANSMIT RTOS/KERNEL COMMAND-----------------------#
+    def send_command_log(self):
+        if self.input_mode == gp.RTOS_MODE:
+            prepend = gp.RTOS_PREPEND_INDICATOR 
+        elif self.input_mode == gp.LINUX_MODE:
+            prepend = gp.LINUX_PREPEND_INDICATOR
+            
+        parsed_cmd = gf.parse_input_cmd(self.user_input.value, self.cmd_no, prepend)
+        
+        gf.timed_logger_append(gp.COMMAND_LOG_FILE_PATH, parsed_cmd)
+
+        return ''
+
+
+    #-----------------------SERIAL WRITE-----------------------#
             
     def send_command(self):
         user_input_value = self.user_input.value
@@ -131,8 +174,20 @@ class Gui():
         
         # UPDATE LOG FILES
         self.user_input.value = self.send_command_log()
-   
 
+
+    def toggle_rtos_linux_mode(self):
+        if self.input_mode == 0:
+            self.toggle_input_button.text = "LINUX MODE"
+            self.input_mode = 1
+        else:
+            self.toggle_input_button.text = "RTOS MODE"
+            self.input_mode = 0
+        return
+
+
+    #-----------------------KEYSTROKE HANDLING/QUALITY OF LIFE-----------------------#
+        
     def save_prev_commands(self, input_str):
         self.command_history.append(input_str)
         return
@@ -148,7 +203,6 @@ class Gui():
     def up_handler(self, e):
         # NO COMMANDS TO RETRIEVE
         if len(self.command_history) == 0:
-            print("NO COMMANDS INPUT YET")
             return
         
         if self.command_history_curs == -1 and len(self.command_history) >= 1:
@@ -169,7 +223,6 @@ class Gui():
     def down_handler(self, e):
         # NO COMMANDS TO RETRIEVE
         if len(self.command_history) == 0:
-            print("NO COMMANDS INPUT YET")
             return
         
         if self.command_history_curs == -1 and len(self.command_history) >= 1:
@@ -186,17 +239,17 @@ class Gui():
         self.user_input.value = self.command_history[self.command_history_curs]     
 
 
-    # TOGGLE TRANSMISSION MODE FOR SERIAL 
-    def toggle_rtos_linux_mode(self):
-        if self.input_mode == 0:
-            self.toggle_input_button.text = "LINUX MODE"
-            self.input_mode = 1
-        else:
-            self.toggle_input_button.text = "RTOS MODE"
-            self.input_mode = 0
+    def terminate_interrupt(self, e):
+        if self.input_mode == 1:
+            gp.LINUX.write(b'\x03')
+        elif self.input_mode == 0:
+            gp.RTOS.write(b'\x03')
+        gf.console_log("ESCAPED")
         return
-
-
+        
+        
+    #-----------------------PROGRAM CONTROL-----------------------#
+    
     def start_auto_debug(self):
         if gp.in_progress_flag == 1:
             gf.console_log("AUTO DEBUGGER ALREADY RUNNING")
@@ -222,34 +275,9 @@ class Gui():
             
         gp.in_progress_flag = 0
         return
-    
+         
 
-    def send_command_log(self):
-        if self.input_mode == gp.RTOS_MODE:
-            prepend = gp.RTOS_PREPEND_INDICATOR 
-        elif self.input_mode == gp.LINUX_MODE:
-            prepend = gp.LINUX_PREPEND_INDICATOR
-            
-        parsed_cmd = gf.parse_input_cmd(self.user_input.value, self.cmd_no, prepend)
-        
-        gf.timed_logger_append(gp.COMMAND_LOG_FILE_PATH, parsed_cmd)
-
-        return ''
-        
-
-    def get_user_input_attenuation(self):
-        return self.slider.value
-
-
-    #------------ADJUST ATTENUATION AND PING WIRELESS CONFIG----------#
-
-    def adjust_attenuation_and_ping_wireless_config(self):
-        user_input_attenuation_value = self.get_user_input_attenuation()
-        self.wa.set_all_channels_attenuation(user_input_attenuation_value)
-        return
-
-
-    #-----------------------MAIN GUI FUNCTION-----------------------#
+    #-------------------------------------------MAIN EXECUTION-------------------------------------------#
 
     
     def __init__(self, q, wa):
@@ -283,7 +311,8 @@ class Gui():
         # rtos_log.tk.vbar >> SCROLLBAR PROPERTY (TKINTER)
         self.user_input.tk.bind('<Return>', self.send_command_on_enter)
         self.user_input.tk.bind('<Up>', self.up_handler)
-        self.user_input.tk.bind('<Down>', self.down_handler)        
+        self.user_input.tk.bind('<Down>', self.down_handler)
+        self.user_input.tk.bind('<Escape>', self.terminate_interrupt)
 
         self.app.display()
 
