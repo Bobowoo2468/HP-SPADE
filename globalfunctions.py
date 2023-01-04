@@ -16,7 +16,7 @@ def parse_input_cmd(string, cmd_no, prepend):
     if cmd_no == 0:
         cmd_no = ""
         
-    parsed_input = "{0},Command {1},{2}\n".format(prepend, cmd_no, string.rstrip().lstrip())
+    parsed_input = "{0},Command {1},{2}".format(prepend, cmd_no, string.rstrip().lstrip())
     return parsed_input
 
 
@@ -62,7 +62,7 @@ def file_write(file_ref, write_str):
 
 
 def file_log(file_ref, write_str):
-    timed_str = append_time_wo_newline(write_str)
+    timed_str = append_time(write_str)
     file_ref.write(timed_str)
     file_ref.flush()
     os.fsync(file_ref.fileno()) 
@@ -105,20 +105,34 @@ def destroy_process_children():
 
 #--------------------------------RESULT HANDLER FUNCTIONS--------------------------------#
 
-def timed_logger_append(file_name, res):
+def timed_log(file_name, res):
     with open(file_name, "a") as file:
         file_log(file, res)
     return
 
 
-def simple_logger_append(file_name, res):
+def simple_log(file_name, res):
     with open(file_name, "a") as file:
         file_write(file, res)
     return
     
     
 def console_log(res):
-    timed_res = append_time(res)
-    print(timed_res)
-    simple_logger_append(gp.CONSOLE_LOG_FILE_PATH, timed_res)
+    print(append_time(res))
+    timed_log(gp.CONSOLE_LOG_FILE_PATH, res)
     return
+
+
+#--------------------------------SERIAL WRITE FUNCTIONS--------------------------------#
+
+def rtos_write(write_str):
+    byte_str = string_to_byte(write_str)
+    gp.RTOS.write(byte_str)
+    return
+    
+
+def linux_write(write_str):
+    byte_str = string_to_byte(write_str)
+    gp.LINUX.write(byte_str)
+    return
+

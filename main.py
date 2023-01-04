@@ -3,7 +3,7 @@ import sys
 import multiprocessing as mp
 import globalparams as gp, globalfunctions as gf
 from gui import Gui
-import wifiattenuator as wa
+from wifiattenuator import WiFi_Attenuator
 
 #-----------------------IMPORT FROM USER DIRECTORY-----------------------#
 
@@ -108,7 +108,7 @@ def exec_f(q, e, wa):
             getattr(uf, func)(key, params["dataline"], wa) # FUNCTION EXECUTION
             
             parsed_cmd = gf.parse_input_cmd(func, 0, gp.AUTO_PREPEND_INDICATOR)
-            gf.timed_logger_append(up.FILE_NAMES["command_log"], parsed_cmd)
+            gf.timed_log(up.FILE_NAMES["command_log"], parsed_cmd)
             
             gf.console_log("COMPLETED,{0},KEY MATCHED,{1}".format(func, key))
             
@@ -127,7 +127,7 @@ if __name__ == '__main__':
         open(file_name, "w").close()
     
     try:
-        wifiattenuator = wa.WiFi_Attenuator()
+        wifiattenuator = WiFi_Attenuator()
     
     except ValueError:
         wifiattenuator = False

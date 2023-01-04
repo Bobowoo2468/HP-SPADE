@@ -38,6 +38,11 @@ class Gui():
     send_command_button = PushButton(app, text="SEND COMMAND", height=3, grid=[0,2], align="left") #SUBMIT BUTTON
     
     
+    #-----------------------AUTOFILL WIDGETS-----------------------#
+    
+    autofill_button = PushButton(app, text="RTOS: udws 'nca.get_wireless_config'", grid=[0,7], width=30, height=3, align="right") 
+    autofill_button_2 = PushButton(app, text="LINUX: restart", grid=[2,7], width=30, height=3, align="right")
+    
     #-----------------------PROGRAM STATUS WIDGETS-----------------------#
     
     start_auto_button = PushButton(app, text="START", grid=[3,0], width=30, height=3, align="right") #START PROGRAM
@@ -58,10 +63,10 @@ class Gui():
     Text(app, text="Linux Log:", grid=[4,3], align="left") #LINUX LOG LABEL
     Text(app, text="Console Log:", grid=[6,3], align="left") #CONSOLE LOG LABEL
     
-    command_log = TextBox(app, grid=[0,4,2,2], width=up.CMD_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
-    rtos_log = TextBox(app, grid=[2,4,2,2], width=up.RTOS_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
-    linux_log = TextBox(app, grid=[4,4,2,2], width=up.LINUX_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
-    console_log = TextBox(app, grid=[6,4,2,2], width=up.CMD_LOG_WIDTH, height=70, multiline=True, scrollbar=True)
+    command_log = TextBox(app, grid=[0,4,2,2], width=up.CMD_LOG_WIDTH, height=50, multiline=True, scrollbar=True)
+    rtos_log = TextBox(app, grid=[2,4,2,2], width=up.RTOS_LOG_WIDTH, height=50, multiline=True, scrollbar=True)
+    linux_log = TextBox(app, grid=[4,4,2,2], width=up.LINUX_LOG_WIDTH, height=50, multiline=True, scrollbar=True)
+    console_log = TextBox(app, grid=[6,4,2,2], width=up.CMD_LOG_WIDTH, height=50, multiline=True, scrollbar=True)
     
     
     #-------------------------------------------CLASS FUNCTIONS-------------------------------------------#
@@ -69,7 +74,7 @@ class Gui():
     #-----------------------ATTENUATION CONTROL-----------------------#
     
     def change_attn_value(self):
-        attenuation_control.value = "WiFi Attenuation: " + str(self.slider.value)
+        self.attenuation_control.value = "WiFi Attenuation: " + str(self.slider.value)
         return
     
     def get_user_input_attenuation(self):
@@ -143,27 +148,58 @@ class Gui():
             
         parsed_cmd = gf.parse_input_cmd(self.user_input.value, self.cmd_no, prepend)
         
-        gf.timed_logger_append(gp.COMMAND_LOG_FILE_PATH, parsed_cmd)
+        gf.timed_log(gp.COMMAND_LOG_FILE_PATH, parsed_cmd)
 
         return ''
-
+            
 
     #-----------------------SERIAL WRITE-----------------------#
+    
+    def autofill_command(self, event_data):
+        button_text = event_data.widget.text 
+        command = button_text.split(": ")[1]
+        channel = button_text.split(": ")[0]
+        
+        if channel == "RTOS":    
+            params_dict = {"key": "RTOS", "exec": "user_input", "dataline": command}
+        elif channel == "LINUX":
+            params_dict = {"key": "LINUX", "exec": "user_input", "dataline": command}
+        self.q.put(params_dict)
+        
+        # UPDATE LOG FILES
+        self.user_input.value = self.send_command_log()        
+    
+    
+    def clean_process_termination(self):
+        gf.destroy_process_children()
+        self.app.destroy()
+        sys.exit(0)
+       
+       
+    def clear_logs(self):
+        self.rtos_log.value = ""
+        self.linux_log.value = ""
+        self.command_log.value = ""
+        self.console_log.value = ""
+        self.user_input.value = ""
+        return
             
     def send_command(self):
-        user_input_value = self.user_input.value
-        self.save_prev_commands(user_input_value) # STORE SENT COMMANDS
+        self.save_prev_commands(self.user_input.value) # STORE SENT COMMANDS
         
-        parsed_whitespace_cmd = gf.remove_whitespace(user_input_value) # REMOVE WHITESPACE FROM COMMANDS
+        parsed_whitespace_cmd = gf.remove_whitespace(self.user_input.value) # REMOVE WHITESPACE FROM COMMANDS
         
         if parsed_whitespace_cmd == "":
             return
         
+        # CLEAR UI LOGS
+        if parsed_whitespace_cmd == "CLEAR":
+            self.clear_logs()
+            return
+        
         # CLEAN PROCESS TERMINATION WITH KEYWORD "EXIT"
         if parsed_whitespace_cmd == "EXIT":
-            gf.destroy_process_children()
-            self.app.destroy()
-            sys.exit(0)
+            self.clean_process_termination()
         
         # SEND USER INPUT COMMANDS TO END OF QUEUE
         if self.input_mode == gp.RTOS_MODE: 
@@ -304,8 +340,10 @@ class Gui():
         self.start_auto_button.when_clicked = self.start_auto_debug
         self.stop_auto_button.when_clicked = self.stop_auto_debug
         self.adj_attn_button.when_clicked = self.adjust_attenuation_and_ping_wireless_config
-        self.slider.when_clicked = self.change_attn_value
-        
+        self.slider.when_mouse_dragged = self.change_attn_value
+        self.slider.when_left_button_released = self.change_attn_value
+        self.autofill_button.when_clicked = self.autofill_command
+        self.autofill_button_2.when_clicked = self.autofill_command
         
         # GUI EVENTS (KEYSTROKE DETECTION AND BUTTON CLICKS)
         # rtos_log.tk.vbar >> SCROLLBAR PROPERTY (TKINTER)

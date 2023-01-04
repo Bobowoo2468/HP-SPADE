@@ -78,7 +78,7 @@ restart_count = 0
 
 #----------------------GUI SETTINGS----------------------#
 
-LOGGER_REFRESH_RATE = 100 # (in ms) NOTE: FASTEST POSSIBLE WITHOUT SYSTEM HANG AND OVERHEATING: 50
+LOGGER_REFRESH_RATE = 100 # (in ms) 
 
 CMD_LOG_WIDTH = 50
 CONSOLE_LOG_WIDTH = 50
@@ -89,4 +89,4 @@ LINUX_LOG_WIDTH = 75
 #----------------------MVP2 (WIFI ATTENUATION) PARAMS----------------------#
 
 PING_NO = 7
-MAX_ATTENUATION = 50
+MAX_ATTENUATION = 30
