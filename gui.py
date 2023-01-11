@@ -14,7 +14,6 @@ class Gui():
     
     q = None
     wa = None
-    cmd_no = 1
     stored_count = -1
     linux_stored_count = -1
     console_stored_count = -1
@@ -42,12 +41,15 @@ class Gui():
     
     autofill_button = PushButton(app, text="RTOS: udws 'nca.get_wireless_config'", grid=[0,7], width=30, height=3, align="right") 
     autofill_button_2 = PushButton(app, text="LINUX: restart", grid=[2,7], width=30, height=3, align="right")
+    autofill_button_3 = PushButton(app, text="LINUX: iperf3 -s", grid=[3,7], width=30, height=3, align="right")
     
     #-----------------------PROGRAM STATUS WIDGETS-----------------------#
     
     start_auto_button = PushButton(app, text="START", grid=[3,0], width=30, height=3, align="right") #START PROGRAM
     stop_auto_button = PushButton(app, text="STOP", grid=[3,1], width=30, height=3, align="right") #STOP PROGRAM
-    
+    auto_debug_text = Text(app, text="Auto Debug Status:", grid=[4,0])
+    auto_debug_status = Text(app, text="IN PROGRESS", grid=[5,0], align="left")
+    auto_debug_status.text_color = "green"
     
     #-----------------------ATTENUATION CONTROL WIDGETS-----------------------#
     
@@ -77,8 +79,10 @@ class Gui():
         self.attenuation_control.value = "WiFi Attenuation: " + str(self.slider.value)
         return
     
+    
     def get_user_input_attenuation(self):
         return self.slider.value
+
 
     def adjust_attenuation_and_ping_wireless_config(self):
         user_input_attenuation_value = self.get_user_input_attenuation()
@@ -146,7 +150,7 @@ class Gui():
         elif self.input_mode == gp.LINUX_MODE:
             prepend = gp.LINUX_PREPEND_INDICATOR
             
-        parsed_cmd = gf.parse_input_cmd(self.user_input.value, self.cmd_no, prepend)
+        parsed_cmd = gf.parse_input_cmd(self.user_input.value, prepend)
         
         gf.timed_log(gp.COMMAND_LOG_FILE_PATH, parsed_cmd)
 
@@ -195,6 +199,11 @@ class Gui():
         # CLEAR UI LOGS
         if parsed_whitespace_cmd == "CLEAR":
             self.clear_logs()
+            return
+        
+        if parsed_whitespace_cmd == "RESTART":
+            gf.gpio_pulldown()
+            self.user_input.value = ""
             return
         
         # CLEAN PROCESS TERMINATION WITH KEYWORD "EXIT"
@@ -290,9 +299,10 @@ class Gui():
         if gp.in_progress_flag == 1:
             gf.console_log("AUTO DEBUGGER ALREADY RUNNING")
             return
-        
+
         self.q.put("START")
-        
+        self.auto_debug_status.value = "IN PROGRESS"
+        self.auto_debug_status.text_color = "green"
         gp.in_progress_flag = 1
         return
 
@@ -308,7 +318,8 @@ class Gui():
         
         # ENQUEUE SENTINEL TO HALT PROGRAM
         self.q.put(None)
-            
+        self.auto_debug_status.value = "STOPPED"
+        self.auto_debug_status.text_color = "red"    
         gp.in_progress_flag = 0
         return
          
@@ -344,6 +355,7 @@ class Gui():
         self.slider.when_left_button_released = self.change_attn_value
         self.autofill_button.when_clicked = self.autofill_command
         self.autofill_button_2.when_clicked = self.autofill_command
+        self.autofill_button_3.when_clicked = self.autofill_command
         
         # GUI EVENTS (KEYSTROKE DETECTION AND BUTTON CLICKS)
         # rtos_log.tk.vbar >> SCROLLBAR PROPERTY (TKINTER)

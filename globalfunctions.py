@@ -1,22 +1,22 @@
-import os
+import sys, os
 import random
 import gui
+import time
 import multiprocessing as mp
 from datetime import datetime
 import globalparams as gp
+import RPi.GPIO as GPIO
 
+sys.path.insert(0, gp.USER_DIRECTORY)
+import params as up
+import functions as uf
 
 #-----------------------STRING PARSERS-----------------------#
 
 # PARSE INPUT COMMAND WITH DATETIME
-def parse_input_cmd(string, cmd_no, prepend):
+def parse_input_cmd(string, prepend):
     current_time = get_current_time()
-    
-    # AUTO COMMANDS
-    if cmd_no == 0:
-        cmd_no = ""
-        
-    parsed_input = "{0},Command {1},{2}".format(prepend, cmd_no, string.rstrip().lstrip())
+    parsed_input = "{0},{1}".format(prepend, string.rstrip().lstrip())
     return parsed_input
 
 
@@ -66,6 +66,16 @@ def file_log(file_ref, write_str):
     file_ref.write(timed_str)
     file_ref.flush()
     os.fsync(file_ref.fileno()) 
+
+
+def init_logfiles(file_name):
+    f = open(file_name, "w")
+    
+    if file_name in up.FILE_HEADERS.keys():
+        f.write(up.FILE_HEADERS[file_name])
+        
+    f.close()
+    return
 
 
 #-----------------FILEREADER FUNCTIONS------------------#
@@ -136,3 +146,45 @@ def linux_write(write_str):
     gp.LINUX.write(byte_str)
     return
 
+
+def linux_escape():
+    gp.LINUX.write(b'\x03')
+    return
+
+
+#--------------------------------RPI GPIO--------------------------------#
+
+def gpio_init():
+    GPIO.setwarnings(False)
+    GPIO.setmode(GPIO.BCM)
+    gpio_toggle(23, "FLOAT") # SET TO HIGH IMPEDANCE STATE
+    return
+
+
+def gpio_pulldown():
+    gpio_toggle(23, "LOW")
+    time.sleep(1)
+    gpio_toggle(23, "FLOAT")
+    return
+
+
+def gpio_toggle(pin, state):
+    if state == "FLOAT":
+        GPIO.setup(pin,GPIO.IN, pull_up_down = GPIO.PUD_OFF)
+    elif state == "HIGH":
+        GPIO.setup(pin, GPIO.OUT)
+        GPIO.output(pin, GPIO.HIGH)
+    elif state == "LOW":
+        GPIO.setup(pin, GPIO.OUT)
+        GPIO.output(pin, GPIO.LOW)
+        
+        
+#-----------------------INPUT FUNCTION-----------------------#
+
+# CORRESPONDING FUNC EXECUTION
+def user_input(key, dataline):
+    if key == "RTOS":
+        rtos_write(dataline)
+    elif key == "LINUX":
+        linux_write(dataline)
+    return

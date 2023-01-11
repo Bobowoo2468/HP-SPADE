@@ -22,7 +22,7 @@ def linux_f(q, e):
             while gp.LINUX.inWaiting(): # IF DATA EXISTS IN BUFFER
                 try:
                     received_line = gp.LINUX.readline()
-                    decoded = received_line.decode('ascii') # DECODE CARRIAGE RETURN (/r) AND NEWLINE (/n): PYTHON LEXICAL ANALYSIS
+                    decoded = received_line.decode() # DECODE CARRIAGE RETURN (/r) AND NEWLINE (/n): PYTHON LEXICAL ANALYSIS
                     decoded_str = str(decoded)
                     
                     gf.file_log(serial_dump, decoded_str)
@@ -56,7 +56,7 @@ def rtos_f(q, e):
             while gp.RTOS.inWaiting(): # IF DATA EXISTS IN BUFFER
                 try:
                     received_line = gp.RTOS.readline()
-                    decoded = received_line.decode('ascii') # DECODE CARR RETURN (/r) AND NEWLINE (/n): PYTHON LEXICAL ANALYSIS
+                    decoded = received_line.decode() # DECODE CARR RETURN (/r) AND NEWLINE (/n): PYTHON LEXICAL ANALYSIS
                     decoded_str = str(decoded)
                     gf.file_log(serial_dump, decoded_str)
 
@@ -102,12 +102,21 @@ def exec_f(q, e, wa):
             key = params["key"]
             func = params["exec"]
             
+            if func == "user_input":
+                gf.console_log("USER INPUT,{0},CHANNEL,{1}".format(func, key))
+                
+                getattr(gf, func)(key, params["dataline"]) # FUNCTION EXECUTION
+            
+                parsed_cmd = gf.parse_input_cmd(func, key)
+                gf.timed_log(up.FILE_NAMES["command_log"], parsed_cmd)
+                continue
+            
             #-----------EXECUTE FUNCTION WITH LOGGING-------------#
             
             gf.console_log("CALLING,{0},KEY MATCHED,{1}".format(func, key))
             getattr(uf, func)(key, params["dataline"], wa) # FUNCTION EXECUTION
             
-            parsed_cmd = gf.parse_input_cmd(func, 0, gp.AUTO_PREPEND_INDICATOR)
+            parsed_cmd = gf.parse_input_cmd(func, gp.AUTO_PREPEND_INDICATOR)
             gf.timed_log(up.FILE_NAMES["command_log"], parsed_cmd)
             
             gf.console_log("COMPLETED,{0},KEY MATCHED,{1}".format(func, key))
@@ -116,16 +125,20 @@ def exec_f(q, e, wa):
 
 if __name__ == '__main__':
     
+    gf.gpio_init()
+    
     #-----------MULTIPROCESSING VARIABLES----------------#
     
     keyword_queue = mp.Queue()
     start_event = mp.Event()
+    start_event.set()
     
     #-----------CLEAR LOG FILES----------------#
     
     for file_name in up.CLEAR_FILE_NAMES.values():
-        open(file_name, "w").close()
-    
+        gf.init_logfiles(file_name) # CLEAR FILE AND APPEND HEADERS IF NECESSARY
+
+        
     try:
         wifiattenuator = WiFi_Attenuator()
     

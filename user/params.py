@@ -27,6 +27,13 @@ FILE_NAMES = {
 }
 
 
+FILE_HEADERS = {
+    "logs/signalstrength.txt": "Timestamp,WiFi Attenuation,Signal Strength\n",
+    "logs/throughput.txt": "Timestamp,WiFi Attenuation,Signal Strength,Noise,Transfer Rate,Bandwidth\n",
+    "logs/noise.txt": "Timestamp,WiFi Attenuation,Noise\n"
+}
+
+
 #-----------------------KEYWORD AND CORRESPONDING FUNCTIONS DICTIONARY-----------------------#
 
 # "KEYWORD": "CORRESPONDING FUNCTION NAME"
@@ -36,7 +43,9 @@ KEYWORD_DICTIONARY = {
 }
 
 LINUX_KEYWORD_DICTIONARY = {
-    "Mbits/sec": 'log_throughput'
+    "bits/sec": 'log_throughput',
+    "cfg80211_disconnected": 'wifi_disconnected',
+    "wl_bss_connect_done succeeded": 'wifi_reconnected'
 }
 
 SIGNALSTRENGTH_DICTIONARY = {
@@ -49,13 +58,24 @@ RESTART_ASSERT_DICTIONARY = {
     "asserted": 'halt_restart'
 }
 
-BACKUP_DICTIONARY_RTOS = {
+MVP1_RTOS = {
     "going mute:": 'restart'
 }
 
-BACKUP_DICTIONARY_LINUX = {
-    "Shutdown": 'shutdown_success',
-    "/dev/btusb0": 'restart_success'
+MVP1_LINUX = {
+    "/dev/btusb0": 'restart_success_factor_one',
+    "encfs exit status = 0": 'restart_success_factor_two'
+}
+
+MVP2_RTOS = {
+    "signalStrength": 'adjust_attenuation_and_ping_wifi',
+    "noise": 'log_wireless_config_noise'
+}
+
+MVP2_LINUX = {
+    "bits/sec": 'log_throughput',
+    "cfg80211_disconnected": 'wifi_disconnected',
+    "wl_bss_connect_done succeeded": 'wifi_reconnected'
 }
 
 
@@ -88,5 +108,5 @@ LINUX_LOG_WIDTH = 75
 
 #----------------------MVP2 (WIFI ATTENUATION) PARAMS----------------------#
 
-PING_NO = 7
+PING_NO = 10
 MAX_ATTENUATION = 30
